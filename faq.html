@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes | Prestamigo</title>
+    <!-- Usa el mismo CSS de tu index.html -->
+    <style>
+        /* Copia TODO el <style> de tu index.html aquí */
+        
+        /* Estilos adicionales para el FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #e1e8eb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .faq-question {
+            background: #f8f9fa;
+            padding: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 15px;
+        }
+        .faq-question::after {
+            content: "+";
+            font-size: 1.5rem;
+        }
+        .faq-item.active .faq-question::after {
+            content: "-";
+        }
+    </style>
+</head>
+<body>
+    <!-- Copia el mismo <header> y <nav> de tu index.html -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html">
+                    <img src="https://i.imgur.com/t3pRlvV.png" alt="Prestamigo Logo" class="logo">
+                </a>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="calculadora.html">Recursos</a></li>
+                    <li><a href="faq.html">FAQ</a></li>  <!-- Nuevo enlace -->
+                    <li><a href="https://calendly.com/prestamigo">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección FAQ -->
+    <section class="faq-container">
+        <h1>Preguntas Frecuentes</h1>
+        
+        <div class="faq-item">
+            <div class="faq-question">¿Cómo califico para un préstamo hipotecario?</div>
+            <div class="faq-answer">
+                <p>Para calificar, los prestamistas evalúan tu puntaje crediticio, historial laboral, deudas existentes y el pago inicial. Recomendamos usar nuestra <a href="calculadora.html">calculadora</a> para estimar tu calificación.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">¿Necesito un pago inicial del 20%?</div>
+            <div class="faq-answer">
+                <p>No siempre. Programas como FHA permiten pagos iniciales del 3.5%, y VA ofrece préstamos sin pago inicial para veteranos. <strong>Prestamigo no es un prestamista</strong>, pero podemos orientarte.</p>
+            </div>
+        </div>
+
+        <!-- Añade más preguntas aquí -->
+    </section>
+
+    <!-- Copia el mismo <footer> de tu index.html -->
+
+    <!-- JavaScript para el FAQ -->
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
