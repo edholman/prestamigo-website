@@ -222,5 +222,25 @@
             <p>&copy; 2024 Prestamigo. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    
+    <script>
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.style.maxHeight = answer.style.maxHeight === '0px' ? '500px' : '0px';
+                answer.style.padding = answer.style.padding === '0px 15px' ? '0 15px 15px' : '0 15px';
+                
+                // Optional: Close other open FAQs when opening a new one
+                document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
+                    if (otherAnswer !== answer && otherAnswer.style.maxHeight === '500px') {
+                        otherAnswer.style.maxHeight = '0px';
+                        otherAnswer.style.padding = '0 15px';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
