@@ -3,21 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Herramientas Educativas | Prestamigo</title>
+    <title>Calculadoras Hipotecarias | Prestamigo</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Calendly link -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <style>
         :root {
             --primary: #3498db;
+            --primary-light: #5dade2;
             --secondary: #2ecc71;
             --dark: #2c3e50;
             --light: #f8f9fa;
+            --gray: #ecf0f1;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
+            margin: 0;
         }
         .container {
             width: 90%;
@@ -25,103 +31,199 @@
             margin: 0 auto;
             padding: 20px;
         }
-        /* Header Styles */
+        /* Modern Header */
         header {
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 20px 0;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         .logo {
-            height: 70px;
-            width: auto;
-        }
-        /* Calculator Tabs */
-        .calc-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-        .tab-btn {
-            padding: 12px 25px;
-            background: #e0e0e0;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
+            height: 60px;
             transition: all 0.3s;
         }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        /* Tab System */
+        .tab-system {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0 30px;
+        }
+        .tab-btn {
+            padding: 14px 30px;
+            background: var(--gray);
+            border: none;
+            font-weight: 600;
+            color: #7f8c8d;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 1rem;
+        }
         .tab-btn:first-child {
-            border-radius: 8px 0 0 8px;
+            border-radius: 30px 0 0 30px;
         }
         .tab-btn:last-child {
-            border-radius: 0 8px 8px 0;
+            border-radius: 0 30px 30px 0;
         }
         .tab-btn.active {
             background: var(--primary);
             color: white;
         }
-        /* Calculator Container */
-        .calculator-container {
+        .tab-btn.active:after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid var(--primary);
+        }
+        /* Calculator Cards */
+        .calculator-card {
             background: white;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             overflow: hidden;
             margin-bottom: 40px;
+            transform: translateY(0);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
         }
-        .calc-content {
-            display: none;
+        .calculator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+        .calculator-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 20px 30px;
+        }
+        .calculator-header h2 {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+        }
+        .calculator-header i {
+            margin-right: 12px;
+            font-size: 1.2em;
+        }
+        .calculator-body {
             padding: 30px;
         }
-        .calc-content.active {
-            display: block;
-        }
-        /* Input Styles */
-        .input-group {
+        /* Input Groups */
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
             margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
         }
         .input-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
             color: var(--dark);
+            font-size: 0.95rem;
         }
-        .input-row {
-            display: flex;
-            gap: 15px;
+        .input-wrapper {
+            position: relative;
         }
-        .input-row .input-group {
-            flex: 1;
+        .input-wrapper i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7f8c8d;
+            font-size: 1rem;
         }
         input[type="number"], 
         input[type="text"], 
         select {
             width: 100%;
-            padding: 12px 15px;
+            padding: 12px 15px 12px 40px;
             border: 2px solid #e0e0e0;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: #f9f9f9;
+        }
+        input[type="number"]:focus, 
+        input[type="text"]:focus, 
+        select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            background: white;
+            outline: none;
         }
         .range-container {
-            position: relative;
-            margin-top: 10px;
+            margin-top: 8px;
         }
         input[type="range"] {
             width: 100%;
-            height: 8px;
+            height: 6px;
             -webkit-appearance: none;
             background: #e0e0e0;
             border-radius: 10px;
-            margin: 15px 0;
+            margin: 12px 0;
         }
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             background: var(--primary);
             border-radius: 50%;
             cursor: pointer;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.2s;
         }
-        /* Results Styles */
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+        /* Button */
+        .btn {
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+        .btn-secondary {
+            background: var(--dark);
+            color: white;
+        }
+        .btn-success {
+            background: var(--secondary);
+            color: white;
+        }
+        .btn i {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+        }
+        /* Results */
         .results-container {
             background: var(--dark);
             color: white;
@@ -131,7 +233,7 @@
         .result-item {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
+            padding: 14px 0;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         .result-item:last-child {
@@ -140,18 +242,23 @@
         .highlight-result {
             color: var(--secondary);
             font-weight: 600;
+            font-size: 1.1rem;
         }
         /* Tooltip */
         .tooltip {
-            position: relative;
             display: inline-block;
             margin-left: 5px;
             cursor: pointer;
+            position: relative;
         }
-        .tooltip .tooltiptext {
+        .tooltip i {
+            color: var(--primary);
+            font-size: 0.9em;
+        }
+        .tooltip .tooltip-text {
             visibility: hidden;
-            width: 200px;
-            background-color: #555;
+            width: 220px;
+            background-color: var(--dark);
             color: #fff;
             text-align: center;
             border-radius: 6px;
@@ -163,18 +270,71 @@
             transform: translateX(-50%);
             opacity: 0;
             transition: opacity 0.3s;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: normal;
         }
-        .tooltip:hover .tooltiptext {
+        .tooltip:hover .tooltip-text {
             visibility: visible;
             opacity: 1;
         }
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .action-buttons .btn {
+            flex: 1;
+        }
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            position: relative;
+            animation: modalFadeIn 0.3s;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #7f8c8d;
+        }
         /* Responsive */
         @media (max-width: 768px) {
-            .input-row {
+            .tab-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+            .input-grid {
+                grid-template-columns: 1fr;
+            }
+            .calculator-body {
+                padding: 20px;
+            }
+            .action-buttons {
                 flex-direction: column;
-                gap: 0;
+                gap: 10px;
             }
         }
     </style>
@@ -191,370 +351,533 @@
     </header>
 
     <div class="container">
-        <h1 style="text-align: center; margin: 30px 0; color: var(--dark);">Herramientas Educativas</h1>
-        
-        <div class="calc-tabs">
-            <button class="tab-btn active" onclick="openTab('purchase')">Compra</button>
-            <button class="tab-btn" onclick="openTab('refinance')">Refinanciamiento</button>
-            <button class="tab-btn" onclick="openTab('extra')">Pagos Extra</button>
+        <div class="tab-system">
+            <button class="tab-btn active" onclick="showCalculator('purchase')">
+                <i class="fas fa-home"></i> Compra
+            </button>
+            <button class="tab-btn" onclick="showCalculator('refinance')">
+                <i class="fas fa-sync-alt"></i> Refinanciar
+            </button>
         </div>
-        
+
         <!-- Purchase Calculator -->
-        <div id="purchase" class="calculator-container">
-            <div class="calc-content active">
-                <h2><i class="fas fa-home"></i> Simulador de Compra</h2>
-                <div class="input-row">
+        <div id="purchase-calculator" class="calculator-card">
+            <div class="calculator-header">
+                <h2><i class="fas fa-calculator"></i> Calculadora de Gastos Totales</h2>
+            </div>
+            <div class="calculator-body">
+                <div class="input-grid">
                     <div class="input-group">
-                        <label for="p-price">Precio de la vivienda ($)</label>
-                        <input type="number" id="p-price" value="350000" min="50000" step="1000">
+                        <label for="home-price">Precio de la vivienda</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-dollar-sign"></i>
+                            <input type="number" id="home-price" placeholder="350,000" min="0">
+                        </div>
                         <div class="range-container">
-                            <input type="range" id="p-price-range" min="50000" max="1000000" value="350000" step="1000">
+                            <input type="range" id="home-price-range" min="0" max="2000000" step="1000">
                         </div>
                     </div>
+                    
                     <div class="input-group">
-                        <label for="p-down">Pago inicial (%)</label>
-                        <input type="number" id="p-down" value="20" min="0" max="50" step="1">
+                        <label for="down-payment">Pago inicial ($)</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <input type="number" id="down-payment" placeholder="70,000" min="0">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="down-percent">Pago inicial (%)</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-percentage"></i>
+                            <input type="number" id="down-percent" placeholder="20" min="0" max="100" oninput="updateDownPayment()">
+                        </div>
                         <div class="range-container">
-                            <input type="range" id="p-down-range" min="0" max="50" value="20">
+                            <input type="range" id="down-percent-range" min="0" max="100">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="loan-term">Plazo del préstamo</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-calendar-alt"></i>
+                            <select id="loan-term">
+                                <option value="">Seleccionar...</option>
+                                <option value="15">15 años</option>
+                                <option value="30">30 años</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="interest-rate">Tasa de interés <span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltip-text">Tasa ilustrativa basada en promedios del mercado</span></span></label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-percent"></i>
+                            <input type="number" id="interest-rate" placeholder="6.5" min="0" step="0.001">
+                        </div>
+                        <div class="range-container">
+                            <input type="range" id="interest-rate-range" min="1" max="10" step="0.125" value="6.5">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="property-tax">Impuestos anuales</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-receipt"></i>
+                            <input type="number" id="property-tax" placeholder="4,200" min="0">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="insurance">Seguro del hogar</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-shield-alt"></i>
+                            <input type="number" id="insurance" placeholder="1,200" min="0">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="pmi">PMI <span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltip-text">Seguro de hipoteca privada (si pago inicial < 20%)</span></span></label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="number" id="pmi" placeholder="0.5" min="0" max="2" step="0.1">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="hoa">Cuota HOA</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-swimming-pool"></i>
+                            <input type="number" id="hoa" placeholder="150" min="0">
                         </div>
                     </div>
                 </div>
                 
-                <div class="input-row">
-                    <div class="input-group">
-                        <label for="p-term">Plazo (años)</label>
-                        <select id="p-term">
-                            <option value="15">15 años</option>
-                            <option value="20">20 años</option>
-                            <option value="30" selected>30 años</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label for="p-rate">Tasa de interés (%) <span class="tooltip">ℹ️<span class="tooltiptext">Tasa ilustrativa basada en promedios del mercado</span></span></label>
-                        <input type="number" id="p-rate" value="4.5" min="1" max="10" step="0.125">
-                        <div class="range-container">
-                            <input type="range" id="p-rate-range" min="1" max="10" value="4.5" step="0.125">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="input-group">
-                    <button onclick="calculatePurchase()" style="background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 8px; font-size: 16px; cursor: pointer; width: 100%;">Calcular Proyección</button>
+                <button onclick="calculateHousing()" class="btn btn-primary">
+                    <i class="fas fa-calculator"></i> Calcular Gastos Totales
+                </button>
+
+                <div class="action-buttons">
+                    <button onclick="saveResults()" class="btn btn-secondary">
+                        <i class="fas fa-save"></i> Guardar Resultados
+                    </button>
+                    <button onclick="generatePDF()" class="btn btn-success">
+                        <i class="fas fa-file-pdf"></i> Generar PDF
+                    </button>
                 </div>
             </div>
             
             <div class="results-container">
-                <h3 style="margin-top: 0;">Tu Análisis Educativo</h3>
-                <div class="result-item">
+                <div class="result-item highlight">
                     <span>Pago mensual estimado:</span>
-                    <span class="highlight-result" id="p-monthly">$1,773</span>
+                    <span id="total-monthly">$0.00</span>
                 </div>
                 <div class="result-item">
-                    <span>Interés total potencial:</span>
-                    <span id="p-total-interest">$228,447</span>
+                    <span>Principal + Interés:</span>
+                    <span id="principal-interest">$0.00</span>
                 </div>
                 <div class="result-item">
-                    <span>Recomendación:</span>
-                    <span id="p-tip">"Un pago inicial del 20% evita el PMI"</span>
+                    <span>Impuestos:</span>
+                    <span id="tax-amount">$0.00</span>
+                </div>
+                <div class="result-item">
+                    <span>Seguro:</span>
+                    <span id="insurance-amount">$0.00</span>
+                </div>
+                <div class="result-item">
+                    <span>PMI:</span>
+                    <span id="pmi-amount">$0.00</span>
+                </div>
+                <div class="result-item">
+                    <span>HOA:</span>
+                    <span id="hoa-amount">$0.00</span>
                 </div>
             </div>
         </div>
-        
+
         <!-- Refinance Calculator -->
-        <div id="refinance" class="calculator-container">
-            <div class="calc-content">
-                <h2><i class="fas fa-sync-alt"></i> Simulador de Refinanciamiento</h2>
-                <div class="input-row">
+        <div id="refinance-calculator" class="calculator-card" style="display:none;">
+            <div class="calculator-header">
+                <h2><i class="fas fa-sync-alt"></i> Analizador de Refinanciamiento</h2>
+            </div>
+            <div class="calculator-body">
+                <div class="input-grid">
                     <div class="input-group">
-                        <label for="r-balance">Saldo actual ($)</label>
-                        <input type="number" id="r-balance" value="250000" min="10000" step="1000">
+                        <label for="current-balance">Saldo actual</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-dollar-sign"></i>
+                            <input type="number" id="current-balance" placeholder="280,000" min="0">
+                        </div>
                     </div>
+                    
                     <div class="input-group">
-                        <label for="r-current-rate">Tasa actual (%)</label>
-                        <input type="number" id="r-current-rate" value="5.5" min="1" max="10" step="0.125">
+                        <label for="current-rate">Tasa actual</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-percent"></i>
+                            <input type="number" id="current-rate" placeholder="6.25" min="0" step="0.001">
+                        </div>
+                        <div class="range-container">
+                            <input type="range" id="current-rate-range" min="1" max="10" step="0.125" value="6.25">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="new-rate">Nueva tasa propuesta</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-percent"></i>
+                            <input type="number" id="new-rate" placeholder="5.5" min="0" step="0.001">
+                        </div>
+                        <div class="range-container">
+                            <input type="range" id="new-rate-range" min="1" max="10" step="0.125" value="5.5">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="remaining-term">Años restantes</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-calendar-alt"></i>
+                            <input type="number" id="remaining-term" placeholder="27" min="1" max="30">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="new-term">Nuevo plazo</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-calendar-check"></i>
+                            <select id="new-term">
+                                <option value="">Mismo plazo</option>
+                                <option value="15">15 años</option>
+                                <option value="20">20 años</option>
+                                <option value="30">30 años</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="closing-costs">Costos de cierre</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <input type="number" id="closing-costs" placeholder="5,000" min="0">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="extra-payment">Pago extra mensual <span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltip-text">Monto adicional que aplicarías al principal</span></span></label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-plus-circle"></i>
+                            <input type="number" id="extra-payment" placeholder="200" min="0">
+                        </div>
                     </div>
                 </div>
                 
-                <div class="input-row">
-                    <div class="input-group">
-                        <label for="r-new-rate">Nueva tasa (%) <span class="tooltip">ℹ️<span class="tooltiptext">Consulta tasas promedio actuales</span></span></label>
-                        <input type="number" id="r-new-rate" value="4.0" min="1" max="10" step="0.125">
-                    </div>
-                    <div class="input-group">
-                        <label for="r-term">Plazo restante (años)</label>
-                        <select id="r-term">
-                            <option value="30">30 años</option>
-                            <option value="25">25 años</option>
-                            <option value="20">20 años</option>
-                            <option value="15">15 años</option>
-                            <option value="10" selected>10 años</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="input-group">
-                    <label for="r-cost">Costos de cierre ($)</label>
-                    <input type="number" id="r-cost" value="5000" min="0" step="100">
-                </div>
-                
-                <div class="input-group">
-                    <button onclick="calculateRefinance()" style="background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 8px; font-size: 16px; cursor: pointer; width: 100%;">Calcular Ahorros</button>
+                <button onclick="analyzeRefinance()" class="btn btn-primary">
+                    <i class="fas fa-chart-line"></i> Analizar Ahorros
+                </button>
+
+                <div class="action-buttons">
+                    <button onclick="saveResults()" class="btn btn-secondary">
+                        <i class="fas fa-save"></i> Guardar Resultados
+                    </button>
+                    <button onclick="showConsultationModal()" class="btn btn-success">
+                        <i class="fas fa-calendar-check"></i> Consulta Gratis
+                    </button>
                 </div>
             </div>
             
             <div class="results-container">
-                <h3 style="margin-top: 0;">Proyección Educativa</h3>
-                <div class="result-item">
+                <div class="result-item highlight">
                     <span>Ahorro mensual:</span>
-                    <span class="highlight-result" id="r-monthly-save">$187</span>
+                    <span id="monthly-savings">$0.00</span>
                 </div>
                 <div class="result-item">
                     <span>Punto de equilibrio:</span>
-                    <span id="r-break-even">26 meses</span>
+                    <span id="break-even">0 meses</span>
                 </div>
                 <div class="result-item">
-                    <span>Recomendación:</span>
-                    <span id="r-tip">"Considera refinanciar si planeas quedarte más de 2 años"</span>
+                    <span>Interés total ahorrado*:</span>
+                    <span id="total-savings">$0.00</span>
                 </div>
+                <div class="result-item">
+                    <span>Nuevo pago estimado:</span>
+                    <span id="new-payment">$0.00</span>
+                </div>
+                <small style="display:block; margin-top:15px; opacity:0.7;">*Incluyendo pagos extra aplicados al principal</small>
             </div>
-        </div>
-        
-        <!-- Extra Payments Calculator -->
-        <div id="extra" class="calculator-container">
-            <div class="calc-content">
-                <h2><i class="fas fa-forward"></i> Simulador de Pagos Extra</h2>
-                <div class="input-row">
-                    <div class="input-group">
-                        <label for="e-balance">Saldo del préstamo ($)</label>
-                        <input type="number" id="e-balance" value="300000" min="10000" step="1000">
-                    </div>
-                    <div class="input-group">
-                        <label for="e-rate">Tasa de interés (%)</label>
-                        <input type="number" id="e-rate" value="4.5" min="1" max="10" step="0.125">
-                    </div>
-                </div>
-                
-                <div class="input-row">
-                    <div class="input-group">
-                        <label for="e-term">Plazo (años)</label>
-                        <select id="e-term">
-                            <option value="30" selected>30 años</option>
-                            <option value="15">15 años</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label for="e-extra">Pago extra mensual ($)</label>
-                        <input type="number" id="e-extra" value="200" min="0" step="50">
-                    </div>
-                </div>
-                
-                <div class="input-group">
-                    <button onclick="calculateExtra()" style="background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 8px; font-size: 16px; cursor: pointer; width: 100%;">Calcular Beneficios</button>
-                </div>
-            </div>
-            
-            <div class="results-container">
-                <h3 style="margin-top: 0;">Impacto Educativo</h3>
-                <div class="result-item">
-                    <span>Ahorro en intereses:</span>
-                    <span class="highlight-result" id="e-interest-save">$48,200</span>
-                </div>
-                <div class="result-item">
-                    <span>Tiempo reducido:</span>
-                    <span id="e-time-save">5 años 4 meses</span>
-                </div>
-                <div class="result-item">
-                    <span>Recomendación:</span>
-                    <span id="e-tip">"Incluso pequeños pagos extra generan grandes ahorros"</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Lead Capture Form -->
-        <div style="background: white; border-radius: 15px; padding: 30px; margin-top: 40px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
-            <h3 style="text-align: center; color: var(--dark); margin-bottom: 20px;">
-                <i class="fas fa-graduation-cap"></i> ¿Quieres tu Análisis Personalizado?
-            </h3>
-            <p style="text-align: center; margin-bottom: 25px;">Nuestros educadores hipotecarios pueden ayudarte a entender mejor tus opciones.</p>
-            
-            <form style="max-width: 500px; margin: 0 auto;">
-                <div style="margin-bottom: 20px;">
-                    <input type="text" placeholder="Nombre completo" style="width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px;">
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <input type="email" placeholder="Correo electrónico" style="width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px;">
-                </div>
-                <button type="submit" style="background: linear-gradient(to right, var(--primary), var(--secondary)); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s;">
-                    <i class="fas fa-user-graduate"></i> Recibir Asesoría Educativa
-                </button>
-            </form>
-            
-            <p style="text-align: center; font-size: 0.8rem; margin-top: 20px; color: #95a5a6;">
-                <i class="fas fa-info-circle"></i> Prestamigo es una empresa educativa. No somos prestamistas ni brindamos asesoría financiera.
-            </p>
         </div>
     </div>
 
+    <!-- PDF Modal -->
+    <div id="pdfModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('pdfModal')">&times;</span>
+            <h3><i class="fas fa-file-pdf"></i> Descargar Reporte</h3>
+            <p>Ingresa tu email para recibir el PDF con tus resultados:</p>
+            <input type="email" id="user-email" placeholder="tucorreo@ejemplo.com" style="width:100%; padding:12px; margin:15px 0; border:1px solid #ddd; border-radius:8px;">
+            <button onclick="sendPDF()" class="btn btn-primary" style="width:100%;">
+                <i class="fas fa-paper-plane"></i> Enviar PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Calendly Modal -->
+    <div id="consultationModal" class="modal">
+        <div class="modal-content" style="max-width:800px;">
+            <span class="close-modal" onclick="closeModal('consultationModal')">&times;</span>
+            <h3><i class="fas fa-calendar-check"></i> Agenda tu Consulta Educativa</h3>
+            <div id="calendly-embed" style="min-height:600px; width:100%;"></div>
+        </div>
+    </div>
+
+    <!-- Calendly JS -->
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <!-- jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
     <script>
+        // Initialize jsPDF
+        const { jsPDF } = window.jspdf;
+
         // Tab Navigation
-        function openTab(tabName) {
-            const tabs = document.getElementsByClassName('calc-content');
-            for (let i = 0; i < tabs.length; i++) {
-                tabs[i].classList.remove('active');
-            }
-            document.getElementById(tabName).getElementsByClassName('calc-content')[0].classList.add('active');
+        function showCalculator(calcType) {
+            document.getElementById('purchase-calculator').style.display = calcType === 'purchase' ? 'block' : 'none';
+            document.getElementById('refinance-calculator').style.display = calcType === 'refinance' ? 'block' : 'none';
             
-            const tabBtns = document.getElementsByClassName('tab-btn');
-            for (let i = 0; i < tabBtns.length; i++) {
-                tabBtns[i].classList.remove('active');
-            }
+            // Update active tab buttons
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => btn.classList.remove('active'));
             event.currentTarget.classList.add('active');
         }
-        
-        // Sync Range and Number Inputs
+
+        // Sync Inputs
         function syncInputs(rangeId, inputId) {
             const range = document.getElementById(rangeId);
             const input = document.getElementById(inputId);
             
             range.addEventListener('input', () => {
                 input.value = range.value;
+                if (rangeId === 'down-percent-range') updateDownPayment();
             });
             
             input.addEventListener('input', () => {
                 range.value = input.value;
+                if (inputId === 'down-percent') updateDownPayment();
             });
         }
-        
-        // Purchase Calculator
-        function calculatePurchase() {
-            const price = parseFloat(document.getElementById('p-price').value);
-            const downPercent = parseFloat(document.getElementById('p-down').value);
-            const term = parseFloat(document.getElementById('p-term').value);
-            const rate = parseFloat(document.getElementById('p-rate').value);
+
+        // Purchase Calculator Logic
+        function updateDownPayment() {
+            const homePrice = parseFloat(document.getElementById('home-price').value) || 0;
+            const percent = parseFloat(document.getElementById('down-percent').value) || 0;
+            document.getElementById('down-payment').value = (homePrice * percent / 100).toFixed(0);
+        }
+
+        function calculateHousing() {
+            // Get all input values
+            const price = parseFloat(document.getElementById('home-price').value) || 0;
+            const down = parseFloat(document.getElementById('down-payment').value) || 0;
+            const term = parseInt(document.getElementById('loan-term').value) || 30;
+            const rate = parseFloat(document.getElementById('interest-rate').value) || 0;
+            const tax = parseFloat(document.getElementById('property-tax').value) || 0;
+            const insurance = parseFloat(document.getElementById('insurance').value) || 0;
+            const pmiPercent = parseFloat(document.getElementById('pmi').value) || 0;
+            const hoa = parseFloat(document.getElementById('hoa').value) || 0;
             
-            const downPayment = (price * downPercent) / 100;
-            const loanAmount = price - downPayment;
+            // Calculations
+            const loanAmount = price - down;
             const monthlyRate = rate / 100 / 12;
             const payments = term * 12;
             
-            // Monthly Payment
-            const monthlyPayment = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -payments));
+            // Principal & Interest
+            const principalInterest = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -payments)) || 0;
             
-            // Total Interest
-            const totalInterest = (monthlyPayment * payments) - loanAmount;
+            // PMI (only if down < 20%)
+            const pmi = (down < price * 0.2) ? (loanAmount * (pmiPercent / 100 / 12)) : 0;
+            
+            // Tax & Insurance
+            const taxMonthly = tax / 12;
+            const insuranceMonthly = insurance / 12;
+            
+            // Total
+            const total = principalInterest + taxMonthly + insuranceMonthly + pmi + hoa;
             
             // Update UI
-            document.getElementById('p-monthly').textContent = '$' + monthlyPayment.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            document.getElementById('p-total-interest').textContent = '$' + totalInterest.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            
-            // Educational Tips
-            let tip = "";
-            if (downPercent < 20) {
-                tip = "Un pago inicial del 20% (" + (price * 0.2).toLocaleString('en-US', {style:'currency', currency:'USD'}) + ") te ayudaría a evitar el PMI.";
-            } else if (term === 30) {
-                tip = "Considera un plazo de 15 años para ahorrar significativamente en intereses.";
-            } else {
-                tip = "¡Buena planificación! Estás explorando opciones con parámetros financieros saludables.";
-            }
-            document.getElementById('p-tip').textContent = tip;
+            document.getElementById('principal-interest').textContent = formatCurrency(principalInterest);
+            document.getElementById('tax-amount').textContent = formatCurrency(taxMonthly);
+            document.getElementById('insurance-amount').textContent = formatCurrency(insuranceMonthly);
+            document.getElementById('pmi-amount').textContent = formatCurrency(pmi);
+            document.getElementById('hoa-amount').textContent = formatCurrency(hoa);
+            document.getElementById('total-monthly').textContent = formatCurrency(total);
+
+            // Save to localStorage
+            localStorage.setItem('lastCalculation', JSON.stringify({
+                type: 'purchase',
+                price,
+                down,
+                term,
+                rate,
+                tax,
+                insurance,
+                pmiPercent,
+                hoa,
+                total
+            }));
         }
-        
-        // Refinance Calculator
-        function calculateRefinance() {
-            const balance = parseFloat(document.getElementById('r-balance').value);
-            const currentRate = parseFloat(document.getElementById('r-current-rate').value);
-            const newRate = parseFloat(document.getElementById('r-new-rate').value);
-            const term = parseFloat(document.getElementById('r-term').value);
-            const cost = parseFloat(document.getElementById('r-cost').value);
+
+        // Refinance Calculator Logic
+        function analyzeRefinance() {
+            // Get all input values
+            const balance = parseFloat(document.getElementById('current-balance').value) || 0;
+            const currentRate = parseFloat(document.getElementById('current-rate').value) || 0;
+            const newRate = parseFloat(document.getElementById('new-rate').value) || 0;
+            const remainingTerm = parseInt(document.getElementById('remaining-term').value) || 30;
+            const newTerm = parseInt(document.getElementById('new-term').value) || remainingTerm;
+            const closingCosts = parseFloat(document.getElementById('closing-costs').value) || 0;
+            const extraPayment = parseFloat(document.getElementById('extra-payment').value) || 0;
             
-            // Current Payment
+            // Current Loan Details
             const currentMonthlyRate = currentRate / 100 / 12;
-            const currentPayments = term * 12;
+            const currentPayments = remainingTerm * 12;
             const currentPayment = (balance * currentMonthlyRate) / (1 - Math.pow(1 + currentMonthlyRate, -currentPayments));
             
-            // New Payment
+            // New Loan Details
             const newMonthlyRate = newRate / 100 / 12;
-            const newPayment = (balance * newMonthlyRate) / (1 - Math.pow(1 + newMonthlyRate, -currentPayments));
+            const newPayments = newTerm * 12;
+            const newBasePayment = (balance * newMonthlyRate) / (1 - Math.pow(1 + newMonthlyRate, -newPayments));
+            const newPayment = newBasePayment + extraPayment;
             
-            // Savings
+            // Savings Analysis
             const monthlySavings = currentPayment - newPayment;
-            const breakEvenMonths = Math.ceil(cost / monthlySavings);
+            const breakEvenMonths = monthlySavings > 0 ? Math.ceil(closingCosts / monthlySavings) : 0;
+            
+            // Interest Savings (simplified)
+            const currentInterest = (currentPayment * currentPayments) - balance;
+            const newInterest = (newBasePayment * newPayments) - balance;
+            const interestSaved = currentInterest - newInterest;
             
             // Update UI
-            document.getElementById('r-monthly-save').textContent = '$' + monthlySavings.toFixed(2);
-            document.getElementById('r-break-even').textContent = breakEvenMonths + ' meses';
-            
-            // Educational Tips
-            let tip = "";
-            if (breakEvenMonths > 36) {
-                tip = "El largo tiempo de recuperación sugiere que el refinanciamiento podría no ser ventajoso en tu caso.";
-            } else if (newRate > currentRate - 1) {
-                tip = "Una reducción de tasa menor al 1% puede no justificar los costos de refinanciamiento.";
-            } else {
-                tip = "Podría ser beneficioso refinanciar si planeas quedarte en la propiedad más de " + Math.ceil(breakEvenMonths/12) + " años.";
-            }
-            document.getElementById('r-tip').textContent = tip;
+            document.getElementById('monthly-savings').textContent = formatCurrency(monthlySavings);
+            document.getElementById('break-even').textContent = breakEvenMonths + ' meses';
+            document.getElementById('new-payment').textContent = formatCurrency(newPayment);
+            document.getElementById('total-savings').textContent = formatCurrency(interestSaved);
+
+            // Save to localStorage
+            localStorage.setItem('lastCalculation', JSON.stringify({
+                type: 'refinance',
+                balance,
+                currentRate,
+                newRate,
+                remainingTerm,
+                newTerm,
+                closingCosts,
+                extraPayment,
+                monthlySavings,
+                breakEvenMonths,
+                interestSaved
+            }));
         }
-        
-        // Extra Payments Calculator
-        function calculateExtra() {
-            const balance = parseFloat(document.getElementById('e-balance').value);
-            const rate = parseFloat(document.getElementById('e-rate').value);
-            const term = parseFloat(document.getElementById('e-term').value);
-            const extra = parseFloat(document.getElementById('e-extra').value);
-            
-            const monthlyRate = rate / 100 / 12;
-            const payments = term * 12;
-            
-            // Original Payment
-            const originalPayment = (balance * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -payments));
-            
-            // Original Total Interest
-            const originalInterest = (originalPayment * payments) - balance;
-            
-            // With Extra Payments
-            let remainingBalance = balance;
-            let totalInterest = 0;
-            let monthsSaved = 0;
-            let newPayment = originalPayment + extra;
-            
-            while (remainingBalance > 0) {
-                const interest = remainingBalance * monthlyRate;
-                const principal = Math.min(newPayment - interest, remainingBalance);
-                
-                totalInterest += interest;
-                remainingBalance -= principal;
-                monthsSaved++;
-                
-                if (monthsSaved > 360) break; // Prevent infinite loops
+
+        // Save Results
+        function saveResults() {
+            const lastCalc = localStorage.getItem('lastCalculation');
+            if (!lastCalc) {
+                alert("Primero realiza un cálculo para guardar");
+                return;
             }
-            
-            // Savings
-            const interestSaved = originalInterest - totalInterest;
-            const yearsSaved = Math.floor((payments - monthsSaved) / 12);
-            const monthsSavedRemainder = (payments - monthsSaved) % 12;
-            
-            // Update UI
-            document.getElementById('e-interest-save').textContent = '$' + interestSaved.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            document.getElementById('e-time-save').textContent = yearsSaved + ' años ' + monthsSavedRemainder + ' meses';
-            
-            // Educational Tips
-            let tip = "";
-            if (extra < originalPayment * 0.1) {
-                tip = "¡Incluso pequeños pagos extra hacen diferencia! Aumenta gradualmente lo que puedas.";
-            } else {
-                tip = "Estás en camino a ahorros significativos. Considera aplicar bonos o devoluciones de impuestos a tu hipoteca.";
-            }
-            document.getElementById('e-tip').textContent = tip;
+            alert("Resultados guardados localmente. Podrás verlos en tu próxima visita.");
         }
-        
+
+        // Generate PDF
+        function generatePDF() {
+            const lastCalc = localStorage.getItem('lastCalculation');
+            if (!lastCalc) {
+                alert("Primero realiza un cálculo para generar el PDF");
+                return;
+            }
+            document.getElementById('pdfModal').style.display = 'flex';
+        }
+
+        function sendPDF() {
+            const email = document.getElementById('user-email').value;
+            if (!email.includes('@')) {
+                alert("Por favor ingresa un email válido");
+                return;
+            }
+
+            // Generate PDF (simplified example)
+            const doc = new jsPDF();
+            doc.text("Resultados de Prestamigo", 10, 10);
+            doc.text(`Fecha: ${new Date().toLocaleDateString()}`, 10, 20);
+            
+            const data = JSON.parse(localStorage.getItem('lastCalculation'));
+            let yPos = 30;
+            
+            if (data.type === 'purchase') {
+                doc.text("Compra de Vivienda - Gastos Totales", 10, yPos);
+                yPos += 10;
+                doc.text(`Pago mensual estimado: ${formatCurrency(data.total)}`, 10, yPos);
+            } else {
+                doc.text("Refinanciamiento - Ahorros Estimados", 10, yPos);
+                yPos += 10;
+                doc.text(`Ahorro mensual: ${formatCurrency(data.monthlySavings)}`, 10, yPos);
+            }
+            
+            // In a real implementation, you would:
+            // 1. Save PDF to server
+            // 2. Send email with PDF attachment
+            // 3. Provide download link
+            
+            alert(`PDF enviado a ${email} (simulación)`);
+            closeModal('pdfModal');
+        }
+
+        // Calendly Integration
+        function showConsultationModal() {
+            document.getElementById('consultationModal').style.display = 'flex';
+            Calendly.initInlineWidget({
+                url: 'https://calendly.com/prestamigo',
+                parentElement: document.getElementById('calendly-embed'),
+                prefill: {},
+                utm: {}
+            });
+        }
+
+        // Helper Functions
+        function formatCurrency(amount) {
+            return '$' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
         // Initialize
-        syncInputs('p-price-range', 'p-price');
-        syncInputs('p-down-range', 'p-down');
-        syncInputs('p-rate-range', 'p-rate');
-        
-        // Calculate initial values
-        calculatePurchase();
+        syncInputs('home-price-range', 'home-price');
+        syncInputs('down-percent-range', 'down-percent');
+        syncInputs('interest-rate-range', 'interest-rate');
+        syncInputs('current-rate-range', 'current-rate');
+        syncInputs('new-rate-range', 'new-rate');
+
+        // Load last calculation if exists
+        window.addEventListener('DOMContentLoaded', () => {
+            const lastCalc = localStorage.getItem('lastCalculation');
+            if (lastCalc) {
+                const data = JSON.parse(lastCalc);
+                if (data.type === 'purchase') {
+                    showCalculator('purchase');
+                    document.getElementById('home-price').value = data.price;
+                    document.getElementById('down-payment').value = data.down;
+                    // ... populate all fields ...
+                    calculateHousing();
+                } else {
+                    showCalculator('refinance');
+                    document.getElementById('current-balance').value = data.balance;
+                    document.getElementById('current-rate').value = data.currentRate;
+                    // ... populate all fields ...
+                    analyzeRefinance();
+                }
+            }
+        });
     </script>
 </body>
 </html>
