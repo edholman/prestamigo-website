@@ -24,6 +24,7 @@
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             padding: 20px 0;
+            position: relative;
         }
         .logo {
             height: 90px;
@@ -34,19 +35,101 @@
             justify-content: space-between;
             align-items: center;
         }
-        nav ul {
+        
+        /* Desktop Navigation */
+        .nav-links {
             display: flex;
             list-style: none;
+            align-items: center;
         }
-        nav ul li {
+        .nav-links li {
             margin-left: 20px;
         }
-        nav ul li a {
+        .nav-links li a {
             text-decoration: none;
             color: #2c3e50;
             font-weight: 600;
         }
         
+        /* Language Toggle */
+        .language-toggle {
+            display: flex;
+            margin-left: 20px;
+            border: 1px solid #3498db;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .language-toggle a {
+            padding: 5px 15px;
+            text-decoration: none;
+            color: #3498db;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .language-toggle a.active {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #2c3e50;
+            transition: all 0.3s ease;
+        }
+        
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                z-index: 100;
+            }
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            .nav-links li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+            .language-toggle {
+                margin: 15px auto 0;
+                justify-content: center;
+            }
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+
         /* Hero Section */
         .hero {
             text-align: center;
@@ -98,6 +181,98 @@
             background-color: #2980b9;
         }
         
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #fff;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .testimonials h2 {
+            color: #2c3e50;
+            margin-bottom: 40px;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .testimonial-card {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+        .testimonial-card .quote {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .testimonial-card .quote:before {
+            content: '"';
+            font-size: 3rem;
+            color: #3498db;
+            opacity: 0.2;
+            position: absolute;
+            left: -15px;
+            top: -15px;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        .author-info h4 {
+            margin: 0;
+            color: #2c3e50;
+        }
+        .author-info p {
+            margin: 5px 0 0;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background: #f9f9f9; 
+            padding: 50px 0;
+        }
+        .faq-section h2 {
+            text-align: center; 
+            color: #2c3e50; 
+            margin-bottom: 30px;
+        }
+        .faq-item {
+            margin-bottom: 15px; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .faq-question {
+            background: #3498db; 
+            color: white; 
+            padding: 15px; 
+            cursor: pointer; 
+            font-weight: 600;
+        }
+        .faq-answer {
+            background: white; 
+            padding: 0 15px; 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.3s ease;
+        }
+        .faq-answer div {
+            padding: 15px 0;
+        }
+        
         /* Footer */
         footer {
             background-color: #2c3e50;
@@ -123,16 +298,30 @@
                 <a href="index.html">
                     <img src="https://i.imgur.com/t3pRlvV.png" alt="Prestamigo Logo" class="logo">
                 </a>
-                <ul>
+                
+                <!-- Hamburger Menu Button -->
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <ul class="nav-links">
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="calculadora.html">Recursos</a></li>
                     <li><a href="https://calendly.com/prestamigo">Contacto</a></li>
+                    <li>
+                        <div class="language-toggle">
+                            <a href="#" class="active">ES</a>
+                            <a href="#">EN</a>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section with Video and CTA -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1>Consejo Hipotecaria en Español</h1>
@@ -148,21 +337,448 @@
         </div>
     </section>
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestamigo - Consejo Hipotecaria en Español</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Modern Font */
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Sexy Process Section */
+        .process-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .process-section:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #3498db, #9b59b6, #e74c3c, #f1c40f, #2ecc71, #3498db);
+            background-size: 600% 100%;
+            animation: gradient 12s linear infinite;
+        }
+        @keyframes gradient {
+            0% {background-position: 0%}
+            100% {background-position: 100%}
+        }
+
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 280px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.15);
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            cursor: pointer;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        .process-step:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #3498db;
+            transition: all 0.3s ease;
+        }
+        .process-step:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(52, 152, 219, 0.25);
+        }
+        .process-step:hover:before {
+            height: 8px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            color: white;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 20px;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+        }
+        .process-step:hover .step-icon {
+            transform: rotate(10deg) scale(1.1);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        .step-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #3498db;
+            background: rgba(52, 152, 219, 0.1);
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step-content h3 {
+            color: #2c3e50;
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .step-timeline {
+            display: inline-block;
+            background: rgba(52, 152, 219, 0.1);
+            color: #3498db;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .step-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        .process-step.active {
+            background: #f8fafc;
+        }
+        .process-step.active .step-details {
+            max-height: 500px;
+            margin-top: 20px;
+        }
+
+        .step-details ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        .step-details li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 15px;
+        }
+        .step-details li:before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Connector arrows - only on desktop */
+        @media (min-width: 1200px) {
+            .process-steps {
+                position: relative;
+            }
+            .process-step:not(:last-child):after {
+                content: "→";
+                position: absolute;
+                right: -25px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #3498db;
+                font-size: 24px;
+                opacity: 0.5;
+                transition: all 0.3s ease;
+            }
+            .process-step:hover:after {
+                right: -30px;
+                opacity: 1;
+            }
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .process-step {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sexy Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.2rem; color: #2c3e50; margin-bottom: 50px; font-weight: 700;">
+                Tu Camino <span style="color: #3498db;">Hacia Casa</span>
+            </h2>
+            
+            <div class="process-steps">
+                <!-- Step 1 -->
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-header">
+                        <div class="step-icon">
+                            <i class="fas fa-file-signature"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Pre-Calificación Express</h3>
+                            <span class="step-timeline">1-3 días</span>
+                        </div>
+                    </div>
+                    <p>Descubre tu poder de compra con nuestro análisis rápido de crédito.</p>
+                    <div class="step-details">
+                        <ul>
+                            <li><strong>Documentos:</strong> ID, W-2s, estados de cuenta</li>
+                            <li><strong>Beneficio:</strong> Sabrás exactamente cuánto te prestarán</li>
+                            <li><strong>Ventaja:</strong> Negocia como comprador serio</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-header">
+                        <div class="step-icon">
+                            <i class="fas fa-search-location"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Caza de Tesoros</h3>
+                            <span class="step-timeline">2-8 semanas</span>
+                        </div>
+                    </div>
+                    <p>Encuentra tu hogar ideal con nuestro equipo de expertos.</p>
+                    <div class="step-details">
+                        <ul>
+                            <li><strong>Estrategia:</strong> Zonas con mejor plusvalía</li>
+                            <li><strong>Secreto:</strong> Acceso a listados antes del mercado</li>
+                            <li><strong>Tip:</strong> Visita a diferentes horas del día</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-header">
+                        <div class="step-icon">
+                            <i class="fas fa-handshake-alt"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Oferta Imbatible</h3>
+                            <span class="step-timeline">1-7 días</span>
+                        </div>
+                    </div>
+                    <p>Presentamos una oferta que los vendedores no podrán rechazar.</p>
+                    <div class="step-details">
+                        <ul>
+                            <li><strong>Táctica:</strong> Precio inteligente basado en comparables</li>
+                            <li><strong>Arma secreta:</strong> Cartas personales al vendedor</li>
+                            <li><strong>Protección:</strong> Cláusulas de contingencia</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-header">
+                        <div class="step-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Checklist de Dueño</h3>
+                            <span class="step-timeline">1-2 semanas</span>
+                        </div>
+                    </div>
+                    <p>Verificamos cada detalle para que no tengas sorpresas.</p>
+                    <div class="step-details">
+                        <ul>
+                            <li><strong>Inspección:</strong> Desde cimientos hasta techo</li>
+                            <li><strong>Tasación:</strong> Garantizando el valor real</li>
+                            <li><strong>Negociación:</strong> Reparaciones o créditos</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 5 -->
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-header">
+                        <div class="step-icon">
+                            <i class="fas fa-stamp"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Sello de Aprobación</h3>
+                            <span class="step-timeline">3-7 días</span>
+                        </div>
+                    </div>
+                    <p>Obtenemos el OK final de los bancos con nuestro método probado.</p>
+                    <div class="step-details">
+                        <ul>
+                            <li><strong>Documentación:</strong> Organizada y completa</li>
+                            <li><strong>Comunicación:</strong> Actualizaciones diarias</li>
+                            <li><strong>Seguridad:</strong> Respaldo de múltiples prestamistas</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 6 -->
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <div class="step-header">
+                        <div class="step-icon">
+                            <i class="fas fa-champagne-glasses"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>¡Fiesta de Llaves!</h3>
+                            <span class="step-timeline">1-2 horas</span>
+                        </div>
+                    </div>
+                    <p>Celebramos contigo mientras firmas los últimos documentos.</p>
+                    <div class="step-details">
+                        <ul>
+                            <li><strong>Preparación:</strong> Lista de verificación previa</li>
+                            <li><strong>Soporte:</strong> Nuestro equipo te acompaña</li>
+                            <li><strong>Celebración:</strong> Kit de bienvenida a casa</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+        </div>
     </section>
 
-    <!-- FAQ Section (NEW - added below the button) -->
-    <section class="faq-section" style="background: #f9f9f9; padding: 50px 0;">
+    <script>
+        // Animate steps on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {threshold: 0.1});
+
+        document.querySelectorAll('.process-step').forEach((step, index) => {
+            step.style.opacity = 0;
+            step.style.transform = 'translateY(20px)';
+            step.style.transition = `all 0.5s ease ${index * 0.1}s`;
+            observer.observe(step);
+        });
+
+        // Step interaction
+        document.querySelectorAll('.process-step').forEach(step => {
+            step.addEventListener('click', () => {
+                document.querySelectorAll('.process-step').forEach(s => {
+                    if (s !== step) s.classList.remove('active');
+                });
+                step.classList.toggle('active');
+            });
+        });
+
+        // Auto-open first step
+        document.querySelector('.process-step').classList.add('active');
+    </script>
+</body>
+</html>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
         <div class="container">
-            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">Preguntas Frecuentes</h2>
+            <h2>Lo Que Dicen Nuestros Clientes</h2>
+            <div class="testimonial-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="quote">
+                        "Prestamigo hizo que el proceso de obtener una hipoteca fuera mucho menos estresante. Su explicación clara en español me ayudó a entender cada paso."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="María González">
+                        <div class="author-info">
+                            <h4>María González</h4>
+                            <p>Primera compradora de vivienda</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="quote">
+                        "Como veterano, no sabía que podía calificar para un préstamo sin pago inicial. Gracias a Prestamigo por guiarme a través del proceso VA."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Carlos Mendoza">
+                        <div class="author-info">
+                            <h4>Carlos Mendoza</h4>
+                            <p>Veterano, compró en 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="quote">
+                        "El equipo de Prestamigo me ayudó a mejorar mi crédito y calificar para una mejor tasa. Ahora tengo mi casa soñada gracias a su ayuda."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ana Rodríguez">
+                        <div class="author-info">
+                            <h4>Ana Rodríguez</h4>
+                            <p>Compradora con crédito limitado</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Preguntas Frecuentes</h2>
             
             <!-- FAQ Item 1 -->
-            <div class="faq-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-                <div class="faq-question" style="background: #3498db; color: white; padding: 15px; cursor: pointer; font-weight: 600;">
+            <div class="faq-item">
+                <div class="faq-question">
                     ¿Cuál es el pago inicial mínimo?
                 </div>
-                <div class="faq-answer" style="background: white; padding: 0 15px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
-                    <div style="padding: 15px 0;">
+                <div class="faq-answer">
+                    <div>
                         <p>Varía según el programa:</p>
                         <ul>
                             <li><strong>FHA:</strong> 3.5%</li>
@@ -174,12 +790,12 @@
             </div>
 
             <!-- FAQ Item 2 -->
-            <div class="faq-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-                <div class="faq-question" style="background: #3498db; color: white; padding: 15px; cursor: pointer; font-weight: 600;">
+            <div class="faq-item">
+                <div class="faq-question">
                     ¿Cómo mejoro mi puntaje crediticio?
                 </div>
-                <div class="faq-answer" style="background: white; padding: 0 15px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
-                    <div style="padding: 15px 0;">
+                <div class="faq-answer">
+                    <div>
                         <ol>
                             <li>Pagar todas las facturas a tiempo</li>
                             <li>Mantener saldos de tarjetas < 30% del límite</li>
@@ -190,12 +806,12 @@
             </div>
 
             <!-- FAQ Item 3 -->
-            <div class="faq-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-                <div class="faq-question" style="background: #3498db; color: white; padding: 15px; cursor: pointer; font-weight: 600;">
+            <div class="faq-item">
+                <div class="faq-question">
                     ¿Qué documentos necesito?
                 </div>
-                <div class="faq-answer" style="background: white; padding: 0 15px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
-                    <div style="padding: 15px 0;">
+                <div class="faq-answer">
+                    <div>
                         <ul>
                             <li>Identificación oficial</li>
                             <li>W-2s o 1099s de los últimos 2 años</li>
@@ -223,8 +839,39 @@
         </div>
     </footer>
 
-    
     <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link (for mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Language Toggle
+        document.querySelectorAll('.language-toggle a').forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelector('.language-toggle a.active').classList.remove('active');
+                toggle.classList.add('active');
+                
+                // Here you would typically change the language
+                // For now it just toggles the active state
+                // In a real implementation, you would:
+                // 1. Load different content based on language
+                // 2. Or redirect to language-specific pages
+            });
+        });
+
         // FAQ Toggle Functionality
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
