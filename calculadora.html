@@ -32,17 +32,18 @@
         header {
             background: white;
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            padding: 15px 0;
+            padding: 10px 0;
             position: sticky;
             top: 0;
             z-index: 100;
         }
         .logo {
-            height: 60px;
-            transition: all 0.3s;
+            height: 90px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .logo:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 8px rgba(52, 152, 219, 0.6));
         }
         .tab-system {
             display: flex;
