@@ -310,6 +310,41 @@
             cursor: pointer;
             color: #7f8c8d;
         }
+        #payoff-timeline {
+            margin-top: 20px;
+            height: 150px;
+            position: relative;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .timeline-bar {
+            position: relative;
+            height: 20px;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+        .timeline-progress {
+            position: absolute;
+            height: 100%;
+            background-color: #2ecc71;
+            border-radius: 10px;
+        }
+        .timeline-marker {
+            position: absolute;
+            top: -30px;
+            width: 2px;
+            height: 30px;
+        }
+        .timeline-label {
+            position: absolute;
+            top: -60px;
+            width: 100px;
+            text-align: center;
+            font-size: 12px;
+            margin-left: -50px;
+        }
         @media (max-width: 768px) {
             .tab-btn {
                 padding: 12px 20px;
@@ -346,6 +381,9 @@
             </button>
             <button class="tab-btn" onclick="showCalculator('refinance')">
                 <i class="fas fa-sync-alt"></i> Refinanciar
+            </button>
+            <button class="tab-btn" onclick="showCalculator('extra-payments')">
+                <i class="fas fa-rocket"></i> Pagos Adelantados
             </button>
         </div>
 
@@ -549,14 +587,6 @@
                             <input type="number" id="closing-costs" placeholder="5,000" min="0">
                         </div>
                     </div>
-                    
-                    <div class="input-group">
-                        <label for="extra-payment">Pago extra mensual <span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltip-text">Monto adicional que aplicarías al principal</span></span></label>
-                        <div class="input-wrapper">
-                            <i class="fas fa-plus-circle"></i>
-                            <input type="number" id="extra-payment" placeholder="200" min="0">
-                        </div>
-                    </div>
                 </div>
                 
                 <button onclick="analyzeRefinance()" class="btn btn-primary">
@@ -583,14 +613,86 @@
                     <span id="break-even">0 meses</span>
                 </div>
                 <div class="result-item">
-                    <span>Interés total ahorrado*:</span>
+                    <span>Interés total ahorrado:</span>
                     <span id="total-savings">$0.00</span>
                 </div>
                 <div class="result-item">
                     <span>Nuevo pago estimado:</span>
                     <span id="new-payment">$0.00</span>
                 </div>
-                <small style="display:block; margin-top:15px; opacity:0.7;">*Incluyendo pagos extra aplicados al principal</small>
+            </div>
+        </div>
+
+        <!-- Extra Payments Calculator -->
+        <div id="extra-payments-calculator" class="calculator-card" style="display:none;">
+            <div class="calculator-header">
+                <h2><i class="fas fa-rocket"></i> Calculadora de Pagos Adelantados</h2>
+            </div>
+            <div class="calculator-body">
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="ep-loan-amount">Saldo del préstamo</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-dollar-sign"></i>
+                            <input type="number" id="ep-loan-amount" placeholder="250,000" min="0">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="ep-interest-rate">Tasa de interés</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-percent"></i>
+                            <input type="number" id="ep-interest-rate" placeholder="5.5" min="0" step="0.001">
+                        </div>
+                        <div class="range-container">
+                            <input type="range" id="ep-interest-rate-range" min="1" max="10" step="0.125" value="5.5">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="ep-loan-term">Plazo restante (años)</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-calendar-alt"></i>
+                            <input type="number" id="ep-loan-term" placeholder="30" min="1" max="40">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="ep-extra-payment">Pago extra mensual</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-plus-circle"></i>
+                            <input type="number" id="ep-extra-payment" placeholder="200" min="0">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="ep-lump-sum">Pago global único (opcional)</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <input type="number" id="ep-lump-sum" placeholder="0" min="0">
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="calculateExtraPayments()" class="btn btn-primary">
+                    <i class="fas fa-calculator"></i> Calcular Ahorros
+                </button>
+            </div>
+            
+            <div class="results-container">
+                <div class="result-item highlight">
+                    <span>Tiempo reducido:</span>
+                    <span id="time-saved">0 años y 0 meses</span>
+                </div>
+                <div class="result-item">
+                    <span>Interés total ahorrado:</span>
+                    <span id="interest-saved">$0.00</span>
+                </div>
+                <div class="result-item">
+                    <span>Nueva fecha de pago:</span>
+                    <span id="new-payoff-date">--</span>
+                </div>
+                <div id="payoff-timeline"></div>
             </div>
         </div>
     </div>
@@ -620,6 +722,7 @@
         function showCalculator(calcType) {
             document.getElementById('purchase-calculator').style.display = calcType === 'purchase' ? 'block' : 'none';
             document.getElementById('refinance-calculator').style.display = calcType === 'refinance' ? 'block' : 'none';
+            document.getElementById('extra-payments-calculator').style.display = calcType === 'extra-payments' ? 'block' : 'none';
             
             // Update active tab buttons
             const tabBtns = document.querySelectorAll('.tab-btn');
@@ -711,7 +814,6 @@
             const remainingTerm = parseInt(document.getElementById('remaining-term').value) || 30;
             const newTerm = parseInt(document.getElementById('new-term').value) || remainingTerm;
             const closingCosts = parseFloat(document.getElementById('closing-costs').value) || 0;
-            const extraPayment = parseFloat(document.getElementById('extra-payment').value) || 0;
             
             // Current Loan Details
             const currentMonthlyRate = currentRate / 100 / 12;
@@ -721,8 +823,7 @@
             // New Loan Details
             const newMonthlyRate = newRate / 100 / 12;
             const newPayments = newTerm * 12;
-            const newBasePayment = (balance * newMonthlyRate) / (1 - Math.pow(1 + newMonthlyRate, -newPayments));
-            const newPayment = newBasePayment + extraPayment;
+            const newPayment = (balance * newMonthlyRate) / (1 - Math.pow(1 + newMonthlyRate, -newPayments));
             
             // Savings Analysis
             const monthlySavings = currentPayment - newPayment;
@@ -730,7 +831,7 @@
             
             // Interest Savings (simplified)
             const currentInterest = (currentPayment * currentPayments) - balance;
-            const newInterest = (newBasePayment * newPayments) - balance;
+            const newInterest = (newPayment * newPayments) - balance;
             const interestSaved = currentInterest - newInterest;
             
             // Update UI
@@ -748,11 +849,150 @@
                 remainingTerm,
                 newTerm,
                 closingCosts,
-                extraPayment,
                 monthlySavings,
                 breakEvenMonths,
                 interestSaved
             }));
+        }
+
+        // Extra Payments Calculator Logic
+        function calculateExtraPayments() {
+            const loanAmount = parseFloat(document.getElementById('ep-loan-amount').value) || 0;
+            const interestRate = parseFloat(document.getElementById('ep-interest-rate').value) || 0;
+            const loanTerm = parseInt(document.getElementById('ep-loan-term').value) || 30;
+            const extraPayment = parseFloat(document.getElementById('ep-extra-payment').value) || 0;
+            const lumpSum = parseFloat(document.getElementById('ep-lump-sum').value) || 0;
+            
+            // Calculate original payoff
+            const monthlyRate = interestRate / 100 / 12;
+            const payments = loanTerm * 12;
+            const monthlyPayment = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -payments));
+            
+            // Calculate with extra payments
+            let balance = loanAmount - lumpSum;
+            let monthsSaved = 0;
+            let totalInterest = 0;
+            let totalInterestSaved = 0;
+            let newMonths = 0;
+            
+            // Original loan details
+            let origBalance = loanAmount;
+            let origTotalInterest = 0;
+            for (let i = 0; i < payments; i++) {
+                const interest = origBalance * monthlyRate;
+                origTotalInterest += interest;
+                const principal = monthlyPayment - interest;
+                origBalance -= principal;
+                if (origBalance <= 0) break;
+            }
+            
+            // Calculate with extra payments
+            while (balance > 0 && newMonths < 600) { // 50 year max
+                const interest = balance * monthlyRate;
+                totalInterest += interest;
+                let principal = monthlyPayment - interest;
+                
+                // Apply extra payment to principal
+                if (extraPayment > 0) {
+                    principal += extraPayment;
+                }
+                
+                balance -= principal;
+                newMonths++;
+                
+                if (balance <= 0) break;
+            }
+            
+            // Calculate savings
+            monthsSaved = payments - newMonths;
+            totalInterestSaved = origTotalInterest - totalInterest;
+            
+            // Update UI
+            const yearsSaved = Math.floor(monthsSaved / 12);
+            const remainingMonths = monthsSaved % 12;
+            
+            document.getElementById('time-saved').textContent = 
+                `${yearsSaved} años y ${remainingMonths} meses`;
+            document.getElementById('interest-saved').textContent = 
+                formatCurrency(totalInterestSaved);
+            
+            // Calculate new payoff date
+            const today = new Date();
+            today.setMonth(today.getMonth() + newMonths);
+            document.getElementById('new-payoff-date').textContent = 
+                today.toLocaleDateString('es-ES', { year: 'numeric', month: 'long' });
+            
+            // Draw timeline visualization
+            drawPayoffTimeline(payments, newMonths);
+            
+            // Save to localStorage
+            localStorage.setItem('lastCalculation', JSON.stringify({
+                type: 'extra-payments',
+                loanAmount,
+                interestRate,
+                loanTerm,
+                extraPayment,
+                lumpSum,
+                monthsSaved,
+                totalInterestSaved
+            }));
+        }
+        
+        function drawPayoffTimeline(originalMonths, newMonths) {
+            const container = document.getElementById('payoff-timeline');
+            container.innerHTML = '';
+            
+            const width = container.clientWidth - 40;
+            const origWidth = width;
+            const newWidth = (newMonths / originalMonths) * width;
+            
+            // Create timeline container
+            const timelineContainer = document.createElement('div');
+            timelineContainer.style.position = 'relative';
+            timelineContainer.style.height = '150px';
+            container.appendChild(timelineContainer);
+            
+            // Create timeline bar
+            const timelineBar = document.createElement('div');
+            timelineBar.className = 'timeline-bar';
+            timelineBar.style.width = width + 'px';
+            timelineContainer.appendChild(timelineBar);
+            
+            // Create progress bar
+            const progressBar = document.createElement('div');
+            progressBar.className = 'timeline-progress';
+            progressBar.style.width = newWidth + 'px';
+            timelineBar.appendChild(progressBar);
+            
+            // Original payoff marker
+            const origMarker = document.createElement('div');
+            origMarker.className = 'timeline-marker';
+            origMarker.style.left = width + 'px';
+            origMarker.style.backgroundColor = '#e74c3c';
+            timelineContainer.appendChild(origMarker);
+            
+            // Original payoff label
+            const origLabel = document.createElement('div');
+            origLabel.className = 'timeline-label';
+            origLabel.style.left = width + 'px';
+            origLabel.style.color = '#e74c3c';
+            origLabel.textContent = 'Pago original';
+            timelineContainer.appendChild(origLabel);
+            
+            // New payoff marker
+            const newMarker = document.createElement('div');
+            newMarker.className = 'timeline-marker';
+            newMarker.style.left = newWidth + 'px';
+            newMarker.style.backgroundColor = '#2ecc71';
+            timelineContainer.appendChild(newMarker);
+            
+            // New payoff label
+            const newLabel = document.createElement('div');
+            newLabel.className = 'timeline-label';
+            newLabel.style.left = newWidth + 'px';
+            newLabel.style.color = '#2ecc71';
+            newLabel.textContent = 'Nuevo pago';
+            timelineContainer.appendChild(newLabel);
         }
 
         // Save Results
@@ -794,57 +1034,6 @@
                 doc.text("Compra de Vivienda - Gastos Totales", 10, yPos);
                 yPos += 10;
                 doc.text(`Pago mensual estimado: ${formatCurrency(data.total)}`, 10, yPos);
-            } else {
+            } else if (data.type === 'refinance') {
                 doc.text("Refinanciamiento - Ahorros Estimados", 10, yPos);
-                yPos += 10;
-                doc.text(`Ahorro mensual: ${formatCurrency(data.monthlySavings)}`, 10, yPos);
-            }
-            
-            // In a real implementation, you would:
-            // 1. Save PDF to server
-            // 2. Send email with PDF attachment
-            // 3. Provide download link
-            
-            alert(`PDF enviado a ${email} (simulación)`);
-            closeModal('pdfModal');
-        }
-
-        // Helper Functions
-        function formatCurrency(amount) {
-            return '$' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
-        }
-
-        // Initialize
-        syncInputs('home-price-range', 'home-price');
-        syncInputs('down-percent-range', 'down-percent');
-        syncInputs('interest-rate-range', 'interest-rate');
-        syncInputs('current-rate-range', 'current-rate');
-        syncInputs('new-rate-range', 'new-rate');
-
-        // Load last calculation if exists
-        window.addEventListener('DOMContentLoaded', () => {
-            const lastCalc = localStorage.getItem('lastCalculation');
-            if (lastCalc) {
-                const data = JSON.parse(lastCalc);
-                if (data.type === 'purchase') {
-                    showCalculator('purchase');
-                    document.getElementById('home-price').value = data.price;
-                    document.getElementById('down-payment').value = data.down;
-                    // ... populate all fields ...
-                    calculateHousing();
-                } else {
-                    showCalculator('refinance');
-                    document.getElementById('current-balance').value = data.balance;
-                    document.getElementById('current-rate').value = data.currentRate;
-                    // ... populate all fields ...
-                    analyzeRefinance();
-                }
-            }
-        });
-    </script>
-</body>
-</html>
+               
