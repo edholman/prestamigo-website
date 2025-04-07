@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadoras Hipotecarias | Prestamigo</title>
+    <title>Calculadora Hipotecaria | Prestamigo</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -48,6 +48,7 @@
             display: flex;
             justify-content: center;
             margin: 40px 0 30px;
+            flex-wrap: wrap;
         }
         .tab-btn {
             padding: 14px 30px;
@@ -59,12 +60,7 @@
             transition: all 0.3s;
             position: relative;
             font-size: 1rem;
-        }
-        .tab-btn:first-child {
-            border-radius: 30px 0 0 30px;
-        }
-        .tab-btn:last-child {
-            border-radius: 0 30px 30px 0;
+            margin: 5px;
         }
         .tab-btn.active {
             background: var(--primary);
@@ -88,8 +84,7 @@
             box-shadow: var(--shadow);
             overflow: hidden;
             margin-bottom: 40px;
-            transform: translateY(0);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            transition: all 0.4s;
         }
         .calculator-card:hover {
             transform: translateY(-5px);
@@ -178,10 +173,6 @@
             border-radius: 50%;
             cursor: pointer;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            transition: all 0.2s;
-        }
-        input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.1);
         }
         .btn {
             border: none;
@@ -196,22 +187,11 @@
             justify-content: center;
             margin: 10px 0;
             text-decoration: none;
+            width: 100%;
         }
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
-        }
-        .btn-secondary {
-            background: var(--dark);
-            color: white;
-        }
-        .btn-success {
-            background: var(--secondary);
-            color: white;
-        }
-        .btn i {
-            margin-right: 10px;
-            font-size: 1.2em;
         }
         .btn:hover {
             transform: translateY(-3px);
@@ -237,113 +217,12 @@
             font-weight: 600;
             font-size: 1.1rem;
         }
-        .tooltip {
-            display: inline-block;
-            margin-left: 5px;
-            cursor: pointer;
-            position: relative;
-        }
-        .tooltip i {
-            color: var(--primary);
-            font-size: 0.9em;
-        }
-        .tooltip .tooltip-text {
-            visibility: hidden;
-            width: 220px;
-            background-color: var(--dark);
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 10px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 0.85rem;
-            font-weight: normal;
-        }
-        .tooltip:hover .tooltip-text {
-            visibility: visible;
-            opacity: 1;
-        }
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .action-buttons .btn {
-            flex: 1;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        .modal-content {
-            background: white;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 500px;
-            padding: 30px;
-            position: relative;
-            animation: modalFadeIn 0.3s;
-        }
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #7f8c8d;
-        }
         #payoff-timeline {
-            margin-top: 20px;
             height: 150px;
             position: relative;
-            background-color: #f8f9fa;
+            margin-top: 20px;
+            background: rgba(255,255,255,0.1);
             border-radius: 8px;
-            padding: 10px;
-        }
-        .timeline-bar {
-            position: relative;
-            height: 20px;
-            background-color: #ecf0f1;
-            border-radius: 10px;
-            margin-top: 40px;
-        }
-        .timeline-progress {
-            position: absolute;
-            height: 100%;
-            background-color: #2ecc71;
-            border-radius: 10px;
-        }
-        .timeline-marker {
-            position: absolute;
-            top: -30px;
-            width: 2px;
-            height: 30px;
-        }
-        .timeline-label {
-            position: absolute;
-            top: -60px;
-            width: 100px;
-            text-align: center;
-            font-size: 12px;
-            margin-left: -50px;
         }
         @media (max-width: 768px) {
             .tab-btn {
@@ -355,10 +234,6 @@
             }
             .calculator-body {
                 padding: 20px;
-            }
-            .action-buttons {
-                flex-direction: column;
-                gap: 10px;
             }
         }
     </style>
@@ -429,15 +304,14 @@
                         <div class="input-wrapper">
                             <i class="fas fa-calendar-alt"></i>
                             <select id="loan-term">
-                                <option value="">Seleccionar...</option>
-                                <option value="15">15 años</option>
                                 <option value="30">30 años</option>
+                                <option value="15">15 años</option>
                             </select>
                         </div>
                     </div>
                     
                     <div class="input-group">
-                        <label for="interest-rate">Tasa de interés <span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltip-text">Tasa ilustrativa basada en promedios del mercado</span></span></label>
+                        <label for="interest-rate">Tasa de interés</label>
                         <div class="input-wrapper">
                             <i class="fas fa-percent"></i>
                             <input type="number" id="interest-rate" placeholder="6.5" min="0" step="0.001">
@@ -464,7 +338,7 @@
                     </div>
                     
                     <div class="input-group">
-                        <label for="pmi">PMI <span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltip-text">Seguro de hipoteca privada (si pago inicial < 20%)</span></span></label>
+                        <label for="pmi">PMI</label>
                         <div class="input-wrapper">
                             <i class="fas fa-lock"></i>
                             <input type="number" id="pmi" placeholder="0.5" min="0" max="2" step="0.1">
@@ -483,19 +357,10 @@
                 <button onclick="calculateHousing()" class="btn btn-primary">
                     <i class="fas fa-calculator"></i> Calcular Gastos Totales
                 </button>
-
-                <div class="action-buttons">
-                    <button onclick="saveResults()" class="btn btn-secondary">
-                        <i class="fas fa-save"></i> Guardar Resultados
-                    </button>
-                    <button onclick="generatePDF()" class="btn btn-success">
-                        <i class="fas fa-file-pdf"></i> Generar PDF
-                    </button>
-                </div>
             </div>
             
             <div class="results-container">
-                <div class="result-item highlight">
+                <div class="result-item highlight-result">
                     <span>Pago mensual estimado:</span>
                     <span id="total-monthly">$0.00</span>
                 </div>
@@ -592,19 +457,10 @@
                 <button onclick="analyzeRefinance()" class="btn btn-primary">
                     <i class="fas fa-chart-line"></i> Analizar Ahorros
                 </button>
-
-                <div class="action-buttons">
-                    <button onclick="saveResults()" class="btn btn-secondary">
-                        <i class="fas fa-save"></i> Guardar Resultados
-                    </button>
-                    <a href="https://calendly.com/prestamigo" target="_blank" class="btn btn-success">
-                        <i class="fas fa-calendar-check"></i> Consulta Gratis
-                    </a>
-                </div>
             </div>
             
             <div class="results-container">
-                <div class="result-item highlight">
+                <div class="result-item highlight-result">
                     <span>Ahorro mensual:</span>
                     <span id="monthly-savings">$0.00</span>
                 </div>
@@ -680,7 +536,7 @@
             </div>
             
             <div class="results-container">
-                <div class="result-item highlight">
+                <div class="result-item highlight-result">
                     <span>Tiempo reducido:</span>
                     <span id="time-saved">0 años y 0 meses</span>
                 </div>
@@ -697,27 +553,7 @@
         </div>
     </div>
 
-    <!-- PDF Modal -->
-    <div id="pdfModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('pdfModal')">&times;</span>
-            <h3><i class="fas fa-file-pdf"></i> Descargar Reporte</h3>
-            <p>Ingresa tu email para recibir el PDF con tus resultados:</p>
-            <input type="email" id="user-email" placeholder="tucorreo@ejemplo.com" style="width:100%; padding:12px; margin:15px 0; border:1px solid #ddd; border-radius:8px;">
-            <button onclick="sendPDF()" class="btn btn-primary" style="width:100%;">
-                <i class="fas fa-paper-plane"></i> Enviar PDF
-            </button>
-        </div>
-    </div>
-
-    <!-- jsPDF -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
     <script>
-        // Initialize jsPDF
-        const { jsPDF } = window.jspdf;
-
         // Tab Navigation
         function showCalculator(calcType) {
             document.getElementById('purchase-calculator').style.display = calcType === 'purchase' ? 'block' : 'none';
@@ -758,75 +594,54 @@
             const price = parseFloat(document.getElementById('home-price').value) || 0;
             const down = parseFloat(document.getElementById('down-payment').value) || 0;
             const term = parseInt(document.getElementById('loan-term').value) || 30;
-            const rate = parseFloat(document.getElementById('interest-rate').value) || 0;
-            const tax = parseFloat(document.getElementById('property-tax').value) || 0;
-            const insurance = parseFloat(document.getElementById('insurance').value) || 0;
-            const pmiPercent = parseFloat(document.getElementById('pmi').value) || 0;
+            const rate = parseFloat(document.getElementById('interest-rate').value) / 100 / 12 || 0;
+            const tax = parseFloat(document.getElementById('property-tax').value) / 12 || 0;
+            const insurance = parseFloat(document.getElementById('insurance').value) / 12 || 0;
+            const pmiPercent = parseFloat(document.getElementById('pmi').value) / 100 / 12 || 0;
             const hoa = parseFloat(document.getElementById('hoa').value) || 0;
             
             // Calculations
             const loanAmount = price - down;
-            const monthlyRate = rate / 100 / 12;
             const payments = term * 12;
             
             // Principal & Interest
-            const principalInterest = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -payments)) || 0;
+            const principalInterest = (loanAmount * rate) / (1 - Math.pow(1 + rate, -payments)) || 0;
             
             // PMI (only if down < 20%)
-            const pmi = (down < price * 0.2) ? (loanAmount * (pmiPercent / 100 / 12)) : 0;
-            
-            // Tax & Insurance
-            const taxMonthly = tax / 12;
-            const insuranceMonthly = insurance / 12;
+            const pmi = (down < price * 0.2) ? (loanAmount * pmiPercent) : 0;
             
             // Total
-            const total = principalInterest + taxMonthly + insuranceMonthly + pmi + hoa;
+            const total = principalInterest + tax + insurance + pmi + hoa;
             
             // Update UI
             document.getElementById('principal-interest').textContent = formatCurrency(principalInterest);
-            document.getElementById('tax-amount').textContent = formatCurrency(taxMonthly);
-            document.getElementById('insurance-amount').textContent = formatCurrency(insuranceMonthly);
+            document.getElementById('tax-amount').textContent = formatCurrency(tax);
+            document.getElementById('insurance-amount').textContent = formatCurrency(insurance);
             document.getElementById('pmi-amount').textContent = formatCurrency(pmi);
             document.getElementById('hoa-amount').textContent = formatCurrency(hoa);
             document.getElementById('total-monthly').textContent = formatCurrency(total);
-
-            // Save to localStorage
-            localStorage.setItem('lastCalculation', JSON.stringify({
-                type: 'purchase',
-                price,
-                down,
-                term,
-                rate,
-                tax,
-                insurance,
-                pmiPercent,
-                hoa,
-                total
-            }));
         }
 
         // Refinance Calculator Logic
         function analyzeRefinance() {
             // Get all input values
             const balance = parseFloat(document.getElementById('current-balance').value) || 0;
-            const currentRate = parseFloat(document.getElementById('current-rate').value) || 0;
-            const newRate = parseFloat(document.getElementById('new-rate').value) || 0;
+            const currentRate = parseFloat(document.getElementById('current-rate').value) / 100 / 12 || 0;
+            const newRate = parseFloat(document.getElementById('new-rate').value) / 100 / 12 || 0;
             const remainingTerm = parseInt(document.getElementById('remaining-term').value) || 30;
-            const newTerm = parseInt(document.getElementById('new-term').value) || remainingTerm;
-            const closingCosts = parseFloat(document.getElementById('closing-costs').value) || 0;
+            let newTerm = parseInt(document.getElementById('new-term').value) || remainingTerm;
             
             // Current Loan Details
-            const currentMonthlyRate = currentRate / 100 / 12;
             const currentPayments = remainingTerm * 12;
-            const currentPayment = (balance * currentMonthlyRate) / (1 - Math.pow(1 + currentMonthlyRate, -currentPayments));
+            const currentPayment = (balance * currentRate) / (1 - Math.pow(1 + currentRate, -currentPayments));
             
             // New Loan Details
-            const newMonthlyRate = newRate / 100 / 12;
             const newPayments = newTerm * 12;
-            const newPayment = (balance * newMonthlyRate) / (1 - Math.pow(1 + newMonthlyRate, -newPayments));
+            const newPayment = (balance * newRate) / (1 - Math.pow(1 + newRate, -newPayments));
             
             // Savings Analysis
             const monthlySavings = currentPayment - newPayment;
+            const closingCosts = parseFloat(document.getElementById('closing-costs').value) || 0;
             const breakEvenMonths = monthlySavings > 0 ? Math.ceil(closingCosts / monthlySavings) : 0;
             
             // Interest Savings (simplified)
@@ -839,34 +654,19 @@
             document.getElementById('break-even').textContent = breakEvenMonths + ' meses';
             document.getElementById('new-payment').textContent = formatCurrency(newPayment);
             document.getElementById('total-savings').textContent = formatCurrency(interestSaved);
-
-            // Save to localStorage
-            localStorage.setItem('lastCalculation', JSON.stringify({
-                type: 'refinance',
-                balance,
-                currentRate,
-                newRate,
-                remainingTerm,
-                newTerm,
-                closingCosts,
-                monthlySavings,
-                breakEvenMonths,
-                interestSaved
-            }));
         }
 
         // Extra Payments Calculator Logic
         function calculateExtraPayments() {
             const loanAmount = parseFloat(document.getElementById('ep-loan-amount').value) || 0;
-            const interestRate = parseFloat(document.getElementById('ep-interest-rate').value) || 0;
+            const interestRate = parseFloat(document.getElementById('ep-interest-rate').value) / 100 / 12 || 0;
             const loanTerm = parseInt(document.getElementById('ep-loan-term').value) || 30;
             const extraPayment = parseFloat(document.getElementById('ep-extra-payment').value) || 0;
             const lumpSum = parseFloat(document.getElementById('ep-lump-sum').value) || 0;
             
             // Calculate original payoff
-            const monthlyRate = interestRate / 100 / 12;
             const payments = loanTerm * 12;
-            const monthlyPayment = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -payments));
+            const monthlyPayment = (loanAmount * interestRate) / (1 - Math.pow(1 + interestRate, -payments));
             
             // Calculate with extra payments
             let balance = loanAmount - lumpSum;
@@ -879,7 +679,7 @@
             let origBalance = loanAmount;
             let origTotalInterest = 0;
             for (let i = 0; i < payments; i++) {
-                const interest = origBalance * monthlyRate;
+                const interest = origBalance * interestRate;
                 origTotalInterest += interest;
                 const principal = monthlyPayment - interest;
                 origBalance -= principal;
@@ -888,7 +688,7 @@
             
             // Calculate with extra payments
             while (balance > 0 && newMonths < 600) { // 50 year max
-                const interest = balance * monthlyRate;
+                const interest = balance * interestRate;
                 totalInterest += interest;
                 let principal = monthlyPayment - interest;
                 
@@ -924,18 +724,6 @@
             
             // Draw timeline visualization
             drawPayoffTimeline(payments, newMonths);
-            
-            // Save to localStorage
-            localStorage.setItem('lastCalculation', JSON.stringify({
-                type: 'extra-payments',
-                loanAmount,
-                interestRate,
-                loanTerm,
-                extraPayment,
-                lumpSum,
-                monthsSaved,
-                totalInterestSaved
-            }));
         }
         
         function drawPayoffTimeline(originalMonths, newMonths) {
@@ -995,45 +783,41 @@
             timelineContainer.appendChild(newLabel);
         }
 
-        // Save Results
-        function saveResults() {
-            const lastCalc = localStorage.getItem('lastCalculation');
-            if (!lastCalc) {
-                alert("Primero realiza un cálculo para guardar");
-                return;
-            }
-            alert("Resultados guardados localmente. Podrás verlos en tu próxima visita.");
+        // Helper Functions
+        function formatCurrency(amount) {
+            return '$' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
         }
 
-        // Generate PDF
-        function generatePDF() {
-            const lastCalc = localStorage.getItem('lastCalculation');
-            if (!lastCalc) {
-                alert("Primero realiza un cálculo para generar el PDF");
-                return;
-            }
-            document.getElementById('pdfModal').style.display = 'flex';
-        }
+        // Initialize
+        syncInputs('home-price-range', 'home-price');
+        syncInputs('down-percent-range', 'down-percent');
+        syncInputs('interest-rate-range', 'interest-rate');
+        syncInputs('current-rate-range', 'current-rate');
+        syncInputs('new-rate-range', 'new-rate');
+        syncInputs('ep-interest-rate-range', 'ep-interest-rate');
 
-        function sendPDF() {
-            const email = document.getElementById('user-email').value;
-            if (!email.includes('@')) {
-                alert("Por favor ingresa un email válido");
-                return;
-            }
-
-            // Generate PDF (simplified example)
-            const doc = new jsPDF();
-            doc.text("Resultados de Prestamigo", 10, 10);
-            doc.text(`Fecha: ${new Date().toLocaleDateString()}`, 10, 20);
+        // Set default values for better UX
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('home-price').value = '350000';
+            document.getElementById('down-payment').value = '70000';
+            document.getElementById('down-percent').value = '20';
+            document.getElementById('interest-rate').value = '6.5';
+            document.getElementById('property-tax').value = '4200';
+            document.getElementById('insurance').value = '1200';
+            document.getElementById('pmi').value = '0.5';
+            document.getElementById('hoa').value = '150';
             
-            const data = JSON.parse(localStorage.getItem('lastCalculation'));
-            let yPos = 30;
+            document.getElementById('current-balance').value = '280000';
+            document.getElementById('current-rate').value = '6.25';
+            document.getElementById('new-rate').value = '5.5';
+            document.getElementById('remaining-term').value = '27';
+            document.getElementById('closing-costs').value = '5000';
             
-            if (data.type === 'purchase') {
-                doc.text("Compra de Vivienda - Gastos Totales", 10, yPos);
-                yPos += 10;
-                doc.text(`Pago mensual estimado: ${formatCurrency(data.total)}`, 10, yPos);
-            } else if (data.type === 'refinance') {
-                doc.text("Refinanciamiento - Ahorros Estimados", 10, yPos);
-               
+            document.getElementById('ep-loan-amount').value = '250000';
+            document.getElementById('ep-interest-rate').value = '5.5';
+            document.getElementById('ep-loan-term').value = '30';
+            document.getElementById('ep-extra-payment').value = '200';
+        });
+    </script>
+</body>
+</html>
