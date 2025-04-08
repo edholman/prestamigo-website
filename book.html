@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva una Cita | Prestamigo</title>
+    <meta name="description" content="Agenda una consulta con Prestamigo">
+    <link rel="canonical" href="https://prestamigo.com/book" />
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Reserva una Cita | Prestamigo">
+    <meta property="og:description" content="Agenda una consulta con Prestamigo">
+    <meta property="og:url" content="https://prestamigo.com/book">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid #3498db;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agenda Tu Consulta</h1>
+        <p>Estás siendo redirigido a nuestro calendario de reservas. Por favor espera un momento...</p>
+        
+        <div class="loading-spinner"></div>
+        
+        <p>Si no eres redirigido automáticamente, <a href="https://api.leadconnectorhq.com/widget/booking/9ehy163tCceapX3YjDuS" class="btn">haz clic aquí</a></p>
+    </div>
+    
+    <script>
+        // Redirección inmediata a la página de reservas
+        window.location.replace("https://api.leadconnectorhq.com/widget/booking/9ehy163tCceapX3YjDuS");
+        
+        // Redirección por si falla la primera
+        setTimeout(function() {
+            window.location.href = "https://api.leadconnectorhq.com/widget/booking/9ehy163tCceapX3YjDuS";
+        }, 3000);
+    </script>
+</body>
+</html>
