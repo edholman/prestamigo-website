@@ -1,26 +1,8 @@
-// Load rates from JSON file
-async function loadRates() {
-    try {
-        const response = await fetch('rates.json');
-        return await response.json();
-    } catch (error) {
-        console.error("Using default rates:", error);
-        return {
-            CONV: 6.75,
-            FHA: 7.25,
-            ITIN: 8.0,
-            last_updated: "2024-06-20"
-        };
-    }
-}
-
-// In your calculate() function:
-async function calculate() {
-    const rates = await loadRates();
-    const loanType = document.getElementById("loanType").value;
-    const baseRate = rates[loanType];
-    
-    // Rest of your calculation logic...
-    document.getElementById("rate-source").textContent = 
-        `Tasas actualizadas al ${rates.last_updated} via Freddie Mac PMMS`;
+{
+  "last_updated": "2024-06-20",
+  "rates": {
+    "FHA": 6.25,
+    "CONV": 5.75,
+    "ITIN": 7.25
+  }
 }
