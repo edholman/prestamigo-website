@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Hipotecaria Completa | Prestamigo</title>
+    <style>
+        /* Inherit styles from main site */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header - matches index.html */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            position: relative;
+        }
+        .logo {
+            height: 90px;
+            width: auto;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links li {
+            margin-left: 20px;
+        }
+        .nav-links li a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        .language-toggle {
+            display: flex;
+            margin-left: 20px;
+            border: 1px solid #3498db;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .language-toggle a {
+            padding: 5px 15px;
+            text-decoration: none;
+            color: #3498db;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .language-toggle a.active {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        /* Hero Section */
+        .guide-hero {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            padding: 60px 0;
+            text-align: center;
+        }
+        .guide-hero h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .guide-hero p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Guide Content */
+        .guide-content {
+            padding: 60px 0;
+            background-color: #fff;
+        }
+        .guide-section {
+            margin-bottom: 50px;
+        }
+        .guide-section h2 {
+            color: #3498db;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f1f5f9;
+        }
+        .guide-section h3 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin: 30px 0 15px;
+        }
+        .guide-card {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .guide-card h4 {
+            color: #3498db;
+            margin-top: 0;
+        }
+        ul.guide-list {
+            padding-left: 20px;
+        }
+        ul.guide-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 15px;
+        }
+        ul.guide-list li:before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Download Section */
+        .download-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 60px 0;
+            text-align: center;
+        }
+        .download-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.1);
+        }
+        .download-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        .download-button:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Footer - matches index.html */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .disclaimer {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 0.8rem;
+            color: #bdc3c7;
+            line-height: 1.5;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .guide-hero h1 {
+                font-size: 2rem;
+            }
+            .guide-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header with Logo -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html">
+                    <img src="https://i.imgur.com/t3pRlvV.png" alt="Prestamigo Logo" class="logo">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="calculadora.html">Recursos</a></li>
+                    <li><a href="https://api.leadconnectorhq.com/widget/booking/9ehy163tCceapX3YjDuS">Contacto</a></li>
+                    <li>
+                        <div class="language-toggle">
+                            <a href="#" class="active">ES</a>
+                            <a href="#">EN</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="guide-hero">
+        <div class="container">
+            <h1>Guía Hipotecaria Completa</h1>
+            <p>Todo lo que necesitas saber para navegar el proceso de compra de vivienda en español, desde pre-calificación hasta el cierre.</p>
+        </div>
+    </section>
+
+    <!-- Guide Content -->
+    <section class="guide-content">
+        <div class="container">
+            <!-- Original Sections -->
+            <div class="guide-section">
+                <h2><i class="fas fa-home"></i> Tipos de Préstamos Hipotecarios</h2>
+                
+                <div class="guide-card">
+                    <h4>1. Préstamos Convencionales</h4>
+                    <ul class="guide-list">
+                        <li><strong>Enganche mínimo:</strong> 3-5% (primeros compradores pueden calificar al 3%)</li>
+                        <li><strong>Requisitos de crédito:</strong> Puntaje FICO 620+</li>
+                        <li><strong>Ventajas:</strong> Sin seguro hipotecario con 20% de enganche, plazos flexibles</li>
+                    </ul>
+                </div>
+                
+                <div class="guide-card">
+                    <h4>2. Préstamos FHA</h4>
+                    <ul class="guide-list">
+                        <li><strong>Enganche mínimo:</strong> 3.5%</li>
+                        <li><strong>Requisitos de crédito:</strong> Puntaje FICO 580+ (500-579 con 10% de enganche)</li>
+                        <li><strong>Ventajas:</strong> Acepta deudas más altas y créditos imperfectos</li>
+                        <li><strong>Seguro hipotecario:</strong> Requerido durante toda la vida del préstamo</li>
+                    </ul>
+                </div>
+                
+                <div class="guide-card">
+                    <h4>3. Préstamos VA</h4>
+                    <ul class="guide-list">
+                        <li><strong>Enganche mínimo:</strong> 0%</li>
+                        <li><strong>Requisitos:</strong> Servicio militar activo o veteranos elegibles</li>
+                        <li><strong>Ventajas:</strong> Sin seguro hipotecario, tasas competitivas</li>
+                        <li><strong>Tarifa de financiamiento:</strong> 1.25-3.3% del préstamo</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="guide-section">
+                <h2><i class="fas fa-file-signature"></i> Documentación Requerida</h2>
+                
+                <h3>Para Empleados Tradicionales</h3>
+                <ul class="guide-list">
+                    <li>Identificación oficial (licencia, pasaporte, matrícula consular)</li>
+                    <li>W-2 de los últimos 2 años</li>
+                    <li>Talones de pago de los últimos 30 días</li>
+                    <li>Estados de cuenta bancarios de los últimos 2 meses</li>
+                </ul>
+                
+                <h3>Para Trabajadores Independientes</h3>
+                <ul class="guide-list">
+                    <li>Declaraciones de impuestos (1040) de los últimos 2 años con todos los anexos</li>
+                    <li>Estados de cuenta bancarios de los últimos 12-24 meses</li>
+                    <li>Facturas y contratos de clientes principales</li>
+                </ul>
+                
+                <h3>Para Residentes con ITIN</h3>
+                <ul class="guide-list">
+                    <li>Comprobante de ITIN vigente</li>
+                    <li>Historial crediticio alternativo (pagos de renta, servicios)</li>
+                    <li>Cartas de referencia de empleador o clientes</li>
+                </ul>
+            </div>
+            
+            <div class="guide-section">
+                <h2><i class="fas fa-calculator"></i> Cómo Calcular tu Poder de Compra</h2>
+                
+                <div class="guide-card">
+                    <h4>Fórmula Básica</h4>
+                    <p><strong>Pago mensual máximo = Ingreso bruto mensual × 43% - Deudas mensuales</strong></p>
+                    <p>Ejemplo: $5,000 ingreso × 0.43 = $2,150 - $300 (deudas) = $1,850 pago máximo</p>
+                </div>
+                
+                <div class="guide-card">
+                    <h4>Calculadora de Hipoteca</h4>
+                    <p>Usa nuestra fórmula para estimar tu pago mensual:</p>
+                    <p><strong>Pago = [P×(r(1+r)^n)]/[(1+r)^n-1]</strong></p>
+                    <ul class="guide-list">
+                        <li>P = Monto principal del préstamo</li>
+                        <li>r = Tasa de interés mensual (tasa anual ÷ 12)</li>
+                        <li>n = Número de pagos (años × 12)</li>
+                    </ul>
+                </div>
+                
+                <div class="guide-card">
+                    <h4>Costos Adicionales a Considerar</h4>
+                    <ul class="guide-list">
+                        <li>Impuestos sobre la propiedad (1-2% del valor anual)</li>
+                        <li>Seguro de vivienda ($800-$2,000 anual)</li>
+                        <li>Mantenimiento (1% del valor de la casa anual)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="guide-section">
+                <h2><i class="fas fa-lightbulb"></i> Consejos para Primeros Compradores</h2>
+                
+                <div class="guide-card">
+                    <h4>Antes de Buscar Casa</h4>
+                    <ul class="guide-list">
+                        <li>Revisa tu crédito y corrige errores (40% de reports tienen errores)</li>
+                        <li>Ahorra al menos 3.5% para enganche + 2-5% para costos de cierre</li>
+                        <li>Consigue una carta de pre-aprobación para negociar mejor</li>
+                    </ul>
+                </div>
+                
+                <div class="guide-card">
+                    <h4>Durante la Búsqueda</h4>
+                    <ul class="guide-list">
+                        <li>Considera ubicaciones con buena plusvalía pero accesibles</li>
+                        <li>Visita propiedades en diferentes días y horarios</li>
+                        <li>Calcula costos totales, no solo el precio de venta</li>
+                    </ul>
+                </div>
+                
+                <div class="guide-card">
+                    <h4>Proceso de Cierre</h4>
+                    <ul class="guide-list">
+                        <li>Revisa el "Closing Disclosure" 3 días antes de firmar</li>
+                        <li>Compara con el "Loan Estimate" inicial</li>
+                        <li>Prepara transferencia bancaria para fondos de cierre</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ========== NEW SECTIONS ========== -->
+            
+            <div class="guide-section">
+                <h2><i class="fas fa-chart-line"></i> Cómo Mejorar tu Crédito para una Hipoteca</h2>
+                
+                <div class="guide-card">
+                    <h4>Estrategias Comprobadas</h4>
+                    <ul class="guide-list">
+                        <li><strong>Técnica de los $5:</strong> Usa solo $5-20 de tu tarjeta de crédito y paga el 100% antes de la fecha de corte</li>
+                        <li><strong>Préstamos crédito-builder:</strong> Bancos comunitarios reportan pagos a las agencias</li>
+                        <li><strong>Rent Reporting:</strong> Servicios como Piñata reportan tus pagos de renta a TransUnion</li>
+                    </ul>
+                </div>
+                
+                <div class="guide-card">
+                    <h4>Errores que Debes Evitar</h4>
+                    <ul class="guide-list">
+                        <li>Cerrar cuentas antiguas (reduce tu historial crediticio)</li>
+                        <li>Solicitar nuevos créditos 6 meses antes de aplicar</li>
+                        <li>Permitir que tarjetas superen el 30% de uso</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="guide-section">
+                <h2><i class="fas fa-star"></i> Programas Especiales para Hispanos</h2>
+                
+                <div class="guide-card">
+                    <h4>Opción ITIN</h4>
+                    <ul class="guide-list">
+                        <li><strong>Requisitos:</strong> ITIN vigente + historial alternativo (renta, servicios)</li>
+                        <li><strong>Enganche:</strong> 15-25% normalmente</li>
+                        <li><strong>Lender Tip:</strong> Busca prestamistas que acepten cartas de referencia de empleador</li>
+                    </ul>
+                </div>
+                
+                <div class="guide-card">
+                    <h4>Ayuda con el Enganche</h4>
+                    <ul class="guide-list">
+                        <li><strong>Programas locales:</strong> Muchas ciudades ofrecen ayuda (ej: NYC Casa Para Todos)</li>
+                        <li><strong>Gift Funds:</strong> Familiares pueden donar hasta el 100% del enganche con carta notarizada</li>
+                        <li><strong>Employer Programs:</strong> Algunas empresas ofrecen préstamos a empleados</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="guide-section">
+                <h2><i class="fas fa-heartbeat"></i> Hipotecas después de Dificultades Financieras</h2>
+                
+                <div class="guide-card">
+                    <h4>Bankruptcy/Short Sale</h4>
+                    <ul class="guide-list">
+                        <li><strong>Capítulo 7:</strong> 2-4 años de espera (dependiendo del programa)</li>
+                        <li><strong>Capítulo 13:</strong> 1-2 años después del plan de pago</li>
+                        <li><strong>Short Sale:</strong> 2-3 años para préstamos convencionales</li>
+                    </ul>
+                </div>
+                
+                <div class="guide-card">
+                    <h4>Reconstruyendo tu Perfil</h4>
+                    <ul class="guide-list">
+                        <li><strong>Secured Credit Cards:</strong> Capital One y Discover ofrecen las mejores opciones</li>
+                        <li><strong>Credit Mix:</strong> Agrega un préstamo pequeño para diversificar</li>
+                        <li><strong>Documentación:</strong> Prepara carta explicativa para el prestamista</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="guide-section">
+                <h2><i class="fas fa-sync-alt"></i> Refinanciamiento Inteligente</h2>
+                
+                <div class="guide-card">
+                    <h4>¿Cuándo Refinanciar?</h4>
+                    <ul class="guide-list">
+                        <li><strong>Regla 1-2-3:</strong> 1% menos en tasa, 2+ años en la propiedad, 3+ años planeas quedarte</li>
+                        <li><strong>Break-Even Point:</strong> Costos de cierre ÷ Ahorro mensual = Meses para recuperar inversión</li>
+                        <li><strong>Cash-Out:</strong> Solo si la tasa sigue siendo favorable</li>
+                    </ul>
+                </div>
+                
+                <div class="guide-card">
+                    <h4>Alternativas</h4>
+                    <ul class="guide-list">
+                        <li><strong>HELOC:</strong> Para necesidades de corto plazo</li>
+                        <li><strong>Modificación de Préstamo:</strong> Si no calificas para refinanciar</li>
+                        <li><strong>Eliminar PMI:</strong> Cuando lleves 20% de equidad</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="guide-section">
+                <h2><i class="fas fa-clipboard-check"></i> Checklist para Primeros Compradores</h2>
+                
+                <div class="guide-card">
+                    <h4>12 Meses Antes</h4>
+                    <ul class="guide-list">
+                        <li>Revisa tu crédito (AnnualCreditReport.com)</li>
+                        <li>Calcula tu presupuesto real (incluyendo impuestos/seguros)</li>
+                        <li>Investiga programas locales de ayuda</li>
+                    </ul>
+                </div>
+                
+                <div class="guide-card">
+                    <h4>3 Meses Antes</h4>
+                    <ul class="guide-list">
+                        <li>Reúne documentos (tax returns, W-2s, estados de cuenta)</li>
+                        <li>Obtén pre-aprobación (no solo pre-calificación)</li>
+                        <li>Define tus "must-have" vs. "nice-to-have"</li>
+                    </ul>
+                </div>
+                
+                <div class="guide-card">
+                    <h4>Día de Cierre</h4>
+                    <ul class="guide-list">
+                        <li>Verifica nombres y números en todos los documentos</li>
+                        <li>Confirma método de pago para fondos de cierre</li>
+                        <li>Programa cambio de servicios (luz, agua, internet)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="guide-section">
+                <h2><i class="fas fa-shield-alt"></i> Cómo Protegerte de Fraudes Hipotecarios</h2>
+                
+                <div class="guide-card">
+                    <h4>Señales de Alerta</h4>
+                    <ul class="guide-list">
+                        <li>Te piden dinero por adelantado antes del cierre</li>
+                        <li>Documentos con información incorrecta "por error"</li>
+                        <li>Presión para firmar rápido sin explicaciones claras</li>
+                    </ul>
+                </div>
+                
+                <div class="guide-card">
+                    <h4>Protección Básica</h4>
+                    <ul class="guide-list">
+                        <li>Verifica licencias en NMLSConsumerAccess.org</li>
+                        <li>Compara el "Closing Disclosure" con el "Loan Estimate"</li>
+                        <li>Nunca firmes documentos en blanco</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Enhanced Download Section -->
+            <section class="download-section">
+                <div class="container">
+                    <div class="download-card">
+                        <h2>Descarga la Guía Definitiva (PDF + Hojas de Cálculo)</h2>
+                        <p>Incluye todo lo anterior más:</p>
+                        <ul class="guide-list" style="text-align: left; max-width: 500px; margin: 20px auto;">
+                            <li>Calculadora de Poder de Compra (Excel)</li>
+                            <li>Checklist de Documentos por Tipo de Préstamo</li>
+                            <li>Plantilla para Disputar Errores de Crédito</li>
+                            <li>Lista de Prestamistas que Aceptan ITIN por Estado</li>
+                        </ul>
+                        <a href="#" class="download-button">Descargar Kit Completo <i class="fas fa-download"></i></a>
+                        <p><small>Al descargar, aceptas recibir emails educativos de Prestamigo. Puedes darte de baja cuando quieras.</small></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="disclaimer">
+                <p>INCITE LLC, DBA Prestamigo, es una empresa de educación. INCITE LLC, DBA Prestamigo no es una prestamista, no emite calificaciones de préstamos, y no extiende crédito de ningún tipo. Este sitio web es sólo para uso educativo. Todos los cálculos deben ser verificados de forma independiente. Este sitio web no es una oferta de préstamo y no debe utilizarse directamente para tomar decisiones sobre ofertas de viviendas, decisiones de compra ni selecciones de préstamos. No se garantiza que proporcione resultados exactos, que implique condiciones de préstamo, importes de calificación ni asesoramiento inmobiliario. Busque el consejo de un agente de bienes raíces con licencia, originador de préstamos, planificador financiero, contador y / o abogado de bienes raíces, legal y / o asesoramiento financiero.</p>
+                <p>INCITE LLC, DBA Prestamigo, no está afiliada a la VA, la FHA ni a ninguna otra agencia gubernamental. Este sitio no ha sido aprobado por ninguna agencia gubernamental.</p>
+                <p>NMLS 1940106<br>
+                Loan Factory, Inc.<br>
+                NMLS 320841</p>
+                <p>Igualdad de Vivienda Prestamista</p>
+                <p><strong>** Sin citas en persona</strong></p>
+            </div>
+            <p>&copy; 2024 Prestamigo. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced script for lead capture
+        document.querySelector('.download-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // In production, this would show a lead capture form
+            const email = prompt("Por favor ingresa tu email para enviarte el kit completo:");
+            
+            if(email) {
+                alert("¡Gracias! Hemos enviado el kit a " + email + "\nRevisa tu bandeja de entrada y spam.");
+                // Here you would integrate with your CRM/email system
+            }
+        });
+
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.guide-section h2').forEach(question => {
+            question.addEventListener('click', () => {
+                const section = question.parentElement;
+                section.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
