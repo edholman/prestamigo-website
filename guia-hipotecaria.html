@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guía Hipotecaria Completa | Prestamigo</title>
     <style>
-        /* Inherit styles from main site */
+        /* [All original CSS preserved] */
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -18,8 +18,6 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        
-        /* Header - matches index.html */
         header {
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -66,8 +64,6 @@
             background-color: #3498db;
             color: white;
         }
-        
-        /* Hero Section */
         .guide-hero {
             background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
             padding: 60px 0;
@@ -84,8 +80,6 @@
             max-width: 700px;
             margin: 0 auto 30px;
         }
-        
-        /* Guide Content */
         .guide-content {
             padding: 60px 0;
             background-color: #fff;
@@ -131,7 +125,6 @@
             position: absolute;
             left: 0;
         }
-        
         /* Calculator Styles */
         .calculator-container {
             background: white;
@@ -191,8 +184,6 @@
             margin: 15px 0;
             border-color: #eee;
         }
-        
-        /* Download Section */
         .download-section {
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             padding: 60px 0;
@@ -221,8 +212,6 @@
         .download-button:hover {
             background-color: #2980b9;
         }
-        
-        /* Footer - matches index.html */
         footer {
             background-color: #2c3e50;
             color: white;
@@ -237,8 +226,6 @@
             color: #bdc3c7;
             line-height: 1.5;
         }
-        
-        /* Responsive */
         @media (max-width: 768px) {
             .guide-hero h1 {
                 font-size: 2rem;
@@ -251,13 +238,11 @@
             }
         }
     </style>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header with Logo -->
+    <!-- Header -->
     <header>
         <div class="container">
             <nav>
@@ -279,7 +264,7 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="guide-hero">
         <div class="container">
             <h1>Guía Hipotecaria Completa</h1>
@@ -290,40 +275,111 @@
     <!-- Guide Content -->
     <section class="guide-content">
         <div class="container">
-            <!-- Original Sections -->
+            <!-- Original Loan Types Section -->
             <div class="guide-section">
                 <h2><i class="fas fa-home"></i> Tipos de Préstamos Hipotecarios</h2>
-                <!-- [Content unchanged from previous version] -->
+                <div class="guide-card">
+                    <h4>1. Préstamos Convencionales</h4>
+                    <ul class="guide-list">
+                        <li><strong>Enganche mínimo:</strong> 3-5% (primeros compradores pueden calificar al 3%)</li>
+                        <li><strong>Requisitos de crédito:</strong> Puntaje FICO 620+</li>
+                        <li><strong>Ventajas:</strong> Sin seguro hipotecario con 20% de enganche, plazos flexibles</li>
+                    </ul>
+                </div>
+                <div class="guide-card">
+                    <h4>2. Préstamos FHA</h4>
+                    <ul class="guide-list">
+                        <li><strong>Enganche mínimo:</strong> 3.5%</li>
+                        <li><strong>Requisitos de crédito:</strong> Puntaje FICO 580+ (500-579 con 10% de enganche)</li>
+                        <li><strong>Ventajas:</strong> Acepta deudas más altas y créditos imperfectos</li>
+                        <li><strong>Seguro hipotecario:</strong> Requerido durante toda la vida del préstamo</li>
+                    </ul>
+                </div>
+                <div class="guide-card">
+                    <h4>3. Préstamos VA</h4>
+                    <ul class="guide-list">
+                        <li><strong>Enganche mínimo:</strong> 0%</li>
+                        <li><strong>Requisitos:</strong> Servicio militar activo o veteranos elegibles</li>
+                        <li><strong>Ventajas:</strong> Sin seguro hipotecario, tasas competitivas</li>
+                        <li><strong>Tarifa de financiamiento:</strong> 1.25-3.3% del préstamo</li>
+                    </ul>
+                </div>
             </div>
-            
+
+            <!-- Documentation Section -->
             <div class="guide-section">
                 <h2><i class="fas fa-file-signature"></i> Documentación Requerida</h2>
-                <!-- [Content unchanged from previous version] -->
+                <h3>Para Empleados Tradicionales</h3>
+                <ul class="guide-list">
+                    <li>Identificación oficial (licencia, pasaporte, matrícula consular)</li>
+                    <li>W-2 de los últimos 2 años</li>
+                    <li>Talones de pago de los últimos 30 días</li>
+                    <li>Estados de cuenta bancarios de los últimos 2 meses</li>
+                </ul>
+                <h3>Para Trabajadores Independientes</h3>
+                <ul class="guide-list">
+                    <li>Declaraciones de impuestos (1040) de los últimos 2 años con todos los anexos</li>
+                    <li>Estados de cuenta bancarios de los últimos 12-24 meses</li>
+                    <li>Facturas y contratos de clientes principales</li>
+                </ul>
+                <h3>Para Residentes con ITIN</h3>
+                <ul class="guide-list">
+                    <li>Comprobante de ITIN vigente</li>
+                    <li>Historial crediticio alternativo (pagos de renta, servicios)</li>
+                    <li>Cartas de referencia de empleador o clientes</li>
+                </ul>
             </div>
-            
+
+            <!-- Affordability Section -->
             <div class="guide-section">
                 <h2><i class="fas fa-calculator"></i> Cómo Calcular tu Poder de Compra</h2>
-                <!-- [Content unchanged from previous version] -->
+                <div class="guide-card">
+                    <h4>Fórmula Básica</h4>
+                    <p><strong>Pago mensual máximo = Ingreso bruto mensual × 43% - Deudas mensuales</strong></p>
+                    <p>Ejemplo: $5,000 ingreso × 0.43 = $2,150 - $300 (deudas) = $1,850 pago máximo</p>
+                </div>
+                <div class="guide-card">
+                    <h4>Calculadora de Hipoteca</h4>
+                    <p>Usa nuestra fórmula para estimar tu pago mensual:</p>
+                    <p><strong>Pago = [P×(r(1+r)^n)]/[(1+r)^n-1]</strong></p>
+                    <ul class="guide-list">
+                        <li>P = Monto principal del préstamo</li>
+                        <li>r = Tasa de interés mensual (tasa anual ÷ 12)</li>
+                        <li>n = Número de pagos (años × 12)</li>
+                    </ul>
+                </div>
+                <div class="guide-card">
+                    <h4>Costos Adicionales a Considerar</h4>
+                    <ul class="guide-list">
+                        <li>Impuestos sobre la propiedad (1-2% del valor anual)</li>
+                        <li>Seguro de vivienda ($800-$2,000 anual)</li>
+                        <li>Mantenimiento (1% del valor de la casa anual)</li>
+                    </ul>
+                </div>
+
+                <!-- Quick Link to Calculator -->
+                <div class="guide-card" style="text-align: center; border-left: 4px solid #3498db;">
+                    <p><strong>¿Quieres calcular tus números exactos?</strong></p>
+                    <a href="#calculadora" class="download-button" style="display: inline-block; margin: 10px;">
+                        Ir a la Calculadora
+                    </a>
+                </div>
             </div>
-            
-            <!-- ====== INTEGRATED CALCULATOR ====== -->
+
+            <!-- Integrated Calculator -->
             <div class="guide-section" id="calculadora">
                 <h2><i class="fas fa-calculator"></i> Calculadora de Hipotecas</h2>
-                
                 <div class="calculator-container">
                     <div class="calculator-form">
-                        <!-- Left Column -->
                         <div>
                             <div class="form-group">
                                 <label for="loan-amount">Monto del préstamo ($)</label>
                                 <input type="number" id="loan-amount" class="form-control" placeholder="Ej: 250000">
                             </div>
-                            
                             <div class="form-group">
                                 <label for="interest-rate">Tasa de interés (%)</label>
                                 <input type="number" step="0.01" id="interest-rate" class="form-control" placeholder="Ej: 3.5">
                             </div>
-                            
                             <div class="form-group">
                                 <label for="loan-term">Plazo del préstamo (años)</label>
                                 <select id="loan-term" class="form-control">
@@ -333,30 +389,24 @@
                                 </select>
                             </div>
                         </div>
-                        
-                        <!-- Right Column -->
                         <div>
                             <div class="form-group">
                                 <label for="down-payment">Enganche ($)</label>
                                 <input type="number" id="down-payment" class="form-control" placeholder="Ej: 50000">
                             </div>
-                            
                             <div class="form-group">
                                 <label for="property-tax">Impuestos anuales ($)</label>
                                 <input type="number" id="property-tax" class="form-control" placeholder="Opcional">
                             </div>
-                            
                             <div class="form-group">
                                 <label for="insurance">Seguro anual ($)</label>
                                 <input type="number" id="insurance" class="form-control" placeholder="Opcional">
                             </div>
                         </div>
                     </div>
-                    
                     <button id="calculate-btn" class="cta-button">
                         Calcular Pago Mensual
                     </button>
-                    
                     <div id="calculator-results">
                         <h4 style="color: #2c3e50; margin-top: 0;">Resultados:</h4>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
@@ -378,7 +428,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="guide-card">
                     <h4>¿Cómo interpretar los resultados?</h4>
                     <ul class="guide-list">
@@ -388,8 +437,37 @@
                     </ul>
                 </div>
             </div>
-            
-            <!-- [Rest of your guide sections...] -->
+
+            <!-- First-Time Buyers Section -->
+            <div class="guide-section">
+                <h2><i class="fas fa-lightbulb"></i> Consejos para Primeros Compradores</h2>
+                <div class="guide-card">
+                    <h4>Antes de Buscar Casa</h4>
+                    <ul class="guide-list">
+                        <li>Revisa tu crédito y corrige errores (40% de reports tienen errores)</li>
+                        <li>Ahorra al menos 3.5% para enganche + 2-5% para costos de cierre</li>
+                        <li>Consigue una carta de pre-aprobación para negociar mejor</li>
+                    </ul>
+                </div>
+                <div class="guide-card">
+                    <h4>Durante la Búsqueda</h4>
+                    <ul class="guide-list">
+                        <li>Considera ubicaciones con buena plusvalía pero accesibles</li>
+                        <li>Visita propiedades en diferentes días y horarios</li>
+                        <li>Calcula costos totales, no solo el precio de venta</li>
+                    </ul>
+                </div>
+                <div class="guide-card">
+                    <h4>Proceso de Cierre</h4>
+                    <ul class="guide-list">
+                        <li>Revisa el "Closing Disclosure" 3 días antes de firmar</li>
+                        <li>Compara con el "Loan Estimate" inicial</li>
+                        <li>Prepara transferencia bancaria para fondos de cierre</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- [All other original sections...] -->
 
             <!-- Download Section -->
             <section class="download-section">
@@ -428,9 +506,8 @@
     </footer>
 
     <script>
-        // Mortgage Calculator Functionality
+        // Mortgage Calculator
         document.getElementById('calculate-btn').addEventListener('click', function() {
-            // Get input values
             const loanAmount = parseFloat(document.getElementById('loan-amount').value);
             const interestRate = parseFloat(document.getElementById('interest-rate').value) / 100 / 12;
             const loanTerm = parseInt(document.getElementById('loan-term').value) * 12;
@@ -438,39 +515,26 @@
             const propertyTax = parseFloat(document.getElementById('property-tax').value) || 0;
             const insurance = parseFloat(document.getElementById('insurance').value) || 0;
             
-            // Validate inputs
             if (isNaN(loanAmount) || isNaN(interestRate)) {
                 alert("Por favor ingresa el monto del préstamo y la tasa de interés");
                 return;
             }
             
-            // Calculate principal + interest
             const principal = loanAmount - downPayment;
             const x = Math.pow(1 + interestRate, loanTerm);
             const monthlyPI = principal * interestRate * x / (x - 1);
-            
-            // Calculate additional costs
             const monthlyTax = propertyTax / 12;
             const monthlyInsurance = insurance / 12;
             const totalPayment = monthlyPI + monthlyTax + monthlyInsurance;
             
-            // Display results
             document.getElementById('principal-interest').textContent = '$' + monthlyPI.toFixed(2);
             document.getElementById('tax-amount').textContent = '$' + monthlyTax.toFixed(2);
             document.getElementById('insurance-amount').textContent = '$' + monthlyInsurance.toFixed(2);
             document.getElementById('monthly-payment').textContent = '$' + totalPayment.toFixed(2);
-            
-            // Show results
             document.getElementById('calculator-results').style.display = 'block';
-            
-            // Smooth scroll to results
-            document.getElementById('calculator-results').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'nearest'
-            });
         });
 
-        // Auto-focus first input when reaching calculator
+        // Auto-focus calculator when linked
         if(window.location.hash === '#calculadora') {
             setTimeout(() => {
                 document.getElementById('loan-amount').focus();
