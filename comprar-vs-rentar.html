@@ -4,49 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora: ¿Comprar o Rentar? | Prestamigo</title>
-    <style>       
-    /* ===== NEW NAVIGATION STYLES ===== */
+    <style>
+        /* Global Styles */
         body {
+            font-family: 'Poppins', sans-serif;
             margin: 0;
-            padding-top: 100px; /* Space for sticky header */
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8f9fa;
         }
-    
-        .prestamigo-header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 25px 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-    
-        .header-container {
+        .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
         }
-    
-        .prestamigo-logo {
+        
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            position: relative;
+        }
+        .logo {
             height: 90px;
             width: auto;
         }
-        /* Main Styles */
-        body {
-            margin: 0;
-            padding-top: 20px; /* Added for header space */
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
+        /* Desktop Navigation */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links li {
+            margin-left: 20px;
+        }
+        .nav-links li a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        /* Language Toggle */
+        .language-toggle {
+            display: flex;
+            margin-left: 20px;
+            border: 1px solid #3498db;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .language-toggle a {
+            padding: 5px 15px;
+            text-decoration: none;
+            color: #3498db;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .language-toggle a.active {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #2c3e50;
+            transition: all 0.3s ease;
+        }
+        
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                z-index: 100;
+            }
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            .nav-links li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+            .language-toggle {
+                margin: 15px auto 0;
+                justify-content: center;
+            }
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+
+        /* Calculator Styles */
         .calculator-container {
             background: white;
             border-radius: 10px;
             padding: 25px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            margin: 30px auto;
             max-width: 800px;
         }
         
@@ -54,6 +145,7 @@
             color: #2c3e50;
             text-align: center;
             margin-bottom: 30px;
+            font-size: 28px;
         }
         
         h2 {
@@ -61,6 +153,7 @@
             border-bottom: 2px solid #eee;
             padding-bottom: 10px;
             margin-top: 40px;
+            font-size: 22px;
         }
         
         .form-group {
@@ -170,35 +263,63 @@
             display: block;
         }
         
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .disclaimer {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 0.8rem;
+            color: #bdc3c7;
+            line-height: 1.5;
+        }
+
         @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-            
             .calculator-container {
                 padding: 15px;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .prestamigo-logo {
-                height: 40px !important;
-            }
-            body {
-                padding-top: 70px; /* Smaller header space on mobile */
             }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-      <header style="background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 15px 0; position: sticky; top: 0; z-index: 100;">
-        <div style="width: 90%; max-width: 1200px; margin: 0 auto;">
-            <a href="https://prestamigo.com" style="text-decoration: none;">
-                <img src="https://i.imgur.com/t3pRlvV.png" alt="Prestamigo Logo" style="height: 50px; width: auto;">
-            </a>
+    <!-- Header with Logo and Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html">
+                    <img src="https://i.imgur.com/t3pRlvV.png" alt="Prestamigo Logo" class="logo">
+                </a>
+                
+                <!-- Hamburger Menu Button -->
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="prestamigo-guide.html">Guía Hipotecaria</a></li>
+                    <li><a href="comprar-vs-rentar.html">Calculadora: ¿Comprar o Rentar?</a></li>
+                    <li><a href="https://api.leadconnectorhq.com/widget/booking/9ehy163tCceapX3YjDuS">Contacto</a></li>
+                    <li>
+                        <div class="language-toggle">
+                            <a href="#" class="active">ES</a>
+                            <a href="#">EN</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </header>
+
+    <!-- Calculator Content -->
     <div class="calculator-container">
         <h1>¿Comprar o Rentar? Análisis Completo</h1>
         
@@ -353,7 +474,49 @@
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="disclaimer">
+                <p>INCITE LLC, DBA Prestamigo, es una empresa de educación. INCITE LLC, DBA Prestamigo no es una prestamista, no emite calificaciones de préstamos, y no extiende crédito de ningún tipo. Este sitio web es sólo para uso educativo. Todos los cálculos deben ser verificados de forma independiente. Este sitio web no es una oferta de préstamo y no debe utilizarse directamente para tomar decisiones sobre ofertas de viviendas, decisiones de compra ni selecciones de préstamos. No se garantiza que proporcione resultados exactos, que implique condiciones de préstamo, importes de calificación ni asesoramiento inmobiliario. Busque el consejo de un agente de bienes raíces con licencia, originador de préstamos, planificador financiero, contador y / o abogado de bienes raíces, legal y / o asesoramiento financiero.</p>
+                <p>INCITE LLC, DBA Prestamigo, no está afiliada a la VA, la FHA ni a ninguna otra agencia gubernamental. Este sitio no ha sido aprobado por ninguna agencia gubernamental.</p>
+                <p>NMLS 1940106<br>
+                Loan Factory, Inc.<br>
+                NMLS 320841</p>
+                <p>Igualdad de Vivienda Prestamista</p>
+                <p><strong>** Sin citas en persona</strong></p>
+            </div>
+            <p>&copy; 2024 Prestamigo. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
     <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link (for mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Language Toggle
+        document.querySelectorAll('.language-toggle a').forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelector('.language-toggle a.active').classList.remove('active');
+                toggle.classList.add('active');
+            });
+        });
+
         // Switch between input and results tabs
         function switchTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(tab => {
@@ -492,11 +655,6 @@
             // Switch to results tab
             switchTab('results');
         }
-        
-        // Initialize with default values
-        window.onload = function() {
-            // You can add any initialization code here if needed
-        };
     </script>
 </body>
 </html>
