@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora: ¿Comprar o Rentar? | Prestamigo</title>
+    <style>
+        /* Main Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .calculator-container {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #3498db;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 2px rgba(52,152,219,0.2);
+        }
+        
+        .input-group {
+            position: relative;
+        }
+        
+        .input-group span {
+            position: absolute;
+            left: 12px;
+            top: 12px;
+            color: #7f8c8d;
+        }
+        
+        .input-group input {
+            padding-left: 30px;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .results {
+            display: none;
+            background-color: #f1f8fe;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            border-radius: 0 5px 5px 0;
+            margin-top: 30px;
+        }
+        
+        .result-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .savings {
+            color: #27ae60;
+        }
+        
+        .loss {
+            color: #e74c3c;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background: #eee;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .tab.active {
+            background: #3498db;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .calculator-container {
+                padding: 15px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>¿Comprar o Rentar? Análisis Completo</h1>
+        
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('inputs')">Datos</div>
+            <div class="tab" onclick="switchTab('results')">Resultados</div>
+        </div>
+        
+        <div id="inputs" class="tab-content active">
+            <h2>Información de Renta</h2>
+            
+            <div class="form-group">
+                <label for="rent">Renta Mensual Actual</label>
+                <div class="input-group">
+                    <span>$</span>
+                    <input type="number" id="rent" value="1500">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="rent_increase">Aumento Anual de Renta (%)</label>
+                <div class="input-group">
+                    <input type="number" id="rent_increase" value="3" step="0.1">
+                    <span>%</span>
+                </div>
+            </div>
+            
+            <h2>Información de Compra</h2>
+            
+            <div class="form-group">
+                <label for="home_price">Precio de la Propiedad</label>
+                <div class="input-group">
+                    <span>$</span>
+                    <input type="number" id="home_price" value="300000">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="down_payment">Enganche (%)</label>
+                <div class="input-group">
+                    <input type="number" id="down_payment" value="10" step="1">
+                    <span>%</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="interest_rate">Tasa de Interés (%)</label>
+                <div class="input-group">
+                    <input type="number" id="interest_rate" value="6.5" step="0.01">
+                    <span>%</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="loan_term">Plazo del Préstamo (años)</label>
+                <select id="loan_term">
+                    <option value="15">15 años</option>
+                    <option value="30" selected>30 años</option>
+                </select>
+            </div>
+            
+            <h2>Costos Adicionales</h2>
+            
+            <div class="form-group">
+                <label for="property_tax">Impuestos Anuales</label>
+                <div class="input-group">
+                    <span>$</span>
+                    <input type="number" id="property_tax" value="3600">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="home_insurance">Seguro de Hogar Anual</label>
+                <div class="input-group">
+                    <span>$</span>
+                    <input type="number" id="home_insurance" value="1200">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="hoa_fees">Cuotas de HOA/Mantenimiento Mensual</label>
+                <div class="input-group">
+                    <span>$</span>
+                    <input type="number" id="hoa_fees" value="100">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="appreciation">Apreciación Anual de Propiedad (%)</label>
+                <div class="input-group">
+                    <input type="number" id="appreciation" value="3" step="0.1">
+                    <span>%</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="years">Período de Análisis (años)</label>
+                <select id="years">
+                    <option value="5">5 años</option>
+                    <option value="7">7 años</option>
+                    <option value="10" selected>10 años</option>
+                    <option value="15">15 años</option>
+                    <option value="30">30 años</option>
+                </select>
+            </div>
+            
+            <button onclick="calculate()">Calcular y Comparar</button>
+        </div>
+        
+        <div id="results" class="tab-content">
+            <h2>Resultados del Análisis</h2>
+            
+            <div class="form-group">
+                <label>Pago Mensual Estimado:</label>
+                <div class="result-value" id="monthly_payment">$0</div>
+            </div>
+            
+            <div class="form-group">
+                <label>Costo Total de Renta en <span id="years_result">10</span> años:</label>
+                <div class="result-value" id="total_rent">$0</div>
+            </div>
+            
+            <div class="form-group">
+                <label>Costo Total de Compra en <span id="years_result2">10</span> años:</label>
+                <div class="result-value" id="total_buy">$0</div>
+            </div>
+            
+            <div class="form-group">
+                <label>Equidad Construida en <span id="years_result3">10</span> años:</label>
+                <div class="result-value" id="equity">$0</div>
+            </div>
+            
+            <div class="form-group">
+                <label>Valor de Propiedad en <span id="years_result4">10</span> años:</label>
+                <div class="result-value" id="future_value">$0</div>
+            </div>
+            
+            <div class="form-group">
+                <label>Resultado Final:</label>
+                <div class="result-value" id="result_text">-</div>
+                <p id="result_explanation"></p>
+            </div>
+            
+            <div class="form-group">
+                <h3>Desglose Anual</h3>
+                <div id="annual_breakdown" style="overflow-x: auto;">
+                    <!-- Table will be inserted here by JavaScript -->
+                </div>
+            </div>
+            
+            <button onclick="switchTab('inputs')">Ajustar Datos</button>
+        </div>
+    </div>
+
+    <script>
+        // Switch between input and results tabs
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            document.querySelector(`.tab[onclick="switchTab('${tabName}')"]`).classList.add('active');
+        }
+        
+        // Main calculation function
+        function calculate() {
+            // Get input values
+            const rent = parseFloat(document.getElementById('rent').value);
+            const rentIncrease = parseFloat(document.getElementById('rent_increase').value) / 100;
+            const homePrice = parseFloat(document.getElementById('home_price').value);
+            const downPaymentPct = parseFloat(document.getElementById('down_payment').value) / 100;
+            const interestRate = parseFloat(document.getElementById('interest_rate').value) / 100;
+            const loanTerm = parseInt(document.getElementById('loan_term').value);
+            const propertyTax = parseFloat(document.getElementById('property_tax').value);
+            const homeInsurance = parseFloat(document.getElementById('home_insurance').value);
+            const hoaFees = parseFloat(document.getElementById('hoa_fees').value);
+            const appreciation = parseFloat(document.getElementById('appreciation').value) / 100;
+            const years = parseInt(document.getElementById('years').value);
+            
+            // Calculate loan details
+            const downPayment = homePrice * downPaymentPct;
+            const loanAmount = homePrice - downPayment;
+            const monthlyInterestRate = interestRate / 12;
+            const numberOfPayments = loanTerm * 12;
+            
+            // Calculate monthly mortgage payment (P&I)
+            const mortgagePayment = loanAmount * 
+                (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments)) / 
+                (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
+            
+            // Calculate total monthly payment (PITI + HOA)
+            const monthlyTax = propertyTax / 12;
+            const monthlyInsurance = homeInsurance / 12;
+            const totalMonthlyPayment = mortgagePayment + monthlyTax + monthlyInsurance + hoaFees;
+            
+            // Initialize totals
+            let totalRent = 0;
+            let totalBuy = downPayment; // Start with down payment
+            let currentRent = rent;
+            let currentHomeValue = homePrice;
+            let principalPaid = 0;
+            
+            // Create annual breakdown table
+            let breakdownHTML = `
+                <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse: collapse; margin-top:15px;">
+                    <thead>
+                        <tr style="background-color:#f1f1f1;">
+                            <th>Año</th>
+                            <th>Renta Anual</th>
+                            <th>Costo Compra Anual</th>
+                            <th>Equidad</th>
+                            <th>Valor Propiedad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            // Calculate year by year
+            for (let year = 1; year <= years; year++) {
+                // Rent calculations
+                totalRent += currentRent * 12;
+                currentRent *= (1 + rentIncrease);
+                
+                // Buy calculations
+                const annualMortgagePayments = mortgagePayment * 12;
+                const annualTaxInsuranceHoa = (monthlyTax + monthlyInsurance + hoaFees) * 12;
+                totalBuy += annualMortgagePayments + annualTaxInsuranceHoa;
+                
+                // Calculate principal paid (simplified)
+                if (year <= loanTerm) {
+                    principalPaid += (mortgagePayment * 12) - (loanAmount * interestRate);
+                }
+                
+                // Appreciation
+                currentHomeValue *= (1 + appreciation);
+                
+                // Add to breakdown table
+                breakdownHTML += `
+                    <tr>
+                        <td>${year}</td>
+                        <td>$${(currentRent * 12).toLocaleString('en-US', {maximumFractionDigits: 0})}</td>
+                        <td>$${(annualMortgagePayments + annualTaxInsuranceHoa).toLocaleString('en-US', {maximumFractionDigits: 0})}</td>
+                        <td>$${(downPayment + principalPaid).toLocaleString('en-US', {maximumFractionDigits: 0})}</td>
+                        <td>$${currentHomeValue.toLocaleString('en-US', {maximumFractionDigits: 0})}</td>
+                    </tr>
+                `;
+            }
+            
+            breakdownHTML += `</tbody></table>`;
+            
+            // Calculate equity and final comparison
+            const equity = downPayment + principalPaid;
+            const futureValue = currentHomeValue;
+            const buyCostMinusEquity = totalBuy - equity;
+            const difference = totalRent - buyCostMinusEquity;
+            const roi = ((futureValue - homePrice) / homePrice) * 100;
+            
+            // Display results
+            document.getElementById('monthly_payment').textContent = `$${totalMonthlyPayment.toLocaleString('en-US', {maximumFractionDigits: 2})}`;
+            document.getElementById('total_rent').textContent = `$${totalRent.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+            document.getElementById('total_buy').textContent = `$${totalBuy.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+            document.getElementById('equity').textContent = `$${equity.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+            document.getElementById('future_value').textContent = `$${futureValue.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+            
+            // Update year spans
+            document.querySelectorAll('#years_result, #years_result2, #years_result3, #years_result4').forEach(el => {
+                el.textContent = years;
+            });
+            
+            // Set result text
+            const resultElement = document.getElementById('result_text');
+            const explanationElement = document.getElementById('result_explanation');
+            
+            if (difference > 0) {
+                resultElement.textContent = `Comprar te ahorra $${difference.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+                resultElement.className = 'result-value savings';
+                explanationElement.textContent = `Comprar es mejor financieramente después de ${years} años, con un retorno de inversión del ${roi.toFixed(1)}% en la propiedad.`;
+            } else {
+                resultElement.textContent = `Rentar te ahorra $${Math.abs(difference).toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+                resultElement.className = 'result-value loss';
+                explanationElement.textContent = `Rentar es mejor financieramente para períodos menores a ${years} años. Considera comprar si planeas quedarte más tiempo.`;
+            }
+            
+            // Add annual breakdown
+            document.getElementById('annual_breakdown').innerHTML = breakdownHTML;
+            
+            // Switch to results tab
+            switchTab('results');
+        }
+        
+        // Initialize with default values
+        window.onload = function() {
+            // You can add any initialization code here if needed
+        };
+    </script>
+</body>
+</html>
