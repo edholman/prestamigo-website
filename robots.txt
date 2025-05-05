@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://prestamigo.com/sitemap.xml
