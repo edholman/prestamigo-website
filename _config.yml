@@ -85,8 +85,8 @@ security_headers:
 brand:
   primary_color: "#2A5CAA"
   secondary_color: "#F7931E"
-  phone: "+1 (800) 123-4567"
-  contact_email: "contacto@prestamigo.com"
+  phone: "+1 (480) 612-3718"
+  contact_email: "info@prestamigo.com"
 
 # Enable for production
 future: true
