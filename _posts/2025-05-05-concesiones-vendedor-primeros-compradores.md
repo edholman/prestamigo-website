@@ -8,7 +8,7 @@ meta_description: "Descubre cómo las concesiones del vendedor ayudan a comprado
 image: /assets/img/seller-concessions.jpg
 ---
 
-![Concesiones del vendedor ayudan a compradores primerizos](/assets/img/seller-concessions.jpg)
+![Concesiones del vendedor ayudan a compradores primerizos](/assets/img/blog/seller-concessions.jpg)
 
 ¿Sabías que el **86% de los vendedores** ofrecen concesiones en mercados equilibrados? Estas ayudas pueden ser tu salvación como comprador primerizo.
 
