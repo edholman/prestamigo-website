@@ -1,6 +1,6 @@
 # _config.yml
 title: Prestamigo
-description: Guías de préstamos en México
+description: Guías de préstamos en Estados Unidos
 theme: minima
 plugins:
   - jekyll-seo-tag
