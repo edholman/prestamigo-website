@@ -3,72 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title | default: site.title }}</title>
+    <meta name="theme-color" content="#2A5CAA">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.imgur.com/t3pRlvV.png" type="image/png">
+    
+    <!-- Tracking -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id=GTM-NVH5B947';f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NVH5B947');</script>
+    
+    <!-- GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCWV68YXJ9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DCWV68YXJ9');
+    </script>
+    
+    <!-- Facebook Pixel -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '111216968559815');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" 
+    src="https://www.facebook.com/tr?id=111216968559815&ev=PageView&noscript=1"/></noscript>
+    
     <style>
         :root {
-            --primary: #2A5CAA; /* Prestamigo blue */
-            --secondary: #F7931E; /* Accent orange */
+            --primary: #2A5CAA;
+            --primary-light: #3a7bd5;
+            --secondary: #F7931E;
+            --secondary-light: #ffaa40;
             --light: #FFFFFF;
-            --dark: #333333;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark: #212529;
+            --text: #495057;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        
+        * {
             margin: 0;
             padding: 0;
-            color: var(--dark);
-            line-height: 1.6;
+            box-sizing: border-box;
         }
+        
+        body {
+            font-family: 'Poppins', 'Open Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--light-gray);
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Header - Modern Sticky Navigation */
         .header {
             background-color: var(--light);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
         }
+        
+        .header.scrolled {
+            padding: 0.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
         .logo-container {
             height: 60px;
+            transition: var(--transition);
         }
+        
+        .header.scrolled .logo-container {
+            height: 50px;
+        }
+        
         .logo {
             height: 100%;
             width: auto;
             max-width: 200px;
-            transition: transform 0.3s ease;
+            transition: var(--transition);
         }
+        
         .logo:hover {
-            transform: scale(1.05);
+            transform: translateY(-2px);
         }
+        
         .contact-btn {
             background-color: var(--secondary);
             color: var(--light);
             padding: 12px 24px;
             border-radius: 30px;
             text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 4px rgba(247, 147, 30, 0.3);
         }
+        
         .contact-btn:hover {
-            background-color: var(--primary);
+            background-color: var(--secondary-light);
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(247, 147, 30, 0.3);
         }
+        
+        .contact-btn::after {
+            content: "→";
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-btn:hover::after {
+            transform: translateX(3px);
+        }
+        
+        /* Main Content - Modern Card Layout */
         .main-content {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 2rem;
+            animation: fadeIn 0.5s ease-out;
         }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Footer - Enhanced Design */
         .footer {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: var(--light);
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+        }
+        
+        .footer p {
+            margin: 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header {
+                padding: 0.8rem 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .logo-container {
+                height: 50px;
+            }
+            
+            .main-content {
+                padding: 0 1.5rem;
+            }
         }
     </style>
     {% seo %}
 </head>
 <body>
-    <header class="header">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVH5B947"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+    <header class="header" id="mainHeader">
         <a href="https://prestamigo.com" class="logo-container">
             <img src="https://i.imgur.com/t3pRlvV.png" 
                  alt="Prestamigo Logo" 
@@ -89,5 +236,27 @@
     <footer class="footer">
         <p>© {{ 'now' | date: "%Y" }} Prestamigo. Todos los derechos reservados.</p>
     </footer>
+    
+    <script>
+        // Sticky Header Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
