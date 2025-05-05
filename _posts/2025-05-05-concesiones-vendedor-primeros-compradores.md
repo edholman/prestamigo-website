@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Concesiones del Vendedor: Cómo Comprar Casa con Menos Dinero en Efectivo"
-date: 2024-05-05
+date: 2025-05-05
 categories: [hipotecas]
 author: Equipo Prestamigo
 meta_description: "Descubre cómo las concesiones del vendedor ayudan a compradores primerizos a reducir costos de cierre. Guía completa 2024 con ejemplos reales."
