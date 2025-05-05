@@ -70,7 +70,7 @@ compress_html:
 # ========================
 #  ANALYTICS & TRACKING
 # ========================
-google_analytics: UA-XXXXXX-X # Replace with your GA4 ID
+google_analytics: G-DCWV68YXJ9 # Replace with your GA4 ID
 google_tag_manager: GTM-NVH5B947 # Replace with your GTM ID
 
 # ========================
