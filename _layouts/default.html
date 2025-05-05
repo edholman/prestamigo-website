@@ -6,8 +6,8 @@
     <title>{{ page.title | default: site.title }}</title>
     <style>
         :root {
-            --primary: #2A5CAA;
-            --secondary: #F7931E;
+            --primary: #2A5CAA; /* Prestamigo blue */
+            --secondary: #F7931E; /* Accent orange */
             --light: #FFFFFF;
             --dark: #333333;
         }
@@ -32,7 +32,11 @@
         .logo {
             height: 100%;
             width: auto;
-            max-width: 200px; /* Prevents oversized logos */
+            max-width: 200px;
+            transition: transform 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05);
         }
         .contact-btn {
             background-color: var(--secondary);
@@ -46,6 +50,7 @@
         .contact-btn:hover {
             background-color: var(--primary);
             transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .main-content {
             max-width: 1200px;
@@ -57,20 +62,22 @@
             color: var(--light);
             text-align: center;
             padding: 2rem;
+            margin-top: 3rem;
         }
     </style>
     {% seo %}
 </head>
 <body>
     <header class="header">
-        <div class="logo-container">
-            <img src="{{ '/assets/images/Prestamigo_Logo_White_BG.png' | relative_url }}" 
+        <a href="https://prestamigo.com" class="logo-container">
+            <img src="https://i.imgur.com/t3pRlvV.png" 
                  alt="Prestamigo Logo" 
                  class="logo">
-        </div>
+        </a>
         <a href="https://api.leadconnectorhq.com/widget/booking/qBoIcTx0Mr1zIeWeWD9D" 
            class="contact-btn" 
-           target="_blank">
+           target="_blank"
+           rel="noopener noreferrer">
             Contáctanos
         </a>
     </header>
