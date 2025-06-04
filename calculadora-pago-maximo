@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Pago Máximo - Prestamigo</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Calculadora gratuita para determinar el pago hipotecario máximo basado en sus ingresos anuales. Herramienta esencial para compradores de vivienda.">
+    <meta name="keywords" content="calculadora hipoteca, pago máximo, ingresos anuales, prestamo hipotecario, comprar casa">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Calculator Card */
+        .calculator-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #3498db;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+        
+        .calculate-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+        
+        /* Results */
+        .results {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            display: none;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .results h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .result-label {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .result-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        /* Info Section */
+        .info-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .info-section h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .info-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .info-section li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ecf0f1;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .info-section li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        /* Back Button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #34495e;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .back-btn:hover {
+            background: #2c3e50;
+            transform: translateY(-2px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .calculator-card {
+                padding: 25px;
+            }
+            
+            .result-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Volver al Inicio
+        </a>
+        
+        <div class="header">
+            <h1><i class="fas fa-calculator"></i> Calculadora de Pago Máximo</h1>
+            <p>Descubre cuánto puedes pagar mensualmente por una hipoteca basado en tus ingresos anuales brutos.</p>
+        </div>
+        
+        <div class="calculator-card">
+            <form id="maxPaymentForm">
+                <div class="form-group">
+                    <label for="annualIncome">
+                        <i class="fas fa-dollar-sign"></i> Ingresos Anuales Brutos (USD)
+                    </label>
+                    <input 
+                        type="number" 
+                        id="annualIncome" 
+                        placeholder="Ej: 100000" 
+                        min="1" 
+                        step="1"
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label style="margin-bottom: 15px; color: #2c3e50; font-size: 1.2rem;">
+                        <i class="fas fa-credit-card"></i> Deudas Mensuales Existentes
+                    </label>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 10px;">
+                        <div>
+                            <label for="autoPayment" style="font-size: 0.9rem; color: #7f8c8d; margin-bottom: 5px;">Pago de Auto (USD)</label>
+                            <input 
+                                type="number" 
+                                id="autoPayment" 
+                                placeholder="0" 
+                                min="0" 
+                                step="25"
+                                value="0"
+                                style="padding: 12px 15px; font-size: 1rem;"
+                            >
+                        </div>
+                        <div>
+                            <label for="creditCards" style="font-size: 0.9rem; color: #7f8c8d; margin-bottom: 5px;">Tarjetas de Crédito (USD)</label>
+                            <input 
+                                type="number" 
+                                id="creditCards" 
+                                placeholder="0" 
+                                min="0" 
+                                step="25"
+                                value="0"
+                                style="padding: 12px 15px; font-size: 1rem;"
+                            >
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div>
+                            <label for="studentLoans" style="font-size: 0.9rem; color: #7f8c8d; margin-bottom: 5px;">Préstamos Estudiantiles (USD)</label>
+                            <input 
+                                type="number" 
+                                id="studentLoans" 
+                                placeholder="0" 
+                                min="0" 
+                                step="25"
+                                value="0"
+                                style="padding: 12px 15px; font-size: 1rem;"
+                            >
+                        </div>
+                        <div>
+                            <label for="otherDebts" style="font-size: 0.9rem; color: #7f8c8d; margin-bottom: 5px;">Total Otros Pagos (USD)</label>
+                            <input 
+                                type="number" 
+                                id="otherDebts" 
+                                placeholder="0" 
+                                min="0" 
+                                step="25"
+                                value="0"
+                                style="padding: 12px 15px; font-size: 1rem;"
+                            >
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                        <span style="font-size: 0.9rem; color: #7f8c8d;">Total Deudas Mensuales: </span>
+                        <span id="totalDebts" style="font-weight: 600; color: #2c3e50;">$0</span>
+                    </div>
+                </div>
+                
+
+                
+                <button type="submit" class="calculate-btn">
+                    <i class="fas fa-calculator"></i> Calcular Pago Máximo
+                </button>
+            </form>
+            
+            <div id="results" class="results">
+                <h3><i class="fas fa-home"></i> Sus Resultados</h3>
+                <div class="result-item">
+                    <span class="result-label">Pago Hipotecario Máximo:</span>
+                    <span class="result-value" id="maxPayment">$0</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Ingresos Mensuales Brutos:</span>
+                    <span class="result-value" id="monthlyIncome">$0</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">DTI Ratio Total:</span>
+                    <span class="result-value" id="dtiRatio">0%</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h3><i class="fas fa-info-circle"></i> Información Importante</h3>
+            <ul>
+                <li><i class="fas fa-exclamation-triangle" style="color: #e74c3c; margin-right: 8px;"></i>Esta calculadora permite un DTI máximo del 50% para mayor flexibilidad</li>
+                <li><i class="fas fa-thumbs-up" style="color: #27ae60; margin-right: 8px;"></i>Recomendamos un DTI del 43% o seguir la regla del 28% para gastos de vivienda</li>
+                <li>El DTI (Debt-to-Income) ratio incluye todas sus deudas mensuales</li>
+                <li>Esta herramienta calcula la asignación de ingresos, no la cantidad de préstamo</li>
+                <li>Los resultados muestran cuánto de su ingreso puede destinar a una hipoteca</li>
+                <li>Considere también gastos como seguro, impuestos y mantenimiento adicionales</li>
+                <li>Consulte con un prestamista para determinar la cantidad exacta del préstamo</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Function to calculate and update total debts
+        function updateTotalDebts() {
+            const autoPayment = parseFloat(document.getElementById('autoPayment').value) || 0;
+            const creditCards = parseFloat(document.getElementById('creditCards').value) || 0;
+            const studentLoans = parseFloat(document.getElementById('studentLoans').value) || 0;
+            const otherDebts = parseFloat(document.getElementById('otherDebts').value) || 0;
+            
+            const totalDebts = autoPayment + creditCards + studentLoans + otherDebts;
+            document.getElementById('totalDebts').textContent = `$${totalDebts.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+            
+            return totalDebts;
+        }
+        
+        // Add event listeners to debt input fields
+        document.getElementById('autoPayment').addEventListener('input', updateTotalDebts);
+        document.getElementById('creditCards').addEventListener('input', updateTotalDebts);
+        document.getElementById('studentLoans').addEventListener('input', updateTotalDebts);
+        document.getElementById('otherDebts').addEventListener('input', updateTotalDebts);
+        
+        document.getElementById('maxPaymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get input values
+            const annualIncome = parseFloat(document.getElementById('annualIncome').value);
+            const totalMonthlyDebts = updateTotalDebts();
+            
+            if (!annualIncome || annualIncome <= 0) {
+                alert('Por favor ingrese un ingreso anual válido');
+                return;
+            }
+            
+            // Calculate monthly income
+            const monthlyIncome = annualIncome / 12;
+            
+            // Calculate maximum housing payment based on 50% DTI limit
+            const maxHousingPayment = (monthlyIncome * 0.50) - totalMonthlyDebts;
+            const adjustedMaxPayment = Math.max(0, maxHousingPayment);
+            
+            // Calculate final DTI with adjusted payment
+            const finalDtiRatio = ((totalMonthlyDebts + adjustedMaxPayment) / monthlyIncome) * 100;
+            
+            // Update results
+            document.getElementById('maxPayment').textContent = `$${adjustedMaxPayment.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+            document.getElementById('monthlyIncome').textContent = `$${monthlyIncome.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+            document.getElementById('dtiRatio').textContent = `${finalDtiRatio.toFixed(1)}%`;
+            
+            // Show results
+            document.getElementById('results').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // No input validation - allow users to enter any numbers freely
+        
+        // Initialize total debts display
+        updateTotalDebts();
+    </script>
+</body>
+</html>
