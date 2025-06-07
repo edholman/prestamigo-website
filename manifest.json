@@ -1,0 +1,24 @@
+{
+  "name": "Prestamigo - Consejo Hipotecario en Español",
+  "short_name": "Prestamigo",
+  "description": "Educación hipotecaria para hispanohablantes",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2A5CAA",
+  "theme_color": "#2A5CAA",
+  "icons": [
+    {
+      "src": "/assets/favicon/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/favicon/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "lang": "es",
+  "dir": "ltr"
+}

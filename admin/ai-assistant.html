@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Blog Assistant - Prestamigo Admin</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .admin-nav {
+            display: flex;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        .admin-nav a {
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        .admin-nav a.active, .admin-nav a:hover {
+            background-color: #e0e0e0;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        textarea.form-control {
+            min-height: 100px;
+        }
+        .btn {
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+        .btn-success {
+            background-color: #28a745;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .preview-container {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        .preview-header {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .content-preview {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+        .tab.active {
+            border-bottom: 3px solid #007bff;
+            font-weight: bold;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .progress-container {
+            margin-top: 30px;
+            display: none;
+        }
+        .progress-bar {
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #007bff;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        .seo-checklist {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .seo-checklist li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .seo-checklist li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+        }
+        #notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 1000;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>Prestamigo Admin - AI Blog Assistant</h1>
+            <div>
+                <a href="/admin/dashboard.html" class="btn btn-secondary">Back to Dashboard</a>
+            </div>
+        </div>
+
+        <div class="admin-nav">
+            <a href="/admin/dashboard.html">Dashboard</a>
+            <a href="/admin/editor.html">Blog Editor</a>
+            <a href="/admin/ai-assistant.html" class="active">AI Assistant</a>
+        </div>
+
+        <div class="card">
+            <h2>Generate Blog Post with AI</h2>
+            <p>Enter a topic and our AI will generate a complete SEO-optimized blog post for you.</p>
+            
+            <form id="generateForm">
+                <div class="form-group">
+                    <label for="topic">Blog Topic*</label>
+                    <input type="text" id="topic" class="form-control" placeholder="e.g., Tips for first-time homebuyers" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="audience">Target Audience</label>
+                    <input type="text" id="audience" class="form-control" placeholder="e.g., Spanish-speaking first-time homebuyers" value="Spanish-speaking homebuyers">
+                </div>
+                
+                <div class="form-group">
+                    <label for="tone">Content Tone</label>
+                    <select id="tone" class="form-control">
+                        <option value="Educational">Educational</option>
+                        <option value="Conversational">Conversational</option>
+                        <option value="Professional">Professional</option>
+                        <option value="Empathetic">Empathetic</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="keywords">Focus Keywords (comma-separated)</label>
+                    <input type="text" id="keywords" class="form-control" placeholder="e.g., hipoteca, préstamo, casa nueva">
+                </div>
+                
+                <button type="submit" id="generateBtn" class="btn btn-primary">
+                    <span>Generate Blog Post</span>
+                </button>
+            </form>
+            
+            <div id="progressContainer" class="progress-container">
+                <h3>Generating your blog post...</h3>
+                <div class="progress-bar">
+                    <div id="progressBar" class="progress-bar-fill"></div>
+                </div>
+                <p id="progressStatus">Processing your request...</p>
+            </div>
+        </div>
+
+        <div id="previewContainer" class="preview-container" style="display: none;">
+            <div class="preview-header">
+                <h2>Blog Post Preview</h2>
+                <div class="tabs">
+                    <div class="tab active" data-tab="content">Content</div>
+                    <div class="tab" data-tab="seo">SEO & Metadata</div>
+                </div>
+            </div>
+
+            <div class="tab-content active" id="contentTab">
+                <div class="form-group">
+                    <label for="previewTitle">Title</label>
+                    <input type="text" id="previewTitle" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="previewSlug">URL Slug</label>
+                    <input type="text" id="previewSlug" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="previewSummary">Summary</label>
+                    <textarea id="previewSummary" class="form-control"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="previewContent">Content (HTML)</label>
+                    <textarea id="previewContent" class="form-control" style="min-height: 300px;"></textarea>
+                </div>
+                
+                <h3>Content Preview</h3>
+                <div id="contentPreview" class="content-preview"></div>
+                
+                <div style="margin-top: 20px; display: flex; gap: 10px;">
+                    <button id="editBtn" class="btn btn-secondary">Edit Before Publishing</button>
+                    <button id="publishBtn" class="btn btn-success">Publish Post</button>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="seoTab">
+                <div class="form-group">
+                    <label for="metaTitle">Meta Title</label>
+                    <input type="text" id="metaTitle" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="metaDescription">Meta Description</label>
+                    <textarea id="metaDescription" class="form-control"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="metaKeywords">Meta Keywords (comma-separated)</label>
+                    <input type="text" id="metaKeywords" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="focusKeywords">Focus Keywords (comma-separated)</label>
+                    <input type="text" id="focusKeywords" class="form-control">
+                </div>
+                
+                <h3>SEO Optimization Checklist</h3>
+                <ul class="seo-checklist">
+                    <li>Title includes primary keyword</li>
+                    <li>Meta description under 160 characters</li>
+                    <li>URL slug is SEO-friendly</li>
+                    <li>Content includes H2 and H3 headings</li>
+                    <li>Keywords appear in headings and content</li>
+                    <li>Content is over 500 words for SEO</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateForm = document.getElementById('generateForm');
+            const generateBtn = document.getElementById('generateBtn');
+            const progressContainer = document.getElementById('progressContainer');
+            const progressBar = document.getElementById('progressBar');
+            const progressStatus = document.getElementById('progressStatus');
+            const previewContainer = document.getElementById('previewContainer');
+            const contentPreview = document.getElementById('contentPreview');
+            const notification = document.getElementById('notification');
+            
+            // Tab switching
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Show corresponding content
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    document.getElementById(tabId + 'Tab').classList.add('active');
+                });
+            });
+            
+            // Generate form submission
+            generateForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const topic = document.getElementById('topic').value;
+                const audience = document.getElementById('audience').value;
+                const tone = document.getElementById('tone').value;
+                const keywords = document.getElementById('keywords').value;
+                
+                if (!topic) {
+                    showNotification('Please enter a blog topic', 'error');
+                    return;
+                }
+                
+                // Show progress
+                generateBtn.disabled = true;
+                generateBtn.innerHTML = '<div class="spinner"></div> Generating...';
+                progressContainer.style.display = 'block';
+                previewContainer.style.display = 'none';
+                
+                // Simulate progress (will be replaced by actual API progress)
+                let progress = 0;
+                const progressInterval = setInterval(() => {
+                    progress += 5;
+                    if (progress > 90) {
+                        clearInterval(progressInterval);
+                    }
+                    progressBar.style.width = progress + '%';
+                    
+                    // Update status message based on progress
+                    if (progress < 20) {
+                        progressStatus.textContent = 'Analyzing topic and keywords...';
+                    } else if (progress < 40) {
+                        progressStatus.textContent = 'Researching content structure...';
+                    } else if (progress < 60) {
+                        progressStatus.textContent = 'Drafting content sections...';
+                    } else if (progress < 80) {
+                        progressStatus.textContent = 'Optimizing for SEO...';
+                    } else {
+                        progressStatus.textContent = 'Finalizing blog post...';
+                    }
+                }, 300);
+                
+                // Call the generate endpoint
+                fetch('/api/generate-blog-post', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        topic: topic,
+                        audience: audience,
+                        tone: tone,
+                        keywords: keywords
+                    })
+                })
+                .then(response => {
+                    clearInterval(progressInterval);
+                    progressBar.style.width = '100%';
+                    progressStatus.textContent = 'Blog post generated!';
+                    
+                    if (!response.ok) {
+                        throw new Error('Failed to generate blog post');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Check if this is demo content due to API limitations
+                    if (data._demo_notice) {
+                        showNotification(data._demo_notice, 'warning');
+                    }
+                    
+                    // Populate preview fields
+                    document.getElementById('previewTitle').value = data.title || '';
+                    document.getElementById('previewSlug').value = data.suggested_slug || '';
+                    document.getElementById('previewSummary').value = data.summary || '';
+                    document.getElementById('previewContent').value = data.content || '';
+                    document.getElementById('metaTitle').value = data.title || '';
+                    document.getElementById('metaDescription').value = data.meta_description || '';
+                    document.getElementById('metaKeywords').value = data.meta_keywords || '';
+                    document.getElementById('focusKeywords').value = data.focus_keywords || '';
+                    
+                    // Update content preview
+                    contentPreview.innerHTML = data.content || '';
+                    
+                    // Show preview container
+                    setTimeout(() => {
+                        generateBtn.disabled = false;
+                        generateBtn.innerHTML = '<span>Generate Blog Post</span>';
+                        progressContainer.style.display = 'none';
+                        previewContainer.style.display = 'block';
+                    }, 500);
+                })
+                .catch(error => {
+                    clearInterval(progressInterval);
+                    console.error('Error:', error);
+                    generateBtn.disabled = false;
+                    generateBtn.innerHTML = '<span>Generate Blog Post</span>';
+                    progressContainer.style.display = 'none';
+                    showNotification('Failed to generate blog post: ' + error.message, 'error');
+                });
+            });
+            
+            // Edit button - go to the editor with the generated content
+            document.getElementById('editBtn').addEventListener('click', function() {
+                const blogData = {
+                    title: document.getElementById('previewTitle').value,
+                    slug: document.getElementById('previewSlug').value,
+                    summary: document.getElementById('previewSummary').value,
+                    content: document.getElementById('previewContent').value,
+                    metaTitle: document.getElementById('metaTitle').value,
+                    metaDescription: document.getElementById('metaDescription').value,
+                    metaKeywords: document.getElementById('metaKeywords').value,
+                    focusKeywords: document.getElementById('focusKeywords').value
+                };
+                
+                // Store in sessionStorage to be loaded by the editor
+                sessionStorage.setItem('draft_blog_post', JSON.stringify(blogData));
+                
+                // Redirect to editor
+                window.location.href = '/admin/editor.html';
+            });
+            
+            // Publish button - directly publish the generated post
+            document.getElementById('publishBtn').addEventListener('click', function() {
+                const blogData = {
+                    title: document.getElementById('previewTitle').value,
+                    slug: document.getElementById('previewSlug').value,
+                    summary: document.getElementById('previewSummary').value,
+                    content: document.getElementById('previewContent').value,
+                    meta_title: document.getElementById('metaTitle').value,
+                    meta_description: document.getElementById('metaDescription').value,
+                    meta_keywords: document.getElementById('metaKeywords').value,
+                    focus_keywords: document.getElementById('focusKeywords').value,
+                    author: 'Prestamigo',
+                    is_published: true,  // Changed from published to is_published to match API
+                    featured_image: ''
+                };
+                
+                // Call the create blog post API
+                fetch('/api/blog-posts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(blogData)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to publish blog post');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    showNotification('Blog post published successfully!', 'success');
+                    setTimeout(() => {
+                        window.location.href = '/admin/dashboard.html';
+                    }, 1500);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showNotification('Failed to publish blog post: ' + error.message, 'error');
+                });
+            });
+            
+            // Show notification helper
+            function showNotification(message, type = 'success') {
+                notification.textContent = message;
+                
+                // Set background color based on notification type
+                if (type === 'success') {
+                    notification.style.backgroundColor = '#28a745'; // Green
+                } else if (type === 'warning') {
+                    notification.style.backgroundColor = '#ffc107'; // Yellow/amber
+                    notification.style.color = '#000'; // Black text for visibility
+                } else {
+                    notification.style.backgroundColor = '#dc3545'; // Red for errors
+                }
+                
+                notification.style.display = 'block';
+                
+                // For warnings, show longer
+                const duration = type === 'warning' ? 8000 : 3000;
+                
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, duration);
+            }
+            
+            // Live update for content preview
+            document.getElementById('previewContent').addEventListener('input', function() {
+                contentPreview.innerHTML = this.value;
+            });
+        });
+    </script>
+</body>
+</html>
