@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NVH5B947');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Character encoding -->
+    <meta charset="UTF-8">
+    
+    <!-- Responsive viewport settings -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Enhanced SEO Meta Tags for Google Crawling -->
+    <title>Calculadora: Comprar vs Rentar | Prestamigo</title>
+    <meta name="description" content="Herramienta interactiva para comparar los costos de comprar una casa versus rentar en Arizona. Calcule sus ahorros potenciales y tome decisiones informadas.">
+    <meta name="keywords" content="calculadora hipotecaria, comprar vs rentar, hipoteca en español, calculadora de préstamos, prestamigo, comprar casa Arizona">
+    <meta name="author" content="Prestamigo">
+    
+    <!-- Canonical URL with proper domain -->
+    <link rel="canonical" href="https://prestamigo-website.estebanholman.repl.co/comprar-vs-rentar.html">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCWV68YXJ9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DCWV68YXJ9');
+    </script>
+    
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:locale" content="es_US">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://prestamigo-website.estebanholman.repl.co/comprar-vs-rentar.html">
+    <meta property="og:title" content="Calculadora: Comprar vs Rentar | Prestamigo">
+    <meta property="og:description" content="Herramienta interactiva para comparar los costos de comprar una casa versus rentar en Arizona. Calcule sus ahorros potenciales y tome decisiones informadas.">
+    <meta property="og:image" content="https://prestamigo-website.estebanholman.repl.co/assets/images/logo.png">
+    <meta property="og:site_name" content="Prestamigo">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://prestamigo-website.estebanholman.repl.co/comprar-vs-rentar.html">
+    <meta name="twitter:title" content="Calculadora: Comprar vs Rentar | Prestamigo">
+    <meta name="twitter:description" content="Herramienta interactiva para comparar los costos de comprar una casa versus rentar en Arizona. Calcule sus ahorros potenciales y tome decisiones informadas.">
+    <meta name="twitter:image" content="https://prestamigo-website.estebanholman.repl.co/assets/images/logo.png">
+    
+    <!-- Enhanced Favicon Implementation -->
+    <link rel="icon" href="/assets/favicon/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    
+    <!-- Structured Data for SEO (Organization) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://prestamigo-website.estebanholman.repl.co/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculadora: Comprar vs Rentar",
+        "item": "https://prestamigo-website.estebanholman.repl.co/comprar-vs-rentar.html"
+      }]
+    }
+    </script>
+    
+    <!-- Calculator Tool Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialProduct",
+      "name": "Calculadora: Comprar vs Rentar",
+      "description": "Herramienta interactiva para comparar los costos de comprar una casa versus rentar en Arizona.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Prestamigo",
+        "logo": "https://prestamigo-website.estebanholman.repl.co/assets/images/logo.png"
+      },
+      "featureList": "Comparación de costos a largo plazo, análisis de inversión inmobiliaria, cálculo de pagos mensuales"
+    }
+    </script>
+    
+    <style>
+        /* Contact Button Styles */
+        .contact-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(52, 152, 219, 0.4);
+            color: white;
+        }
+        
+        .contact-button i {
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-button {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVH5B947"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '111216968559815');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=111216968559815&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+    
+    <!-- Header with navigation -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/index.html" aria-label="Home">
+                    <img src="/assets/images/logo.png" alt="Prestamigo" height="40">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/guia-hipotecaria.html">Guía Hipotecaria</a></li>
+                <li><a href="/calculadora.html">Calculadora</a></li>
+                <li><a href="/calculadora-poder-de-compra.html">Poder de Compra</a></li>
+                <li><a href="/comprar-vs-rentar">¿Comprar o Rentar?</a></li>
+                <li><a href="https://api.leadconnectorhq.com/widget/booking/qBoIcTx0Mr1zIeWeWD9D">Contacto</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page title section -->
+    <section class="page-title">
+        <div class="container">
+            <h1>Calculadora: Comprar vs Rentar</h1>
+            <p>Compare los costos reales de comprar una casa frente a rentar en Arizona</p>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <main>
+        <!-- Calculator section -->
+        <section class="calculator-section">
+            <div class="container">
+                <div class="calculator-intro">
+                    <h2>¿Es mejor comprar o rentar?</h2>
+                    <p>Esta calculadora le ayudará a comparar los costos a largo plazo de comprar una casa versus rentar. Ingrese sus datos para ver qué opción es más conveniente financieramente para su situación.</p>
+                </div>
+                
+                <div class="calculator-container">
+                    <div class="calculator-form">
+                        <h3>Ingrese sus datos</h3>
+                        
+                        <div class="input-group">
+                            <label for="home-price">Precio de la casa que desea comprar ($)</label>
+                            <input type="number" id="home-price" min="50000" step="10000" value="350000">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="down-payment">Pago inicial (%)</label>
+                            <input type="number" id="down-payment" min="0" max="100" step="1" value="5">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="loan-term">Plazo del préstamo (años)</label>
+                            <select id="loan-term">
+                                <option value="15">15 años</option>
+                                <option value="20">20 años</option>
+                                <option value="30" selected>30 años</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="interest-rate">Tasa de interés (%)</label>
+                            <input type="number" id="interest-rate" min="1" max="20" step="0.125" value="6.5">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="property-tax">Impuesto a la propiedad anual (%)</label>
+                            <input type="number" id="property-tax" min="0" max="5" step="0.1" value="0.8">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="insurance">Seguro de propietario anual ($)</label>
+                            <input type="number" id="insurance" min="0" step="100" value="1200">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="maintenance">Costos de mantenimiento anual (%)</label>
+                            <input type="number" id="maintenance" min="0" max="5" step="0.1" value="1">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="rent-monthly">Renta mensual actual ($)</label>
+                            <input type="number" id="rent-monthly" min="0" step="100" value="1800">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="rent-increase">Aumento anual de renta (%)</label>
+                            <input type="number" id="rent-increase" min="0" max="10" step="0.5" value="3">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="home-appreciation">Apreciación anual de la propiedad (%)</label>
+                            <input type="number" id="home-appreciation" min="0" max="10" step="0.5" value="3">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="inflation">Tasa de inflación (%)</label>
+                            <input type="number" id="inflation" min="0" max="10" step="0.5" value="2.5">
+                        </div>
+                        
+                        <button id="calculate-btn" class="btn-primary">Calcular resultados</button>
+                    </div>
+                    
+                    <div class="calculator-results">
+                        <h3>Resultados</h3>
+                        
+                        <div id="results-placeholder">
+                            <p>Complete el formulario y haga clic en "Calcular resultados" para ver su análisis personalizado.</p>
+                        </div>
+                        
+                        <div id="results-content" style="display: none;">
+                            <div class="result-box">
+                                <h4>Comprar una casa</h4>
+                                <div class="result-item">
+                                    <span>Pago mensual de la hipoteca:</span>
+                                    <span id="mortgage-payment">$0</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>Costos mensuales totales:</span>
+                                    <span id="monthly-buying-costs">$0</span>
+                                </div>
+                                <div class="result-item section-title">
+                                    <h5>Proyección a 5 años</h5>
+                                </div>
+                                <div class="result-item">
+                                    <span>Principal pagado:</span>
+                                    <span id="principal-paid-5y">$0</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>Saldo del préstamo:</span>
+                                    <span id="loan-balance-5y">$0</span>
+                                </div>
+                                <div class="result-item equity-formula">
+                                    <span>Valor de propiedad:</span>
+                                    <span id="property-value-5y-formula">$0</span>
+                                </div>
+                                <div class="result-item equity-formula">
+                                    <span>Menos saldo del préstamo:</span>
+                                    <span id="loan-balance-5y-formula">- $0</span>
+                                </div>
+                                <div class="result-item highlight-medium">
+                                    <span>Patrimonio total:</span>
+                                    <span id="equity-5y">$0</span>
+                                </div>
+                                
+                                <div class="result-item section-title">
+                                    <h5>Proyección a 10 años</h5>
+                                </div>
+                                <div class="result-item">
+                                    <span>Principal pagado:</span>
+                                    <span id="principal-paid-10y">$0</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>Saldo del préstamo:</span>
+                                    <span id="loan-balance-10y">$0</span>
+                                </div>
+                                <div class="result-item equity-formula">
+                                    <span>Valor de propiedad:</span>
+                                    <span id="property-value-10y-formula">$0</span>
+                                </div>
+                                <div class="result-item equity-formula">
+                                    <span>Menos saldo del préstamo:</span>
+                                    <span id="loan-balance-10y-formula">- $0</span>
+                                </div>
+                                <div class="result-item highlight-medium">
+                                    <span>Patrimonio total:</span>
+                                    <span id="equity-10y">$0</span>
+                                </div>
+                            </div>
+                            
+                            <div class="result-box">
+                                <h4>Rentar</h4>
+                                <div class="result-item">
+                                    <span>Renta mensual actual:</span>
+                                    <span id="current-rent">$0</span>
+                                </div>
+                                
+                                <div class="result-item section-title">
+                                    <h5>Proyección a 5 años</h5>
+                                </div>
+                                <div class="result-item">
+                                    <span>Renta mensual estimada:</span>
+                                    <span id="rent-5y">$0</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>Total pagado en renta:</span>
+                                    <span id="total-rent-5y">$0</span>
+                                </div>
+                                <div class="result-item highlight-medium">
+                                    <span>Patrimonio acumulado: <span class="tooltip-icon" title="Al rentar, no acumulas patrimonio en la propiedad">?</span></span>
+                                    <span>$0</span>
+                                </div>
+                                
+                                <div class="result-item section-title">
+                                    <h5>Proyección a 10 años</h5>
+                                </div>
+                                <div class="result-item">
+                                    <span>Renta mensual estimada:</span>
+                                    <span id="rent-10y">$0</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>Total pagado en renta:</span>
+                                    <span id="total-rent-10y">$0</span>
+                                </div>
+                                <div class="result-item highlight-medium">
+                                    <span>Patrimonio acumulado: <span class="tooltip-icon" title="Al rentar, no acumulas patrimonio en la propiedad">?</span></span>
+                                    <span>$0</span>
+                                </div>
+                            </div>
+                            
+                            <div class="comparison-result">
+                                <h4>Comparación a 10 años</h4>
+                                <div class="result-item highlight">
+                                    <span>Beneficio financiero de comprar:</span>
+                                    <span id="buying-benefit">$0</span>
+                                </div>
+                                <div id="recommendation-box" class="recommendation">
+                                    <p id="recommendation-text">Basado en los datos proporcionados.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-prompt">
+                            <p>¿Tiene preguntas sobre estos resultados?</p>
+                            <a href="/contact.html" class="btn-secondary">Hable con un especialista</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Information section -->
+        <section class="info-section">
+            <div class="container">
+                <h2>Entendiendo el costo real de comprar una casa</h2>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>Costos iniciales</h3>
+                        <p>Al comprar una casa, debe considerar el pago inicial (usualmente 3-20% del precio de la casa), costos de cierre (2-5%), e inspecciones.</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>Costos mensuales</h3>
+                        <p>Su pago mensual incluye capital e interés del préstamo, impuestos a la propiedad, seguro de propietario, y posiblemente seguro hipotecario privado (PMI).</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>Costos continuos</h3>
+                        <p>Como propietario, usted es responsable del mantenimiento, reparaciones, y renovaciones que pueden variar entre 1-4% del valor de la casa anualmente.</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>Beneficios a largo plazo</h3>
+                        <p>A medida que paga su hipoteca, acumula patrimonio. Además, la propiedad generalmente se aprecia con el tiempo, aumentando su valor neto.</p>
+                    </div>
+                </div>
+                
+                <div class="resources">
+                    <h3>Recursos adicionales</h3>
+                    <ul>
+                        <li><a href="/blog/tipos-de-prestamos-hipotecarios-cual-es-mejor-para-ti">Tipos de préstamos hipotecarios: ¿Cuál es mejor para ti?</a></li>
+                        <li><a href="/blog/cuanto-necesito-para-el-pago-inicial-de-una-casa">¿Cuánto necesito para el pago inicial de una casa?</a></li>
+                        <li><a href="/blog/guia-para-compradores-de-casa-por-primera-vez">Guía para compradores de casa por primera vez</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Call to action -->
+        <section class="cta">
+            <div class="container">
+                <h2>¿Listo para dar el siguiente paso?</h2>
+                <p>Nuestros especialistas en hipotecas hablan español y están listos para ayudarle en su camino hacia la propiedad de vivienda.</p>
+                <a href="/contact.html" class="btn-primary">Contáctenos hoy</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-contact">
+                    <h3>Contáctenos</h3>
+                    <address>
+                        410 N Scottdale Rd<br>
+                        Tempe, AZ 85288<br>
+                        <a href="tel:+14806123718">Teléfono: (480) 612-3718</a><br>
+                        <a href="mailto:info@prestamigo.com">Email: info@prestamigo.com</a>
+                    </address>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces rápidos</h3>
+                    <ul>
+                        <li><a href="/index.html">Inicio</a></li>
+                        <li><a href="/about.html">Sobre Nosotros</a></li>
+                        <li><a href="/services.html">Servicios</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/comprar-vs-rentar.html">Calculadora</a></li>
+                        <li><a href="/contact.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/prestamigo" aria-label="Facebook">
+                            <i class="social-icon">Facebook</i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/prestamigo" aria-label="LinkedIn">
+                            <i class="social-icon">LinkedIn</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023-2025 Prestamigo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/assets/js/main.js"></script>
+    
+    <!-- Calculator Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calculateBtn = document.getElementById('calculate-btn');
+            
+            calculateBtn.addEventListener('click', function() {
+                // Get input values
+                const homePrice = parseFloat(document.getElementById('home-price').value);
+                const downPaymentPercent = parseFloat(document.getElementById('down-payment').value);
+                const loanTerm = parseInt(document.getElementById('loan-term').value);
+                const interestRate = parseFloat(document.getElementById('interest-rate').value);
+                const propertyTaxRate = parseFloat(document.getElementById('property-tax').value);
+                const insuranceAnnual = parseFloat(document.getElementById('insurance').value);
+                const maintenanceRate = parseFloat(document.getElementById('maintenance').value);
+                const rentMonthly = parseFloat(document.getElementById('rent-monthly').value);
+                const rentIncrease = parseFloat(document.getElementById('rent-increase').value);
+                const homeAppreciation = parseFloat(document.getElementById('home-appreciation').value);
+                const inflation = parseFloat(document.getElementById('inflation').value);
+                
+                // Calculate mortgage details
+                const downPayment = homePrice * (downPaymentPercent / 100);
+                const loanAmount = homePrice - downPayment;
+                const monthlyInterest = interestRate / 100 / 12;
+                const numberOfPayments = loanTerm * 12;
+                
+                // Calculate monthly mortgage payment (P&I only)
+                const mortgagePayment = loanAmount * 
+                    (monthlyInterest * Math.pow(1 + monthlyInterest, numberOfPayments)) / 
+                    (Math.pow(1 + monthlyInterest, numberOfPayments) - 1);
+                
+                // Calculate additional monthly costs
+                const monthlyPropertyTax = (homePrice * (propertyTaxRate / 100)) / 12;
+                const monthlyInsurance = insuranceAnnual / 12;
+                const monthlyMaintenance = (homePrice * (maintenanceRate / 100)) / 12;
+                
+                // Total monthly cost of buying
+                const totalMonthlyBuying = mortgagePayment + monthlyPropertyTax + monthlyInsurance + monthlyMaintenance;
+                
+                // Calculate future values
+                const rent5Years = rentMonthly * Math.pow(1 + rentIncrease / 100, 5);
+                const rent10Years = rentMonthly * Math.pow(1 + rentIncrease / 100, 10);
+                
+                // Calculate equity after 5 and 10 years
+                const futureHomeValue5Y = homePrice * Math.pow(1 + homeAppreciation / 100, 5);
+                const futureHomeValue10Y = homePrice * Math.pow(1 + homeAppreciation / 100, 10);
+                
+                // Calculate loan balance after 5 and 10 years
+                let loanBalance5Y = loanAmount;
+                let loanBalance10Y = loanAmount;
+                
+                for (let i = 0; i < 60; i++) { // 5 years = 60 payments
+                    const interestPaid = loanBalance5Y * monthlyInterest;
+                    const principalPaid = mortgagePayment - interestPaid;
+                    loanBalance5Y -= principalPaid;
+                }
+                
+                for (let i = 0; i < 120; i++) { // 10 years = 120 payments
+                    const interestPaid = loanBalance10Y * monthlyInterest;
+                    const principalPaid = mortgagePayment - interestPaid;
+                    loanBalance10Y -= principalPaid;
+                }
+                
+                // Calculate principal paid (original loan amount minus remaining balance)
+                const principalPaid5Y = loanAmount - loanBalance5Y;
+                const principalPaid10Y = loanAmount - loanBalance10Y;
+                
+                // The equity calculation is explicitly:
+                // Initial equity = Down payment
+                // Equity after time = Future Property Value - Remaining Loan Balance
+                
+                // Down payment is already factored into the loan amount
+                const initialEquity = downPayment;
+                const equity5Y = futureHomeValue5Y - loanBalance5Y;
+                const equity10Y = futureHomeValue10Y - loanBalance10Y;
+                
+                // Adding a timestamp to force refresh
+                console.log('UPDATED VERSION: May-14-2025-634PM');
+                
+                // Debug info
+                console.log('Initial equity (down payment): $' + initialEquity);
+                console.log('---5-year calculations---');
+                console.log('Future Home Value (5y): $' + futureHomeValue5Y);
+                console.log('Loan Balance (5y): $' + loanBalance5Y);
+                console.log('Equity (5y): $' + equity5Y);
+                
+                console.log('---10-year calculations---');
+                console.log('Future Home Value (10y): $' + futureHomeValue10Y);
+                console.log('Loan Balance (10y): $' + loanBalance10Y);
+                console.log('Equity (10y): $' + equity10Y);
+                
+                // Calculate total rent paid over 5 and 10 years with annual increases
+                let totalRentPaid5Y = 0;
+                let totalRentPaid10Y = 0;
+                let currentRent = rentMonthly;
+                
+                // Calculate for both 5 and 10 year periods
+                for (let year = 0; year < 10; year++) {
+                    // Add this year's rent to the running total
+                    if (year < 5) {
+                        totalRentPaid5Y += currentRent * 12;
+                    }
+                    totalRentPaid10Y += currentRent * 12;
+                    
+                    // Increase rent for next year
+                    currentRent *= (1 + rentIncrease / 100);
+                }
+                
+                // Calculate rent monthly amounts at end of 5 and 10 years
+                const monthlyRent5Y = rentMonthly * Math.pow(1 + rentIncrease / 100, 5);
+                const monthlyRent10Y = rentMonthly * Math.pow(1 + rentIncrease / 100, 10);
+                
+                // Calculate the total cost of buying (downpayment + monthly payments over 10 years)
+                const totalBuyingCost = downPayment + (totalMonthlyBuying * 12 * 10);
+                
+                // Calculate the net benefit of buying vs renting
+                // This compares the equity gained (including appreciation) against the difference in costs
+                const buyingBenefit = equity10Y - (totalBuyingCost - totalRentPaid10Y);
+                
+                // Update results
+                document.getElementById('mortgage-payment').textContent = '$' + mortgagePayment.toFixed(2);
+                document.getElementById('monthly-buying-costs').textContent = '$' + totalMonthlyBuying.toFixed(2);
+                document.getElementById('home-value-5y').textContent = '$' + Math.round(futureHomeValue5Y).toLocaleString();
+                document.getElementById('home-value-10y').textContent = '$' + Math.round(futureHomeValue10Y).toLocaleString();
+                
+                // Display loan details and equity calculations
+                document.getElementById('principal-paid-5y').textContent = '$' + Math.round(principalPaid5Y).toLocaleString();
+                document.getElementById('loan-balance-5y').textContent = '$' + Math.round(loanBalance5Y).toLocaleString();
+                
+                // Show the equity calculation formula explicitly
+                document.getElementById('property-value-5y-formula').textContent = '$' + Math.round(futureHomeValue5Y).toLocaleString();
+                document.getElementById('loan-balance-5y-formula').textContent = '- $' + Math.round(loanBalance5Y).toLocaleString();
+                document.getElementById('equity-5y').textContent = '$' + Math.round(equity5Y).toLocaleString();
+                
+                document.getElementById('principal-paid-10y').textContent = '$' + Math.round(principalPaid10Y).toLocaleString();
+                document.getElementById('loan-balance-10y').textContent = '$' + Math.round(loanBalance10Y).toLocaleString();
+                
+                // Show the equity calculation formula explicitly for 10 years
+                document.getElementById('property-value-10y-formula').textContent = '$' + Math.round(futureHomeValue10Y).toLocaleString();
+                document.getElementById('loan-balance-10y-formula').textContent = '- $' + Math.round(loanBalance10Y).toLocaleString();
+                document.getElementById('equity-10y').textContent = '$' + Math.round(equity10Y).toLocaleString();
+                
+                document.getElementById('current-rent').textContent = '$' + rentMonthly.toFixed(2);
+                document.getElementById('rent-5y').textContent = '$' + monthlyRent5Y.toFixed(2);
+                document.getElementById('rent-10y').textContent = '$' + monthlyRent10Y.toFixed(2);
+                document.getElementById('total-rent-5y').textContent = '$' + Math.round(totalRentPaid5Y).toLocaleString();
+                document.getElementById('total-rent-10y').textContent = '$' + Math.round(totalRentPaid10Y).toLocaleString();
+                
+                document.getElementById('buying-benefit').textContent = '$' + Math.round(buyingBenefit).toLocaleString();
+                
+                // Generate recommendation
+                const recommendationText = document.getElementById('recommendation-text');
+                const recommendationBox = document.getElementById('recommendation-box');
+                
+                if (buyingBenefit > 50000) {
+                    recommendationText.textContent = 'Basado en sus datos, comprar parece ser significativamente mejor financieramente a largo plazo.';
+                    recommendationBox.className = 'recommendation positive';
+                } else if (buyingBenefit > 0) {
+                    recommendationText.textContent = 'Comprar parece ser ligeramente mejor financieramente, pero considere también factores no financieros.';
+                    recommendationBox.className = 'recommendation slightly-positive';
+                } else if (buyingBenefit > -50000) {
+                    recommendationText.textContent = 'La diferencia financiera es pequeña. Considere factores como flexibilidad y planes futuros.';
+                    recommendationBox.className = 'recommendation neutral';
+                } else {
+                    recommendationText.textContent = 'Basado en estos números, rentar podría ser mejor financieramente para su situación actual.';
+                    recommendationBox.className = 'recommendation negative';
+                }
+                
+                // Show results
+                document.getElementById('results-placeholder').style.display = 'none';
+                document.getElementById('results-content').style.display = 'block';
+                
+                // Track event for analytics
+                if (typeof gtag === 'function') {
+                    gtag('event', 'calculator_used', {
+                        'event_category': 'engagement',
+                        'event_label': 'Comprar vs Rentar Calculator'
+                    });
+                }
+                
+                // Track event for Facebook Pixel
+                if (typeof fbq === 'function') {
+                    fbq('track', 'CalculatorUsed', {
+                        calculator_type: 'Comprar vs Rentar'
+                    });
+                }
+            });
+        });
+    </script>
+    
+    <!-- Visitor Tracking Script -->
+    <script src="/js/visitor-tracker.js"></script>
+    <!-- Analytics & Tracking Scripts -->
+    <script src="/js/tracking.js"></script>
+    
+    <!-- Go High Level Contact Button -->
+    <a href="https://api.leadconnectorhq.com/widget/booking/qBoIcTx0Mr1zIeWeWD9D" class="contact-button" target="_blank" rel="noopener">
+        <i class="fas fa-calendar-alt"></i>
+        Agendar Consulta
+    </a>
+</body>
+</html>

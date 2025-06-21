@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NVH5B947');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Character encoding -->
+    <meta charset="UTF-8">
+    
+    <!-- Responsive viewport settings -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags (will be dynamically updated) -->
+    <title id="page-title">Blog Post - Prestamigo</title>
+    <meta id="meta-description" name="description" content="Read the latest blog post from Prestamigo about mortgage education and financial tips for Spanish-speaking borrowers.">
+    <meta id="meta-keywords" name="keywords" content="financial education, mortgage tips, prestamigo blog">
+    <meta name="author" content="Prestamigo">
+    
+    <!-- Canonical URL (will be set dynamically) -->
+    <link id="canonical-url" rel="canonical" href="">
+    
+    <!-- Google-specific meta tags -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCWV68YXJ9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DCWV68YXJ9');
+    </script>
+    
+    <!-- Open Graph / Facebook Meta Tags (will be updated dynamically) -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta id="og-url" property="og:url" content="">
+    <meta id="og-title" property="og:title" content="Blog Post - Prestamigo">
+    <meta id="og-description" property="og:description" content="Read the latest blog post from Prestamigo about mortgage education and financial tips for Spanish-speaking borrowers.">
+    <meta id="og-image" property="og:image" content="https://prestamigo-website.estebanholman.repl.co/generated-icon.png">
+    <meta property="og:site_name" content="Prestamigo">
+    
+    <!-- Twitter Meta Tags (will be updated dynamically) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta id="twitter-url" name="twitter:url" content="">
+    <meta id="twitter-title" name="twitter:title" content="Blog Post - Prestamigo">
+    <meta id="twitter-description" name="twitter:description" content="Read the latest blog post from Prestamigo about mortgage education and financial tips for Spanish-speaking borrowers.">
+    <meta id="twitter-image" name="twitter:image" content="https://prestamigo-website.estebanholman.repl.co/generated-icon.png">
+    
+    <!-- Enhanced Favicon Implementation -->
+    <link rel="icon" href="/assets/favicon/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+    
+    <!-- For iOS devices -->
+    <link rel="mask-icon" href="/assets/favicon/favicon.svg" color="#4285f4">
+    
+    <!-- For Android and theme color -->
+    <meta name="theme-color" content="#4285f4">
+    
+    <!-- For Windows Tiles -->
+    <meta name="msapplication-TileColor" content="#4285f4">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    
+    <style>
+        /* Enhanced Navigation Styles for Blog Posts */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo img {
+            height: 60px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 30px;
+        }
+        
+        nav ul li a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 12px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        nav ul li a:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #3498db, #5dade2);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        nav ul li a:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        nav ul li a:hover:before {
+            left: 0;
+        }
+        
+        /* Mobile Navigation */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(135deg, #3498db, #5dade2);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            nav ul {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                flex-direction: column;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                padding: 20px 0;
+            }
+            
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+        }
+
+        /* Blog post specific styles */
+        .blog-post {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .blog-post-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .blog-post-title {
+            font-size: 36px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .blog-post-meta {
+            color: #6c757d;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .blog-post-meta span {
+            margin: 0 10px;
+        }
+        
+        .blog-post-image {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .blog-post-content {
+            line-height: 1.8;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        .blog-post-content h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .blog-post-content p {
+            margin-bottom: 20px;
+        }
+        
+        .blog-post-content ul, 
+        .blog-post-content ol {
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+        
+        .blog-post-content li {
+            margin-bottom: 10px;
+        }
+        
+        .blog-post-content blockquote {
+            border-left: 4px solid #4285f4;
+            padding-left: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #555;
+        }
+        
+        .blog-post-content a {
+            color: #4285f4;
+            text-decoration: none;
+        }
+        
+        .blog-post-content a:hover {
+            text-decoration: underline;
+        }
+        
+        .author-section {
+            display: flex;
+            align-items: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        
+        .author-info h3 {
+            margin: 0 0 5px 0;
+        }
+        
+        .author-info p {
+            margin: 0;
+            color: #6c757d;
+        }
+        
+        .related-posts {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #eee;
+        }
+        
+        .related-posts h3 {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .related-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .related-post-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .related-post-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .related-post-card-image {
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        .related-post-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .related-post-card-content {
+            padding: 15px;
+        }
+        
+        .related-post-card h4 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        
+        .related-post-card a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .related-post-card a:hover {
+            color: #4285f4;
+        }
+        
+        .back-to-blog {
+            display: inline-block;
+            margin-top: 40px;
+            color: #4285f4;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .back-to-blog:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-post-title {
+                font-size: 28px;
+            }
+            
+            .blog-post-content {
+                font-size: 16px;
+            }
+            
+            .related-posts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Error message styling */
+        .error-message {
+            text-align: center;
+            padding: 50px 20px;
+            color: #721c24;
+            background-color: #f8d7da;
+            border-radius: 8px;
+            margin: 40px auto;
+            max-width: 600px;
+        }
+        
+        .error-message h2 {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVH5B947"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '111216968559815');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=111216968559815&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+    
+    <!-- Header with navigation -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <a href="/" aria-label="Home">
+                    <img src="/assets/images/logo.png" alt="Prestamigo">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/guia-hipotecaria.html">Guía Hipotecaria</a></li>
+                    <li><a href="/calculadora.html">Calculadora</a></li>
+                    <li><a href="/comprar-vs-rentar">¿Comprar o Rentar?</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="https://api.leadconnectorhq.com/widget/booking/qBoIcTx0Mr1zIeWeWD9D">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Post Content -->
+    <main>
+        <article id="blog-post" class="blog-post">
+            <!-- Blog post content will be loaded here dynamically -->
+        </article>
+        
+        <div id="error-message" class="error-message" style="display: none;">
+            <h2>Post Not Found</h2>
+            <p>The blog post you're looking for doesn't exist or may have been moved.</p>
+            <a href="/blog" class="back-to-blog">← Back to Blog</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <address>
+                        410 N Scottdale Rd<br>
+                        Tempe, AZ 85288<br>
+                        <a href="tel:+14806123718">Phone: (480) 612-3718</a><br>
+                        <a href="mailto:info@prestamigo.com">Email: info@prestamigo.com</a>
+                    </address>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/services.html">Services</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="https://facebook.com" aria-label="Facebook">
+                            <i class="social-icon">Facebook</i>
+                        </a>
+                        <a href="https://twitter.com" aria-label="Twitter">
+                            <i class="social-icon">Twitter</i>
+                        </a>
+                        <a href="https://linkedin.com" aria-label="LinkedIn">
+                            <i class="social-icon">LinkedIn</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Prestamigo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/assets/js/main.js"></script>
+    <!-- Visitor Tracking Script -->
+    <script src="/js/visitor-tracker.js"></script>
+    <!-- Analytics & Tracking Scripts -->
+    <script src="/js/tracking.js"></script>
+    
+    <script>
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                });
+                
+                // Close menu when clicking on a link
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    });
+                });
+            }
+            
+            // Load blog post based on slug in URL
+            const slug = getSlugFromUrl();
+            
+            if (slug) {
+                loadBlogPostBySlug(slug);
+            } else {
+                showErrorMessage();
+            }
+        });
+        
+        // Extract slug from URL
+        function getSlugFromUrl() {
+            const path = window.location.pathname;
+            const parts = path.split('/');
+            
+            // The slug should be the last part of the URL
+            if (parts.length > 0) {
+                return parts[parts.length - 1];
+            }
+            
+            return null;
+        }
+        
+        // Load blog post by slug
+        function loadBlogPostBySlug(slug) {
+            fetch('/api/blog-posts')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.posts && data.posts.length > 0) {
+                        // Find post with matching slug
+                        const post = data.posts.find(p => p.slug === slug && p.is_published);
+                        
+                        if (post) {
+                            displayBlogPost(post);
+                            updateMetaTags(post);
+                        } else {
+                            showErrorMessage();
+                        }
+                    } else {
+                        showErrorMessage();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading blog post:', error);
+                    showErrorMessage();
+                });
+        }
+        
+        // Display blog post
+        function displayBlogPost(post) {
+            const blogPostElement = document.getElementById('blog-post');
+            
+            // Format date
+            const formattedDate = new Date(post.created_at).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            // Default image if none provided
+            const featuredImage = post.featured_image || '/generated-icon.png';
+            
+            // Create blog post HTML
+            const postHTML = `
+                <header class="blog-post-header">
+                    <h1 class="blog-post-title">${post.title}</h1>
+                    <div class="blog-post-meta">
+                        <span>By ${post.author || 'Prestamigo'}</span>
+                        <span>${formattedDate}</span>
+                    </div>
+                </header>
+                
+                <img src="${featuredImage}" alt="${post.title}" class="blog-post-image">
+                
+                <div class="blog-post-content">
+                    ${post.content}
+                </div>
+                
+                <div class="author-section">
+                    <img src="/assets/images/logo-icon.png" alt="${post.author || 'Prestamigo'}" class="author-avatar">
+                    <div class="author-info">
+                        <h3>${post.author || 'Prestamigo'}</h3>
+                        <p>Financial Education Specialist</p>
+                    </div>
+                </div>
+                
+                <a href="/blog" class="back-to-blog">← Back to Blog</a>
+            `;
+            
+            blogPostElement.innerHTML = postHTML;
+            blogPostElement.style.display = 'block';
+            document.getElementById('error-message').style.display = 'none';
+        }
+        
+        // Update meta tags for SEO
+        function updateMetaTags(post) {
+            // Base URL
+            const baseUrl = window.location.origin;
+            const postUrl = `${baseUrl}/blog/${post.slug}`;
+            
+            // Page title
+            document.title = post.meta_title || post.title;
+            document.getElementById('page-title').textContent = post.meta_title || post.title;
+            
+            // Meta description
+            const metaDescription = post.meta_description || post.summary || `Read our latest blog post: ${post.title}`;
+            document.getElementById('meta-description').setAttribute('content', metaDescription);
+            
+            // Meta keywords
+            if (post.meta_keywords) {
+                document.getElementById('meta-keywords').setAttribute('content', post.meta_keywords);
+            }
+            
+            // Canonical URL
+            document.getElementById('canonical-url').setAttribute('href', postUrl);
+            
+            // Open Graph tags
+            document.getElementById('og-url').setAttribute('content', postUrl);
+            document.getElementById('og-title').setAttribute('content', post.meta_title || post.title);
+            document.getElementById('og-description').setAttribute('content', metaDescription);
+            
+            if (post.featured_image) {
+                document.getElementById('og-image').setAttribute('content', post.featured_image);
+            }
+            
+            // Twitter tags
+            document.getElementById('twitter-url').setAttribute('content', postUrl);
+            document.getElementById('twitter-title').setAttribute('content', post.meta_title || post.title);
+            document.getElementById('twitter-description').setAttribute('content', metaDescription);
+            
+            if (post.featured_image) {
+                document.getElementById('twitter-image').setAttribute('content', post.featured_image);
+            }
+        }
+        
+        // Show error message when post not found
+        function showErrorMessage() {
+            document.getElementById('blog-post').style.display = 'none';
+            document.getElementById('error-message').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
