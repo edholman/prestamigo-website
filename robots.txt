@@ -1,0 +1,25 @@
+# robots.txt for Prestamigo website
+# Version 1.0
+
+# Allow all web crawlers full access
+User-agent: *
+Allow: /
+
+# Explicitly allow Googlebot for better indexing
+User-agent: Googlebot
+Allow: /
+
+# No crawl delay for Googlebot to ensure faster indexing
+User-agent: Googlebot
+Crawl-delay: 1
+
+# Allow Google Mobile crawler
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Allow Google Image crawler
+User-agent: Googlebot-Image
+Allow: /
+
+# Specify sitemap location
+Sitemap: https://prestamigo.com/sitemap.xml
