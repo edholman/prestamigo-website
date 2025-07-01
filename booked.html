@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Cita Confirmada! - Prestamigo</title>
+    <meta name="description" content="Tu cita hipotecaria ha sido confirmada. Te contactaremos pronto para ayudarte con tu proceso de compra de vivienda.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            height: 90px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Main Content */
+        .confirmation-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 1rem;
+        }
+
+        .confirmation-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .success-icon i {
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        .confirmation-card h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .confirmation-card p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .next-steps {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .next-steps h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .next-steps li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+        }
+
+        .next-steps li:last-child {
+            border-bottom: none;
+        }
+
+        .next-steps i {
+            color: #3498db;
+            margin-right: 1rem;
+            width: 20px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #3498db;
+            border: 2px solid #3498db;
+        }
+
+        .btn-secondary:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .nav-links li a {
+                font-size: 1.2rem;
+            }
+
+            .confirmation-card {
+                margin: 1rem;
+                padding: 2rem 1.5rem;
+            }
+
+            .confirmation-card h1 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="/">
+                    <img src="https://i.imgur.com/t3pRlvV.png" alt="Prestamigo Logo" class="logo">
+                </a>
+                
+                <!-- Hamburger Menu Button -->
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="/" data-translate="nav-inicio">Inicio</a></li>
+                    <li><a href="/guia-hipotecaria.html" data-translate="nav-guia">Guía Hipotecaria</a></li>
+                    <li><a href="/calculadora.html" data-translate="nav-calculadora">Calculadoras</a></li>
+                    <li><a href="/tasas-de-interes.html" data-translate="nav-tasas">Tasas de Interés</a></li>
+                    <li><a href="/faq.html" data-translate="nav-faq">FAQ</a></li>
+                    <li><a href="#" onclick="openBookingModal()" data-translate="nav-contacto">Consulta Gratis</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Confirmation Content -->
+    <div class="confirmation-container">
+        <div class="confirmation-card">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            
+            <h1>¡Cita Confirmada!</h1>
+            <p>
+                Gracias por programar tu consulta hipotecaria gratuita con Prestamigo. 
+                Hemos recibido tu solicitud y te contactaremos pronto para confirmar 
+                los detalles de tu cita.
+            </p>
+
+            <div class="next-steps">
+                <h3>¿Qué sigue ahora?</h3>
+                <ul>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>Te llamaremos en las próximas 24 horas para confirmar tu cita</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-email"></i>
+                        <span>Recibirás un email de confirmación con los detalles</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-file-alt"></i>
+                        <span>Prepara tus documentos financieros para la consulta</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-calculator"></i>
+                        <span>Usa nuestras calculadoras para prepararte mejor</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="/calculadora.html" class="btn btn-primary">
+                    <i class="fas fa-calculator"></i>
+                    Usar Calculadoras
+                </a>
+                <a href="/guia-hipotecaria.html" class="btn btn-secondary">
+                    <i class="fas fa-book"></i>
+                    Leer Guía
+                </a>
+            </div>
+
+            <div class="contact-info">
+                <h4>¿Necesitas ayuda inmediata?</h4>
+                <p><i class="fas fa-phone"></i> Llámanos: (480) 612-3718</p>
+                <p><i class="fas fa-envelope"></i> Email: info@prestamigo.com</p>
+                <p><i class="fas fa-clock"></i> Horario: Lun-Vie 9:00 AM - 6:00 PM</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tracking Scripts -->
+    <script src="js/tracking.js"></script>
+    <script src="js/visitor-tracker.js"></script>
+
+    <!-- Conversion Tracking -->
+    <script>
+        // Google Analytics Conversion Event
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'conversion', {
+                'send_to': 'G-DCWV68YXJ9',
+                'event_category': 'booking',
+                'event_label': 'appointment_confirmed',
+                'value': 1
+            });
+        }
+
+        // Facebook Pixel Conversion Event
+        if (typeof fbq !== 'undefined') {
+            fbq('track', 'Lead', {
+                content_name: 'Appointment Booked',
+                content_category: 'mortgage_consultation'
+            });
+        }
+
+        // Custom tracking for internal analytics
+        if (typeof trackVisitor === 'function') {
+            trackVisitor({
+                event: 'appointment_booked',
+                page: 'confirmation',
+                conversion: true
+            });
+        }
+
+        // Mobile Navigation Toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
