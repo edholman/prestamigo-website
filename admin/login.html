@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NVH5B947');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Character encoding -->
+    <meta charset="UTF-8">
+    
+    <!-- Responsive viewport settings -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page title and meta -->
+    <title>Admin Login - Prestamigo CMS</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Enhanced Favicon Implementation -->
+    <link rel="icon" href="/assets/favicon/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    
+    <style>
+        /* Admin-specific styles */
+        .admin-login {
+            max-width: 400px;
+            margin: 80px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .admin-login h1 {
+            margin-bottom: 30px;
+            text-align: center;
+            color: #333;
+        }
+        
+        .admin-login .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .admin-login label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .admin-login input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .admin-login button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .admin-login button:hover {
+            background-color: #3367d6;
+        }
+        
+        .alert {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVH5B947"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Admin Login Form -->
+    <div class="admin-login">
+        <h1>Prestamigo Admin</h1>
+        <div id="login-error" class="alert alert-danger" style="display: none;">
+            Invalid username or password.
+        </div>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p style="text-align: center; margin-top: 20px;">
+            <a href="/">Return to Website</a>
+        </p>
+    </div>
+    
+    <!-- JavaScript -->
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple authentication - in a real app, this would be a server-side check
+            if (username === 'admin' && password === 'prestamigo2023') {
+                // Store login state in session storage
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                // Redirect to admin dashboard
+                window.location.href = '/admin/dashboard.html';
+            } else {
+                // Show error message
+                document.getElementById('login-error').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

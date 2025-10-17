@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NVH5B947');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCWV68YXJ9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DCWV68YXJ9');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Ahorros en Intereses - Prestamigo</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Calcule sus ahorros fiscales potenciales con la deducción de intereses hipotecarios. Herramienta gratuita basada en las tasas de impuestos federales actuales.">
+    <meta name="keywords" content="deducción hipoteca, ahorros fiscales, intereses hipotecarios, impuestos federales, prestamigo">
+    
+    <!-- Favicon Configuration -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/favicon/favicon.png">
+    
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="Calculadora de Ahorros en Intereses - Prestamigo">
+    <meta property="og:description" content="Calcule sus ahorros fiscales potenciales con la deducción de intereses hipotecarios. Herramienta gratuita basada en las tasas de impuestos federales actuales.">
+    <meta property="og:image" content="https://prestamigo.com/assets/favicon/favicon.png">
+    <meta property="og:url" content="https://prestamigo.com/deduccion-fiscal.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Calculadora de Ahorros en Intereses - Prestamigo">
+    <meta name="twitter:description" content="Calcule sus ahorros fiscales potenciales con la deducción de intereses hipotecarios. Herramienta gratuita basada en las tasas de impuestos federales actuales.">
+    <meta name="twitter:image" content="https://prestamigo.com/assets/favicon/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Calculator Card */
+        .calculator-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1rem;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        /* Calculate Button */
+        .calculate-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 20px;
+        }
+        
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        /* Results Section */
+        .results {
+            display: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        
+        .results h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .result-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .result-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+        
+        .result-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        
+        .main-result {
+            grid-column: 1 / -1;
+            background: rgba(255,255,255,0.2);
+            font-size: 1.1rem;
+        }
+        
+        .main-result .result-value {
+            font-size: 2rem;
+        }
+        
+        /* Info Section */
+        .info-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .info-section h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .info-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .info-section li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ecf0f1;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .info-section li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        /* Tax Brackets Table */
+        .tax-brackets {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .tax-brackets h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .brackets-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        
+        .brackets-table th,
+        .brackets-table td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .brackets-table th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Mobile responsive table */
+        @media (max-width: 768px) {
+            .brackets-table {
+                font-size: 0.7rem;
+            }
+            
+            .brackets-table th,
+            .brackets-table td {
+                padding: 6px 4px;
+                text-align: center;
+            }
+            
+            .brackets-table th:first-child,
+            .brackets-table td:first-child {
+                padding-left: 8px;
+            }
+            
+            .brackets-table th:last-child,
+            .brackets-table td:last-child {
+                padding-right: 8px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .brackets-table {
+                font-size: 0.65rem;
+            }
+            
+            .brackets-table th,
+            .brackets-table td {
+                padding: 4px 2px;
+            }
+        }
+        
+        /* Chart Container */
+        .chart-container {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .chart-container h4 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        #chartVisualization {
+            height: 260px;
+            position: relative;
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            overflow: visible;
+        }
+        
+        .chart-bar {
+            position: absolute;
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .chart-bar:hover {
+            background: linear-gradient(135deg, #0056b3 0%, #003d82 100%);
+            transform: scaleX(1.5);
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+        }
+        
+        .chart-label {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.65rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .chart-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            pointer-events: none;
+            z-index: 20;
+            white-space: nowrap;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .chart-tooltip.show {
+            opacity: 1;
+        }
+        
+        .chart-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.9);
+        }
+
+        
+        /* Payment Breakdown Styling */
+        .payment-breakdown {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .payment-breakdown h4 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .payment-comparison {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .payment-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-item.highlight {
+            border-color: #28a745;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            transform: scale(1.02);
+        }
+        
+        .payment-item.savings {
+            border-color: #17a2b8;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        }
+        
+        .payment-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+        
+        .payment-item.highlight .payment-label {
+            color: white;
+            opacity: 0.9;
+        }
+        
+        .payment-item.savings .payment-label {
+            color: #1565c0;
+        }
+        
+        .payment-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .payment-item.highlight .payment-value {
+            color: white;
+        }
+        
+        .payment-item.savings .payment-value {
+            color: #0d47a1;
+        }
+        
+        .payment-note {
+            font-size: 0.8rem;
+            margin-top: 5px;
+            opacity: 0.8;
+        }
+        
+        .payment-item.highlight .payment-note {
+            color: white;
+            opacity: 0.9;
+        }
+        
+        .payment-item.savings .payment-note {
+            color: #1565c0;
+        }
+        
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .chart-container {
+                padding: 15px;
+                margin: 15px 0;
+            }
+            
+            .chart-container h4 {
+                font-size: 1.1rem;
+            }
+            
+            #chartVisualization {
+                height: 195px;
+                padding: 10px;
+            }
+            
+            .chart-bar {
+                font-size: 0.6rem;
+            }
+            
+            .payment-breakdown {
+                padding: 15px;
+                margin: 15px 0;
+            }
+            
+            .payment-value {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .chart-container {
+                padding: 10px;
+                margin: 10px 0;
+            }
+            
+            .chart-container h4 {
+                font-size: 1rem;
+            }
+            
+            #chartVisualization {
+                height: 156px;
+                padding: 8px;
+            }
+            
+            .payment-breakdown {
+                padding: 10px;
+                margin: 10px 0;
+            }
+        }
+        
+        /* Back Button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .disclaimer {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .disclaimer p {
+            margin-bottom: 15px;
+        }
+        
+        .disclaimer p:last-child {
+            margin-bottom: 0;
+        }
+        
+        footer p {
+            text-align: center;
+            margin: 0;
+            opacity: 0.8;
+        }
+        
+        /* Contact Button */
+        .contact-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .calculator-card {
+                padding: 25px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .contact-button {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVH5B947"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container">
+        <a href="/" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Volver al Inicio
+        </a>
+
+        <div class="header">
+            <h1><i class="fas fa-receipt"></i> Calculadora de Ahorros en Intereses</h1>
+            <p>Estime sus ahorros fiscales potenciales con la deducción de intereses hipotecarios basada en las tasas de impuestos federales actuales de 2024.</p>
+        </div>
+        
+        <div class="calculator-card">
+            <form id="taxDeductionForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="filingStatus">
+                            <i class="fas fa-users"></i> Estado Civil para Impuestos
+                        </label>
+                        <select id="filingStatus" required>
+                            <option value="">Seleccione su estado civil</option>
+                            <option value="single">Soltero</option>
+                            <option value="marriedJoint">Casado Declarando Juntos</option>
+                            <option value="marriedSeparate">Casado Declarando Por Separado</option>
+                            <option value="headOfHousehold">Jefe de Familia</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="annualIncome">
+                            <i class="fas fa-dollar-sign"></i> Ingreso Anual Bruto (USD)
+                        </label>
+                        <input 
+                            type="number" 
+                            id="annualIncome" 
+                            placeholder="Ej: 100000" 
+                            min="1" 
+                            step="1"
+                            required
+                        >
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="loanAmount">
+                            <i class="fas fa-home"></i> Monto del Préstamo Hipotecario (USD)
+                        </label>
+                        <input 
+                            type="number" 
+                            id="loanAmount" 
+                            placeholder="Ej: 350000" 
+                            min="1" 
+                            step="1"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="interestRate">
+                            <i class="fas fa-percentage"></i> Tasa de Interés Anual (%)
+                        </label>
+                        <input 
+                            type="number" 
+                            id="interestRate" 
+                            placeholder="Ej: 7" 
+                            min="1" 
+                            max="15"
+                            step="0.01"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loanTerm">
+                            <i class="fas fa-calendar-alt"></i> Plazo del Préstamo (años)
+                        </label>
+                        <select id="loanTerm" required>
+                            <option value="15">15 años</option>
+                            <option value="20">20 años</option>
+                            <option value="25">25 años</option>
+                            <option value="30" selected>30 años</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="propertyTax">
+                            <i class="fas fa-building"></i> Impuestos de Propiedad Anuales (USD)
+                        </label>
+                        <input 
+                            type="number" 
+                            id="propertyTax" 
+                            placeholder="Ej: 2400" 
+                            min="0" 
+                            step="100"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="standardDeduction">
+                            <i class="fas fa-calculator"></i> ¿Usa Deducción Estándar?
+                        </label>
+                        <select id="standardDeduction" required>
+                            <option value="">Seleccione una opción</option>
+                            <option value="yes">Sí, uso deducción estándar</option>
+                            <option value="no">No, detallo mis deducciones</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="calculate-btn">
+                    <i class="fas fa-calculator"></i> Calcular Ahorros Fiscales
+                </button>
+            </form>
+
+            <div id="results" class="results">
+                <h3><i class="fas fa-piggy-bank"></i> Sus Ahorros Fiscales Estimados</h3>
+                <div class="results-grid">
+                    <div class="result-item main-result">
+                        <div class="result-label">Ahorros Fiscales Anuales Totales</div>
+                        <div class="result-value" id="totalSavings">$0</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Ahorros por Intereses Hipotecarios</div>
+                        <div class="result-value" id="mortgageInterestSavings">$0</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Ahorros por Impuestos de Propiedad</div>
+                        <div class="result-value" id="propertyTaxSavings">$0</div>
+                        <div class="result-note" id="saltNote" style="font-size: 0.8rem; opacity: 0.8; margin-top: 5px;"></div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Intereses Anuales Pagados</div>
+                        <div class="result-value" id="annualInterest">$0</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Su Tasa de Impuesto Marginal</div>
+                        <div class="result-value" id="marginalRate">0%</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Beneficio Mensual Promedio</div>
+                        <div class="result-value" id="monthlySavings">$0</div>
+                    </div>
+                </div>
+                
+                <div class="payment-breakdown">
+                    <h4><i class="fas fa-home"></i> Impacto en su Pago Mensual</h4>
+                    <div class="payment-comparison">
+                        <div class="payment-item">
+                            <div class="payment-label">Pago Principal + Interés (P&I)</div>
+                            <div class="payment-value" id="originalPayment">$0</div>
+                        </div>
+                        <div class="payment-item highlight">
+                            <div class="payment-label">Pago Real Después de Ahorros Fiscales</div>
+                            <div class="payment-value" id="effectivePayment">$0</div>
+                            <div class="payment-note">Considerando beneficio fiscal mensual</div>
+                        </div>
+                        <div class="payment-item savings">
+                            <div class="payment-label">Reducción Mensual Efectiva</div>
+                            <div class="payment-value" id="monthlyReduction">$0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tax Savings Chart -->
+            <div id="savingsChart" class="chart-container" style="display: none;">
+                <h4><i class="fas fa-chart-line"></i> Beneficio de Deducción de Intereses por Año</h4>
+                <div id="chartVisualization"></div>
+                <p style="text-align: center; margin-top: 25px; font-size: 0.85rem; opacity: 0.8;">
+                    <i class="fas fa-info-circle"></i> Los ahorros disminuyen porque los intereses pagados se reducen cada año
+                </p>
+            </div>
+
+        </div>
+        
+        <div class="info-section">
+            <h3><i class="fas fa-info-circle"></i> Información Importante</h3>
+            <ul>
+                <li><strong>Esta calculadora usa las tasas de impuestos federales de 2024</strong></li>
+                <li><strong>Los resultados son estimaciones y no constituyen asesoramiento fiscal</strong></li>
+                <li><strong>Consulte con un profesional de impuestos para su situación específica</strong></li>
+                <li>La deducción de intereses hipotecarios está limitada a préstamos de hasta $750,000</li>
+                <li>Los impuestos estatales y locales (SALT) están limitados a $10,000 anuales</li>
+                <li>Debe detallar deducciones para beneficiarse de estas deducciones</li>
+                <li>Solo se incluyen impuestos federales; los estatales pueden variar</li>
+                <li>Los cálculos asumen que toda la deuda hipotecaria califica para la deducción</li>
+                <li>Cambios en las leyes fiscales pueden afectar estos beneficios</li>
+            </ul>
+            
+            <div class="tax-brackets">
+                <h4>Tasas de Impuestos Federales 2024</h4>
+                <div style="overflow-x: auto;">
+                    <table class="brackets-table">
+                    <thead>
+                        <tr>
+                            <th>Tasa</th>
+                            <th>Soltero</th>
+                            <th>Casado (Conjunto)</th>
+                            <th>Jefe de Familia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>10%</td><td>$0 - $11,000</td><td>$0 - $22,000</td><td>$0 - $15,700</td></tr>
+                        <tr><td>12%</td><td>$11,001 - $44,725</td><td>$22,001 - $89,450</td><td>$15,701 - $59,850</td></tr>
+                        <tr><td>22%</td><td>$44,726 - $95,375</td><td>$89,451 - $190,750</td><td>$59,851 - $95,350</td></tr>
+                        <tr><td>24%</td><td>$95,376 - $182,050</td><td>$190,751 - $364,200</td><td>$95,351 - $182,050</td></tr>
+                        <tr><td>32%</td><td>$182,051 - $231,250</td><td>$364,201 - $462,500</td><td>$182,051 - $231,250</td></tr>
+                        <tr><td>35%</td><td>$231,251 - $578,125</td><td>$462,501 - $693,750</td><td>$231,251 - $578,100</td></tr>
+                        <tr><td>37%</td><td>$578,126+</td><td>$693,751+</td><td>$578,101+</td></tr>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="disclaimer">
+                <p>INCITE LLC, DBA Prestamigo, es una empresa de educación. INCITE LLC, DBA Prestamigo no es un prestamista, no emite calificaciones de préstamos, y no extiende crédito de ningún tipo. Este sitio web es sólo para uso educativo. Todos los cálculos deben ser verificados de forma independiente. Este sitio web no es una oferta de préstamo y no debe utilizarse directamente para tomar decisiones sobre ofertas de viviendas, decisiones de compra ni selecciones de préstamos. No se garantiza que proporcione resultados exactos, que implique condiciones de préstamo, importes de calificación ni asesoramiento inmobiliario. Busque el consejo de un agente de bienes raíces con licencia, originador de préstamos, planificador financiero, contador y/o abogado de bienes raíces, legal y/o asesoramiento financiero.</p>
+                
+                <p><strong>Divulgación de Relación Comercial:</strong><br>
+                INCITE LLC, DBA Prestamigo, tiene una relación comercial con Loan Factory, Inc. (NMLS 320841), una empresa de originación hipotecaria con licencia. Si usted solicita ser contactado o solicita más información, su información puede ser compartida con Loan Factory, Inc. o con otros profesionales hipotecarios con licencia para brindarle asistencia adicional. INCITE LLC, DBA Prestamigo, puede recibir compensación si usted elige trabajar con Loan Factory, Inc. u otros socios recomendados.</p>
+                
+                <p><strong>Transparencia:</strong><br>
+                El contenido educativo proporcionado en este sitio puede no ser completamente imparcial debido a la relación comercial entre INCITE LLC, DBA Prestamigo, y Loan Factory, Inc.</p>
+                
+                <p>INCITE LLC, DBA Prestamigo, no está afiliada a la VA, la FHA ni a ninguna otra agencia gubernamental. Este sitio no ha sido aprobado por ninguna agencia gubernamental.</p>
+                
+                <p>Esta calculadora es solo para fines educativos y no constituye asesoramiento fiscal profesional. Los resultados son estimaciones basadas en las tasas de impuestos federales actuales y pueden no reflejar su situación fiscal real. Consulte con un profesional de impuestos calificado para obtener asesoramiento personalizado.</p>
+                
+                <p>NMLS 1940106<br>
+                Loan Factory, Inc.<br>
+                NMLS 320841</p>
+                
+                <p>Igualdad de Vivienda Prestamista</p>
+                
+                <p><strong>Sin citas en persona</strong></p>
+            </div>
+            <p>&copy; 2024 Prestamigo. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Go High Level Contact Button -->
+    <button onclick="openBookingModal()" class="contact-button">
+        <i class="fas fa-calendar-alt"></i>
+        Agendar Consulta
+    </button>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 10000; overflow-y: auto;">
+        <div style="position: relative; margin: 2% auto; padding: 0; width: 95%; max-width: 700px; background: white; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); min-height: 600px;">
+            <button onclick="closeBookingModal()" style="position: absolute; top: 15px; right: 20px; background: #ff4757; color: white; border: none; font-size: 18px; cursor: pointer; border-radius: 50%; width: 35px; height: 35px; z-index: 10001; display: flex; align-items: center; justify-content: center;">&times;</button>
+            <div id="bookingContent" style="padding: 50px 20px 20px 20px; height: 650px;">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openBookingModal() {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const modal = document.getElementById('bookingModal');
+            const content = document.getElementById('bookingContent');
+            
+            // Show modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            // Load Go High Level widget content
+            content.innerHTML = `
+                <iframe src="https://api.leadconnectorhq.com/widget/booking/qBoIcTx0Mr1zIeWeWD9D" 
+                        style="width: 100%; height: 100%; border: none; border-radius: 10px;" 
+                        frameborder="0" 
+                        scrolling="auto"
+                        allowfullscreen>
+                </iframe>
+            `;
+            
+            return false;
+        }
+        
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            const content = document.getElementById('bookingContent');
+            
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // Clear content to stop any ongoing processes
+            content.innerHTML = '<div style="text-align: center; padding: 50px;">Cargando...</div>';
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('bookingModal');
+            const modalContent = modal.querySelector('div');
+            
+            if (event.target === modal) {
+                closeBookingModal();
+            }
+        });
+        
+        // Prevent event bubbling inside modal
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('bookingModal');
+            if (modal) {
+                modal.querySelector('div').addEventListener('click', function(event) {
+                    event.stopPropagation();
+                });
+            }
+        });
+    </script>
+    <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+
+    <script>
+        // 2024 Federal Tax Brackets
+        const taxBrackets = {
+            single: [
+                { min: 0, max: 11000, rate: 0.10 },
+                { min: 11001, max: 44725, rate: 0.12 },
+                { min: 44726, max: 95375, rate: 0.22 },
+                { min: 95376, max: 182050, rate: 0.24 },
+                { min: 182051, max: 231250, rate: 0.32 },
+                { min: 231251, max: 578125, rate: 0.35 },
+                { min: 578126, max: Infinity, rate: 0.37 }
+            ],
+            marriedJoint: [
+                { min: 0, max: 22000, rate: 0.10 },
+                { min: 22001, max: 89450, rate: 0.12 },
+                { min: 89451, max: 190750, rate: 0.22 },
+                { min: 190751, max: 364200, rate: 0.24 },
+                { min: 364201, max: 462500, rate: 0.32 },
+                { min: 462501, max: 693750, rate: 0.35 },
+                { min: 693751, max: Infinity, rate: 0.37 }
+            ],
+            marriedSeparate: [
+                { min: 0, max: 11000, rate: 0.10 },
+                { min: 11001, max: 44725, rate: 0.12 },
+                { min: 44726, max: 95375, rate: 0.22 },
+                { min: 95376, max: 182100, rate: 0.24 },
+                { min: 182101, max: 231250, rate: 0.32 },
+                { min: 231251, max: 346875, rate: 0.35 },
+                { min: 346876, max: Infinity, rate: 0.37 }
+            ],
+            headOfHousehold: [
+                { min: 0, max: 15700, rate: 0.10 },
+                { min: 15701, max: 59850, rate: 0.12 },
+                { min: 59851, max: 95350, rate: 0.22 },
+                { min: 95351, max: 182050, rate: 0.24 },
+                { min: 182051, max: 231250, rate: 0.32 },
+                { min: 231251, max: 578100, rate: 0.35 },
+                { min: 578101, max: Infinity, rate: 0.37 }
+            ]
+        };
+
+        // 2024 Standard Deductions
+        const standardDeductions = {
+            single: 14600,
+            marriedJoint: 29200,
+            marriedSeparate: 14600,
+            headOfHousehold: 21900
+        };
+
+        function getMarginalTaxRate(income, filingStatus) {
+            const brackets = taxBrackets[filingStatus];
+            for (let bracket of brackets) {
+                if (income >= bracket.min && income <= bracket.max) {
+                    return bracket.rate;
+                }
+            }
+            return 0.37; // Highest bracket
+        }
+
+        function calculateFirstYearInterest(loanAmount, interestRate) {
+            // Approximate first year interest (slightly higher than average due to amortization)
+            return loanAmount * (interestRate / 100);
+        }
+
+        function calculateMonthlyPayment(loanAmount, interestRate, loanTerm) {
+            const monthlyRate = interestRate / 100 / 12;
+            const numPayments = loanTerm * 12;
+            
+            if (monthlyRate === 0) {
+                return loanAmount / numPayments;
+            }
+            
+            return loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
+        }
+
+        function calculateYearlyInterest(loanAmount, interestRate, loanTerm) {
+            const monthlyRate = interestRate / 100 / 12;
+            const numPayments = loanTerm * 12;
+            const monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
+            
+            let balance = loanAmount;
+            const yearlyInterest = [];
+            
+            for (let year = 1; year <= loanTerm; year++) {
+                let yearInterest = 0;
+                
+                for (let month = 1; month <= 12; month++) {
+                    const interestPayment = balance * monthlyRate;
+                    const principalPayment = monthlyPayment - interestPayment;
+                    
+                    yearInterest += interestPayment;
+                    balance -= principalPayment;
+                    
+                    if (balance <= 0) {
+                        balance = 0;
+                        break;
+                    }
+                }
+                
+                yearlyInterest.push({
+                    year: year,
+                    interest: yearInterest,
+                    balance: Math.max(0, balance)
+                });
+                
+                if (balance <= 0) break;
+            }
+            
+            return yearlyInterest;
+        }
+
+        function createSimpleChart(yearlyData, marginalRate) {
+            const chartContainer = document.getElementById('chartVisualization');
+            chartContainer.innerHTML = ''; // Clear previous chart
+            
+            if (!yearlyData || yearlyData.length === 0) return;
+            
+            // Calculate savings for all 30 years
+            const savingsData = yearlyData.map(d => ({
+                year: d.year,
+                savings: Math.round(d.interest * marginalRate),
+                interest: Math.round(d.interest)
+            }));
+            
+            const maxSavings = Math.max(...savingsData.map(d => d.savings));
+            const minSavings = Math.min(...savingsData.map(d => d.savings));
+            const range = maxSavings - minSavings;
+            
+            // Use tighter scaling - focus on the actual data range
+            const chartMin = Math.max(0, minSavings - (range * 0.05));
+            const chartMax = maxSavings + (range * 0.05);
+            const chartRange = chartMax - chartMin;
+            
+            const containerHeight = chartContainer.offsetHeight - 40;
+            const containerWidth = chartContainer.offsetWidth - 40;
+            const barWidth = Math.max(3, containerWidth / savingsData.length - 1);
+            const spacing = containerWidth / savingsData.length;
+            
+            // Create tooltip element
+            const tooltip = document.createElement('div');
+            tooltip.className = 'chart-tooltip';
+            chartContainer.appendChild(tooltip);
+            
+            savingsData.forEach((data, index) => {
+                // Calculate height relative to the tighter range
+                const normalizedValue = (data.savings - chartMin) / chartRange;
+                const barHeight = Math.max(5, normalizedValue * containerHeight);
+                const leftPosition = 20 + (index * spacing);
+                
+                // Create bar element
+                const bar = document.createElement('div');
+                bar.className = 'chart-bar';
+                bar.style.left = leftPosition + 'px';
+                bar.style.width = barWidth + 'px';
+                bar.style.height = barHeight + 'px';
+                bar.style.bottom = '25px';
+                
+                // Add hover events
+                bar.addEventListener('mouseenter', (e) => {
+                    tooltip.innerHTML = `Año ${data.year}<br>Ahorro: $${data.savings.toLocaleString()}<br>Interés: $${data.interest.toLocaleString()}`;
+                    tooltip.style.left = leftPosition + 'px';
+                    tooltip.style.bottom = (barHeight + 35) + 'px';
+                    tooltip.classList.add('show');
+                });
+                
+                bar.addEventListener('mouseleave', () => {
+                    tooltip.classList.remove('show');
+                });
+                
+                chartContainer.appendChild(bar);
+                
+                // Add year labels for every 5th year
+                if (data.year % 5 === 0 || data.year === 1) {
+                    const label = document.createElement('div');
+                    label.className = 'chart-label';
+                    label.style.left = leftPosition + 'px';
+                    label.style.width = barWidth + 'px';
+                    label.textContent = data.year;
+                    chartContainer.appendChild(label);
+                }
+            });
+        }
+
+        document.getElementById('taxDeductionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get input values
+            const filingStatus = document.getElementById('filingStatus').value;
+            const annualIncome = parseFloat(document.getElementById('annualIncome').value);
+            const loanAmount = parseFloat(document.getElementById('loanAmount').value);
+            const interestRate = parseFloat(document.getElementById('interestRate').value);
+            const loanTerm = parseInt(document.getElementById('loanTerm').value) || 30;
+            const propertyTax = parseFloat(document.getElementById('propertyTax').value) || 0;
+            const standardDeductionValue = document.getElementById('standardDeduction').value;
+            const usesStandardDeduction = standardDeductionValue === 'yes';
+            
+            // Comprehensive validation with specific error messages
+            const missingFields = [];
+            
+            if (!filingStatus) {
+                missingFields.push('Estado Civil para Impuestos');
+            }
+            if (!annualIncome || isNaN(annualIncome) || annualIncome <= 0) {
+                missingFields.push('Ingreso Anual Bruto (debe ser mayor a 0)');
+            }
+            if (!loanAmount || isNaN(loanAmount) || loanAmount <= 0) {
+                missingFields.push('Monto del Préstamo Hipotecario (debe ser mayor a 0)');
+            }
+            if (!interestRate || isNaN(interestRate) || interestRate <= 0) {
+                missingFields.push('Tasa de Interés Anual (debe ser mayor a 0)');
+            }
+            if (!standardDeductionValue) {
+                missingFields.push('Seleccione si usa deducción estándar o no');
+            }
+            
+            // Show specific error message if fields are missing
+            if (missingFields.length > 0) {
+                let errorMessage = 'Por favor complete los siguientes campos requeridos:\n\n';
+                missingFields.forEach((field, index) => {
+                    errorMessage += `${index + 1}. ${field}\n`;
+                });
+                alert(errorMessage);
+                
+                // Focus on the first missing field
+                if (!filingStatus) {
+                    document.getElementById('filingStatus').focus();
+                } else if (!annualIncome || isNaN(annualIncome) || annualIncome <= 0) {
+                    document.getElementById('annualIncome').focus();
+                } else if (!loanAmount || isNaN(loanAmount) || loanAmount <= 0) {
+                    document.getElementById('loanAmount').focus();
+                } else if (!interestRate || isNaN(interestRate) || interestRate <= 0) {
+                    document.getElementById('interestRate').focus();
+                } else if (!standardDeductionValue) {
+                    document.getElementById('standardDeduction').focus();
+                }
+                
+                return;
+            }
+            
+            // Additional range validations
+            if (annualIncome > 10000000) {
+                alert('El ingreso anual parece muy alto. Por favor verifique el monto ingresado.');
+                document.getElementById('annualIncome').focus();
+                return;
+            }
+            
+            if (loanAmount > 2000000) {
+                alert('El monto del préstamo parece muy alto. Por favor verifique el monto ingresado.');
+                document.getElementById('loanAmount').focus();
+                return;
+            }
+            
+            if (interestRate > 15) {
+                alert('La tasa de interés parece muy alta. Por favor verifique el porcentaje ingresado.');
+                document.getElementById('interestRate').focus();
+                return;
+            }
+            
+            // Calculate annual mortgage interest
+            const annualInterest = calculateFirstYearInterest(loanAmount, interestRate);
+            
+            // Apply mortgage interest deduction limit ($750,000 loan limit)
+            const maxDeductibleLoan = 750000;
+            const deductibleInterest = Math.min(annualInterest, (maxDeductibleLoan / loanAmount) * annualInterest);
+            
+            // Apply SALT deduction limit ($10,000)
+            const deductiblePropertyTax = Math.min(propertyTax, 10000);
+            
+            // Get marginal tax rate
+            const marginalRate = getMarginalTaxRate(annualIncome, filingStatus);
+            
+            // Calculate potential savings
+            const mortgageInterestSavings = deductibleInterest * marginalRate;
+            const propertyTaxSavings = deductiblePropertyTax * marginalRate;
+            const totalPotentialSavings = mortgageInterestSavings + propertyTaxSavings;
+            
+            // Check if itemizing would be beneficial
+            const standardDeduction = standardDeductions[filingStatus];
+            const totalItemizedDeductions = deductibleInterest + deductiblePropertyTax;
+            
+            let actualSavings = 0;
+            let benefitMessage = '';
+            
+            if (usesStandardDeduction) {
+                if (totalItemizedDeductions > standardDeduction) {
+                    actualSavings = (totalItemizedDeductions - standardDeduction) * marginalRate;
+                    benefitMessage = 'Podría beneficiarse al detallar deducciones en lugar de usar la deducción estándar.';
+                } else {
+                    actualSavings = 0;
+                    benefitMessage = 'La deducción estándar es más beneficiosa en su caso.';
+                }
+            } else {
+                actualSavings = totalPotentialSavings;
+                benefitMessage = 'Basado en el detalle de deducciones.';
+            }
+            
+            // Display results
+            document.getElementById('totalSavings').textContent = `$${Math.round(actualSavings).toLocaleString()}`;
+            document.getElementById('mortgageInterestSavings').textContent = `$${Math.round(mortgageInterestSavings).toLocaleString()}`;
+            document.getElementById('propertyTaxSavings').textContent = `$${Math.round(propertyTaxSavings).toLocaleString()}`;
+            document.getElementById('annualInterest').textContent = `$${Math.round(annualInterest).toLocaleString()}`;
+            document.getElementById('marginalRate').textContent = `${(marginalRate * 100).toFixed(0)}%`;
+            document.getElementById('monthlySavings').textContent = `$${Math.round(actualSavings / 12).toLocaleString()}`;
+            
+            // Calculate and display payment breakdown
+            const monthlyPIPayment = calculateMonthlyPayment(loanAmount, interestRate, loanTerm);
+            const monthlySavingsAmount = actualSavings / 12;
+            const effectiveMonthlyPayment = monthlyPIPayment - monthlySavingsAmount;
+            
+            document.getElementById('originalPayment').textContent = `$${Math.round(monthlyPIPayment).toLocaleString()}`;
+            document.getElementById('effectivePayment').textContent = `$${Math.round(effectiveMonthlyPayment).toLocaleString()}`;
+            document.getElementById('monthlyReduction').textContent = `$${Math.round(monthlySavingsAmount).toLocaleString()}`;
+            
+            // Show SALT limitation note if property tax is capped
+            const saltNote = document.getElementById('saltNote');
+            if (propertyTax > 10000) {
+                saltNote.textContent = `(Limitado a $10,000 SALT de $${propertyTax.toLocaleString()})`;
+                saltNote.style.display = 'block';
+            } else {
+                saltNote.style.display = 'none';
+            }
+            
+            // Show results and chart first
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('savingsChart').style.display = 'block';
+            
+            // Generate chart after elements are visible (with small delay to ensure proper sizing)
+            setTimeout(() => {
+                const yearlyData = calculateYearlyInterest(loanAmount, interestRate, loanTerm);
+                createSimpleChart(yearlyData, marginalRate);
+            }, 100);
+            
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+            
+            // Add benefit message if needed
+            if (benefitMessage) {
+                setTimeout(() => {
+                    alert(benefitMessage);
+                }, 1000);
+            }
+        });
+        
+        // Load visitor tracking
+        if (typeof trackVisitor === 'function') {
+            trackVisitor({
+                page: 'calculadora-deduccion-hipoteca',
+                tool: 'mortgage-tax-deduction-calculator'
+            });
+        }
+    </script>
+    
+    <!-- Load tracking scripts -->
+    <script src="js/tracking.js"></script>
+    <script src="js/visitor-tracker.js"></script>
+</body>
+</html>

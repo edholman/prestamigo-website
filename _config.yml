@@ -1,0 +1,93 @@
+# _config.yml
+# Prestamigo - Educación Hipotecaria para Hispanos en EE.UU.
+
+# ========================
+#  SITE CONFIGURATION
+# ========================
+title: Prestamigo
+description: "Guías completas sobre hipotecas para la comunidad hispana en Estados Unidos. Aprenda sobre préstamos FHA, requisitos para inmigrantes, y cómo mejorar su crédito."
+baseurl: "" # Leave empty if using custom domain
+url: "https://prestamigo.com" # Replace with your actual domain
+lang: es-US # Spanish content targeting US audience
+locale: es_ES
+timezone: America/Chicago # Central Time (common for US Spanish audience)
+
+# ========================
+#  SEO & SOCIAL METADATA
+# ========================
+twitter_username: prestamigo_org # Replace with yours
+github_username: edholman # Your GitHub
+author:
+  name: "Equipo Prestamigo"
+  email: "info@prestamigo.com"
+
+# OpenGraph/Twitter Card Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      og_image: "/assets/img/prestamigo-social-card.jpg"
+      twitter_card: summary_large_image
+      twitter_image: "/assets/img/prestamigo-twitter-card.jpg"
+
+# ========================
+#  CONTENT OPTIMIZATION
+# ========================
+collections:
+  guias:
+    output: true
+    permalink: /guias/:path/
+
+# Category descriptions for SEO
+category_descriptions:
+  guías: "Guías paso a paso sobre hipotecas para hispanohablantes"
+  crédito: "Cómo establecer y mejorar crédito en Estados Unidos"
+  inmigrantes: "Recursos financieros para inmigrantes sin SSN"
+
+# ========================
+#  TECHNICAL SEO
+# ========================
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed # RSS feed
+  - jekyll-redirect-from
+
+# Sitemap configuration
+sitemap:
+  changefreq: weekly
+  priority: 0.8
+
+# ========================
+#  PERFORMANCE
+# ========================
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  blanklines: false
+
+# ========================
+#  ANALYTICS & TRACKING
+# ========================
+google_analytics: G-DCWV68YXJ9 # Replace with your GA4 ID
+google_tag_manager: GTM-NVH5B947 # Replace with your GTM ID
+
+# ========================
+#  SECURITY
+# ========================
+security_headers:
+  Content-Security-Policy: "default-src 'self' https:; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' https: data:; font-src 'self' https://fonts.gstatic.com"
+
+# ========================
+#  CUSTOM VARIABLES
+# ========================
+brand:
+  primary_color: "#2A5CAA"
+  secondary_color: "#F7931E"
+  phone: "+1 (480) 612-3718"
+  contact_email: "info@prestamigo.com"
+
+# Enable for production
+future: true
+published: true

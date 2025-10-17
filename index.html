@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Meta Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '111216968559815'); // ← Replace with your actual Pixel ID
+  fbq('track', 'PageView');
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none" 
+       src="https://www.facebook.com/tr?id=111216968559815&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel Code -->
+ <head>    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestamigo - Consejo Hipotecaria</title>
+    
+    <!-- Favicon Configuration -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/favicon/favicon.png">
+    
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="Prestamigo - Consejo Hipotecaria">
+    <meta property="og:description" content="Calculadoras hipotecarias, consejos financieros y guías para compradores de vivienda en español.">
+    <meta property="og:image" content="https://prestamigo.com/assets/favicon/favicon.png">
+    <meta property="og:url" content="https://prestamigo.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Prestamigo - Consejo Hipotecaria">
+    <meta name="twitter:description" content="Calculadoras hipotecarias, consejos financieros y guías para compradores de vivienda en español.">
+    <meta name="twitter:image" content="https://prestamigo.com/assets/favicon/favicon.png">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            position: relative; display: inline-block;
+        }
+        .logo {
+            height: 90px;
+            width: auto;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Desktop Navigation */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links li {
+            margin-left: 20px;
+        }
+        .nav-links li a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        /* Language Toggle */
+        .language-toggle {
+            display: flex;
+            margin-left: 20px;
+            border: 1px solid #3498db;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .language-toggle a {
+            padding: 5px 15px;
+            text-decoration: none;
+            color: #3498db;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .language-toggle a.active {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #2c3e50;
+            transition: all 0.3s ease;
+        }
+        
+        /* Medium screens - reduce navigation spacing */
+        @media (max-width: 1100px) {
+            .nav-links li {
+                margin-left: 12px;
+            }
+        }
+        
+        /* Force navigation alignment - override any conflicts */
+        header {
+            display: block !important;
+            width: 100% !important;
+        }
+        nav {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            width: 100% !important;
+        }
+        
+        .nav-links {
+            display: flex !important;
+            list-style: none !important;
+            align-items: center !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 20px 0 30px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem !important;
+                margin-bottom: 15px;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 20px;
+                padding: 0 15px;
+            }
+            
+            .video-container {
+                margin: 20px auto;
+                padding: 0 15px;
+                height: auto !important;
+                max-width: 100%;
+            }
+            
+            .video-wrapper {
+                position: relative !important;
+                padding-bottom: 56.25% !important;
+                height: 0 !important;
+            }
+            
+            .video-wrapper wistia-player,
+            .video-wrapper iframe {
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+        
+        /* Mobile Navigation */
+        @media (max-width: 950px) {
+            .hamburger {
+                display: flex;
+            }
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                z-index: 100;
+            }
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            .nav-links li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+            .language-toggle {
+                margin: 15px auto 0;
+                justify-content: center;
+            }
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        .video-container {
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        .video-wrapper {
+            position: relative; display: inline-block;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        .cta-button:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #fff;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .testimonials h2 {
+            color: #2c3e50;
+            margin-bottom: 40px;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .testimonial-card {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+        .testimonial-card .quote {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative; display: inline-block;
+        }
+        .testimonial-card .quote:before {
+            content: '"';
+            font-size: 3rem;
+            color: #3498db;
+            opacity: 0.2;
+            position: absolute;
+            left: -15px;
+            top: -15px;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        .author-info h4 {
+            margin: 0;
+            color: #2c3e50;
+        }
+        .author-info p {
+            margin: 5px 0 0;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background: #f9f9f9; 
+            padding: 50px 0;
+        }
+        .faq-section h2 {
+            text-align: center; 
+            color: #2c3e50; 
+            margin-bottom: 30px;
+        }
+        .faq-item {
+            margin-bottom: 15px; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .faq-question {
+            background: #3498db; 
+            color: white; 
+            padding: 15px; 
+            cursor: pointer; 
+            font-weight: 600;
+        }
+        .faq-answer {
+            background: white; 
+            padding: 0 15px; 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.3s ease;
+        }
+        .faq-answer div {
+            padding: 15px 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .disclaimer {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 0.8rem;
+            color: #bdc3c7;
+            line-height: 1.5;
+        }
+
+        /* Video Container */
+        .video-container {
+            margin: 40px auto;
+            max-width: 800px;
+            position: relative;
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: #000;
+        }
+        
+        .video-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: #fff;
+            padding: 40px 0 80px 0;
+        }
+        
+        .faq-section h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.1);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
+        }
+        
+        .faq-question {
+            background: linear-gradient(135deg, #3498db, #5dade2) !important;
+            color: white !important;
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: linear-gradient(135deg, #2980b9, #3498db) !important;
+        }
+        
+        /* Force blue gradient on all FAQ questions */
+        .faq-item .faq-question {
+            background: linear-gradient(135deg, #3498db, #5dade2) !important;
+            color: white !important;
+        }
+        
+        .faq-question h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            flex: 1;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+            font-size: 0.9rem;
+            margin-left: 15px;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 25px;
+            max-height: 200px;
+        }
+        
+        .faq-answer p {
+            margin: 0;
+            color: #2c3e50;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Process Section */
+        .process-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 80px 0 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .process-section h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+        
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .process-step {
+            flex: 1;
+            min-width: 280px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.15);
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            cursor: pointer;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+            text-align: center;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.25);
+        }
+        
+        .step-icon {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        
+        .process-step h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .process-step p {
+            color: #7f8c8d;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="/">
+                    <img src="https://i.imgur.com/t3pRlvV.png" alt="Prestamigo Logo" class="logo">
+                </a>
+                
+                <!-- Hamburger Menu Button -->
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="/" data-translate="nav-inicio">Inicio</a></li>
+                    <li><a href="/guia-hipotecaria.html" data-translate="nav-guia">Guía Hipotecaria</a></li>
+                    <li><a href="/calculadora.html" data-translate="nav-calculadora">Calculadora</a></li>
+                    <li><a href="/calculadora-poder-de-compra.html" data-translate="nav-poder">Poder de Compra</a></li>
+                    <li><a href="/deduccion-fiscal.html" data-translate="nav-deduccion">Beneficios Ocultos</a></li>
+                    <li><a href="/comprar-vs-rentar" data-translate="nav-comprar">¿Comprar o Rentar?</a></li>
+                    <li><a href="/tasas-de-interes.html" data-translate="nav-tasas">Tasas de Interés</a></li>
+                    <li><a href="#" onclick="openBookingModal(); return false;" data-translate="nav-contacto">Contacto</a></li>
+                    <li>
+                        <div class="language-toggle">
+                            <a href="#" data-lang="es" class="active">ES</a>
+                            <a href="#" data-lang="en">EN</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 style="font-size: 2.2rem;">Consejo Hipotecaria</h1>
+            <p>Guía paso a paso para compradores en EE.UU.</p>
+            
+            <div class="video-container">
+                <div class="video-wrapper" style="position: relative; width: 100%; height: 100%;">
+                    <script src="https://fast.wistia.com/player.js" async></script>
+                    <script src="https://fast.wistia.com/embed/nes9yqyn0o.js" async type="module"></script>
+                    <wistia-player media-id="nes9yqyn0o" aspect="1.7777777777777777" style="width: 100%; height: 100%; display: block;"></wistia-player>
+                </div>
+            </div>
+            
+            <a href="#" onclick="openBookingModal(); return false;" class="cta-button">Agende una consulta gratis</a>
+        </div>
+    </section>
+
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2>Nuestro Proceso Simple de 3 Pasos</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>1. Consulta Gratuita</h3>
+                    <p>Evaluamos su situación financiera y objetivos de vivienda en una consulta personalizada sin costo.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>2. Plan Personalizado</h3>
+                    <p>Creamos una estrategia específica para mejorar su perfil crediticio y maximizar su poder de compra.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>3. Compra su Casa</h3>
+                    <p>Le acompañamos durante todo el proceso hasta que tenga las llaves de su nueva casa en sus manos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Preguntas Frecuentes</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Cuánto necesito de pago inicial?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Dependiendo del tipo de préstamo, puede necesitar desde 0% (VA), 3% (Convencional), o 3.5% (FHA). Muchos compradores piensan que necesitan 20%, pero existen opciones con menos dinero inicial.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Qué puntaje de crédito necesito?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Para préstamos FHA puede calificar con 580. Para préstamos convencionales generalmente necesita 620 o más. Si su puntaje es bajo, podemos ayudarle a mejorarlo.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Cuánto tiempo toma el proceso de aprobación?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>La pre-aprobación puede tomar 1-3 días. El proceso completo de cierre generalmente toma 30-45 días una vez que su oferta es aceptada.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Puedo comprar si trabajo por mi cuenta?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>¡Sí! Los trabajadores independientes pueden calificar, pero necesitan documentación adicional como declaraciones de impuestos de 2 años y estados de pérdidas y ganancias.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Qué documentos necesito?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Necesitará W-2s de 2 años, talones de pago recientes, estados de cuenta bancarios, y declaraciones de impuestos. Le ayudamos a preparar todo esto correctamente.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Qué gastos de cierre debo esperar?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Los gastos de cierre generalmente son 2-5% del precio de la casa. Incluyen tasación, inspección, título, y otros costos. Algunos programas permiten que el vendedor pague estos gastos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="disclaimer">
+                <p>INCITE LLC, DBA Prestamigo, es una empresa de educación. INCITE LLC, DBA Prestamigo no es un prestamista, no emite calificaciones de préstamos, y no extiende crédito de ningún tipo. Este sitio web es sólo para uso educativo. Todos los cálculos deben ser verificados de forma independiente. Este sitio web no es una oferta de préstamo y no debe utilizarse directamente para tomar decisiones sobre ofertas de viviendas, decisiones de compra ni selecciones de préstamos. No se garantiza que proporcione resultados exactos, que implique condiciones de préstamo, importes de calificación ni asesoramiento inmobiliario. Busque el consejo de un agente de bienes raíces con licencia, originador de préstamos, planificador financiero, contador y/o abogado de bienes raíces, legal y/o asesoramiento financiero.</p>
+                
+                <p><strong>Divulgación de Relación Comercial:</strong><br>
+                INCITE LLC, DBA Prestamigo, tiene una relación comercial con Loan Factory, Inc. (NMLS 320841), una empresa de originación hipotecaria con licencia. Si usted solicita ser contactado o solicita más información, su información puede ser compartida con Loan Factory, Inc. o con otros profesionales hipotecarios con licencia para brindarle asistencia adicional. INCITE LLC, DBA Prestamigo, puede recibir compensación si usted elige trabajar con Loan Factory, Inc. u otros socios recomendados.</p>
+                
+                <p><strong>Transparencia:</strong><br>
+                El contenido educativo proporcionado en este sitio puede no ser completamente imparcial debido a la relación comercial entre INCITE LLC, DBA Prestamigo, y Loan Factory, Inc.</p>
+                
+                <p>INCITE LLC, DBA Prestamigo, no está afiliada a la VA, la FHA ni a ninguna otra agencia gubernamental. Este sitio no ha sido aprobado por ninguna agencia gubernamental.</p>
+                
+                <p>Para más información sobre cómo manejamos sus datos personales, consulte nuestra <a href="/politica-de-privacidad.html" style="color: #3498db; text-decoration: underline;">Política de Privacidad</a> y <a href="/terminos-de-servicio.html" style="color: #3498db; text-decoration: underline;">Términos de Servicio</a>.</p>
+                
+                <p>NMLS 1940106<br>
+                Loan Factory, Inc.<br>
+                NMLS 320841</p>
+                
+                <p>Igualdad de Vivienda Prestamista</p>
+                
+                <p><strong>Sin citas en persona</strong></p>
+            </div>
+            <p>&copy; 2024 Prestamigo. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu for Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link (for mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+        
+        // Language Toggle
+        document.querySelectorAll('.language-toggle a').forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelector('.language-toggle a.active').classList.remove('active');
+                toggle.classList.add('active');
+            });
+        });
+
+
+    </script>
+    
+    <!-- Floating Contact Button -->
+    <div style="position: fixed; bottom: 30px; right: 30px; z-index: 9999; animation: pulse 2s infinite;">
+        <button onclick="openBookingModal()" 
+           style="display: inline-block; background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 16px; box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4); transition: all 0.3s ease; border: 2px solid transparent; cursor: pointer;"
+           onmouseover="this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 10px 30px rgba(52, 152, 219, 0.6)'; this.style.background='linear-gradient(135deg, #2980b9, #3498db)'; this.style.border='2px solid #fff';"
+           onmouseout="this.style.transform=''; this.style.boxShadow='0 6px 20px rgba(52, 152, 219, 0.4)'; this.style.background='linear-gradient(135deg, #3498db, #2980b9)'; this.style.border='2px solid transparent';">
+            📅 Agendar Consulta
+        </button>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 10000; overflow-y: auto;">
+        <div style="position: relative; margin: 2% auto; padding: 0; width: 95%; max-width: 700px; background: white; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); min-height: 600px;">
+            <button onclick="closeBookingModal()" style="position: absolute; top: 15px; right: 20px; background: #ff4757; color: white; border: none; font-size: 18px; cursor: pointer; border-radius: 50%; width: 35px; height: 35px; z-index: 10001; display: flex; align-items: center; justify-content: center;">&times;</button>
+            <div id="bookingContent" style="padding: 50px 20px 20px 20px; height: 650px;">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Preload the booking widget iframe for faster loading
+        let bookingIframe = null;
+        
+        function preloadBookingWidget() {
+            if (!bookingIframe) {
+                bookingIframe = document.createElement('iframe');
+                bookingIframe.src = 'https://api.leadconnectorhq.com/widget/booking/qBoIcTx0Mr1zIeWeWD9D';
+                bookingIframe.style.cssText = 'width: 100%; height: 100%; border: none; border-radius: 10px;';
+                bookingIframe.frameBorder = '0';
+                bookingIframe.scrolling = 'auto';
+                bookingIframe.allowFullscreen = true;
+                bookingIframe.style.display = 'none';
+                document.body.appendChild(bookingIframe);
+            }
+        }
+        
+        function openBookingModal() {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const modal = document.getElementById('bookingModal');
+            const content = document.getElementById('bookingContent');
+            
+            // Show modal immediately
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            // Show loading state
+            content.innerHTML = '<div style="text-align: center; padding: 100px 20px; color: #666;"><div style="font-size: 18px; margin-bottom: 15px;">Cargando calendario...</div><div style="width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid #3498db; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div></div>';
+            
+            // Use preloaded iframe or create new one
+            if (bookingIframe) {
+                bookingIframe.style.display = 'block';
+                content.innerHTML = '';
+                content.appendChild(bookingIframe);
+            } else {
+                // Fallback: create iframe immediately
+                content.innerHTML = `
+                    <iframe src="https://api.leadconnectorhq.com/widget/booking/qBoIcTx0Mr1zIeWeWD9D" 
+                            style="width: 100%; height: 100%; border: none; border-radius: 10px;" 
+                            frameborder="0" 
+                            scrolling="auto"
+                            allowfullscreen>
+                    </iframe>
+                `;
+            }
+            
+            return false;
+        }
+        
+        // Preload the widget when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait 2 seconds after page load to preload widget
+            setTimeout(preloadBookingWidget, 2000);
+        });
+        
+        // Also preload on user interaction (hover over contact buttons)
+        document.addEventListener('mouseover', function(e) {
+            if (e.target.closest('button[onclick*="openBookingModal"]') || 
+                e.target.closest('a[onclick*="openBookingModal"]')) {
+                preloadBookingWidget();
+            }
+        });
+        
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            const content = document.getElementById('bookingContent');
+            
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // Clear content to stop any ongoing processes
+            content.innerHTML = '<div style="text-align: center; padding: 50px;">Cargando...</div>';
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('bookingModal');
+            const modalContent = modal.querySelector('div');
+            
+            if (event.target === modal) {
+                closeBookingModal();
+            }
+        });
+        
+        // Prevent event bubbling inside modal
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('bookingModal');
+            if (modal) {
+                modal.querySelector('div').addEventListener('click', function(event) {
+                    event.stopPropagation();
+                });
+            }
+        });
+    </script>
+    <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+    <script src="js/tracking.js"></script>
+
+    <style>
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            div[style*="position: fixed"] {
+                bottom: 20px !important;
+                right: 20px !important;
+            }
+            
+            div[style*="position: fixed"] a {
+                padding: 12px 20px !important;
+                font-size: 14px !important;
+            }
+        }
+    </style>
+</body>
+</html>

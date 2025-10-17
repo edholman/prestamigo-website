@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Meta Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '111216968559815'); // ← Replace with your actual Pixel ID
+  fbq('track', 'PageView');
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none" 
+       src="https://www.facebook.com/tr?id=111216968559815&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel Code -->
+ <head>    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasas de Interés Actuales - Prestamigo</title>
+    
+    <!-- Favicon Configuration -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/favicon/favicon.png">
+    
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="Tasas de Interés Hipotecarias Actuales - Prestamigo">
+    <meta property="og:description" content="Consulte las tasas de interés promedio nacionales actuales para hipotecas y compare con las ofertas de prestamistas.">
+    <meta property="og:image" content="https://prestamigo.com/assets/favicon/favicon.png">
+    <meta property="og:url" content="https://prestamigo.com/tasas-de-interes">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Tasas de Interés Hipotecarias Actuales - Prestamigo">
+    <meta name="twitter:description" content="Consulte las tasas de interés promedio nacionales actuales para hipotecas y compare con las ofertas de prestamistas.">
+    <meta name="twitter:image" content="https://prestamigo.com/assets/favicon/favicon.png">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            position: relative;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            height: 90px;
+            width: auto;
+        }
+
+        /* Desktop Navigation */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links li {
+            margin-left: 20px;
+        }
+        .nav-links li a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        /* Language Toggle */
+        .language-toggle {
+            display: flex;
+            margin-left: 20px;
+            border: 1px solid #3498db;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .language-toggle a {
+            padding: 5px 15px;
+            text-decoration: none;
+            color: #3498db;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .language-toggle a.active {
+            background-color: #3498db;
+            color: white;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .hamburger span {
+            height: 3px;
+            background-color: #2c3e50;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Main Content */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Fix for potential white bar issues */
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .rates-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .rates-section h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .rates-widget-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+            overflow: hidden;
+        }
+
+        .rates-widget-container iframe {
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+        }
+
+        .info-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-section h3 {
+            color: #3498db;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .info-section p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px auto;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #3498db;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .disclaimer {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 0.8rem;
+            color: #bdc3c7;
+            line-height: 1.5;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .nav-links li a {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                padding: 30px 20px;
+                margin: 20px 10px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .rates-section {
+                padding: 30px 20px;
+                margin: 20px 10px;
+            }
+
+            .rates-widget-container {
+                padding: 10px;
+                overflow: hidden;
+                margin: 20px 0;
+            }
+
+            .rates-widget-container iframe {
+                width: 100%;
+                height: 400px;
+                max-width: 100%;
+                min-width: 280px;
+            }
+
+            .info-section {
+                padding: 30px 20px;
+                margin: 20px 10px;
+            }
+
+            .cta-section {
+                padding: 30px 20px;
+                margin: 20px 10px;
+            }
+
+            .container {
+                width: 95%;
+                padding: 0 10px;
+            }
+        }
+
+        /* Extra mobile styles for very small screens */
+        @media (max-width: 480px) {
+            .rates-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .rates-widget-container {
+                padding: 5px;
+                margin: 15px 0;
+                background: transparent;
+                border: none;
+            }
+
+            .rates-widget-container iframe {
+                height: 350px;
+                border-radius: 5px;
+            }
+
+            .info-section,
+            .rates-section,
+            .cta-section {
+                margin: 15px 5px;
+                padding: 20px 15px;
+            }
+        }
+
+        /* Floating Contact Button Styles */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            div[style*="position: fixed"] {
+                bottom: 20px !important;
+                right: 20px !important;
+            }
+            
+            div[style*="position: fixed"] a {
+                padding: 12px 20px !important;
+                font-size: 14px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <!-- Header with Logo -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="/">
+                    <img src="https://i.imgur.com/t3pRlvV.png" alt="Prestamigo Logo" class="logo">
+                </a>
+                
+                <!-- Hamburger Menu Button -->
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            <ul class="nav-links">
+                <li><a href="/" data-translate="nav-inicio">Inicio</a></li>
+                <li><a href="/guia-hipotecaria.html" data-translate="nav-guia">Guía Hipotecaria</a></li>
+                <li><a href="/calculadora.html" data-translate="nav-calculadora">Calculadora</a></li>
+                <li><a href="/calculadora-poder-de-compra.html" data-translate="nav-poder">Poder de Compra</a></li>
+                <li><a href="/deduccion-fiscal.html" data-translate="nav-deduccion">Beneficios Ocultos</a></li>
+                <li><a href="/comprar-vs-rentar" data-translate="nav-comprar">¿Comprar o Rentar?</a></li>
+                <li><a href="/tasas-de-interes.html" data-translate="nav-tasas">Tasas de Interés</a></li>
+                <li><a href="#" onclick="openBookingModal(); return false;" data-translate="nav-contacto">Contacto</a></li>
+                <li>
+                    <div class="language-toggle">
+                        <a href="#" data-lang="es" class="active">ES</a>
+                        <a href="#" data-lang="en">EN</a>
+                    </div>
+                </li>
+            </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Tasas de Interés Hipotecarias Actuales</h1>
+            <p>A continuación se presentan las tasas promedio nacionales proporcionadas por una empresa externa para que pueda comparar la tasa que le haya ofrecido un prestamista con los promedios nacionales.</p>
+        </section>
+
+        <!-- Rates Widget Section -->
+        <section class="rates-section">
+            <h2>Tasas Promedio Nacionales</h2>
+            <div class="rates-widget-container">
+                <iframe src="https://www2.optimalblue.com/OBMMI/widgetConfig.php?fontSize=11" 
+                        width="400" 
+                        height="522" 
+                        frameBorder="0"
+                        title="Widget de Tasas de Interés Actuales">
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Information Section -->
+        <section class="info-section">
+            <h3>¿Cómo Interpretar Estas Tasas?</h3>
+            <p>Las tasas que ve arriba representan los promedios nacionales para diferentes tipos de préstamos hipotecarios. Estas tasas son proporcionadas por Optimal Blue, LLC y se actualizan diariamente basándose en transacciones reales del mercado.</p>
+            
+            <h3>Factores Que Afectan Su Tasa Personal</h3>
+            <p>Su tasa individual puede variar significativamente de estos promedios basándose en varios factores:</p>
+            <ul>
+                <li><strong>Puntaje de Crédito:</strong> Puntajes más altos generalmente califican para mejores tasas</li>
+                <li><strong>Pago Inicial:</strong> Pagos iniciales más grandes pueden resultar en tasas más bajas</li>
+                <li><strong>Relación Deuda-Ingresos:</strong> Ratios más bajos son preferidos por los prestamistas</li>
+                <li><strong>Tipo de Préstamo:</strong> Convencional, FHA, VA, y USDA tienen diferentes tasas</li>
+                <li><strong>Ubicación de la Propiedad:</strong> Las tasas pueden variar por estado y región</li>
+                <li><strong>Condiciones del Mercado:</strong> Las tasas cambian diariamente basándose en factores económicos</li>
+            </ul>
+
+            <h3>¿Por Qué Comparar Tasas?</h3>
+            <p>Comparar las tasas que le ofrecen con estos promedios nacionales le ayuda a:</p>
+            <ul>
+                <li>Determinar si está recibiendo una oferta competitiva</li>
+                <li>Negociar mejores términos con prestamistas</li>
+                <li>Entender las tendencias actuales del mercado</li>
+                <li>Tomar decisiones informadas sobre el momento de compra</li>
+            </ul>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h3>¿Quiere Ver Su Tasa Personalizada?</h3>
+            <p>Obtenga una precalificación personalizada con tasas específicas para su situación financiera. Sin obligación y solo toma 10 minutos.</p>
+            <button onclick="openBookingModal()" class="cta-button">
+                Obtener Precalificación
+            </button>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="disclaimer">
+                <p>INCITE LLC, DBA Prestamigo, es una empresa de educación. INCITE LLC, DBA Prestamigo no es un prestamista, no emite calificaciones de préstamos, y no extiende crédito de ningún tipo. Este sitio web es sólo para uso educativo. Todos los cálculos deben ser verificados de forma independiente. Este sitio web no es una oferta de préstamo y no debe utilizarse directamente para tomar decisiones sobre ofertas de viviendas, decisiones de compra ni selecciones de préstamos. No se garantiza que proporcione resultados exactos, que implique condiciones de préstamo, importes de calificación ni asesoramiento inmobiliario. Busque el consejo de un agente de bienes raíces con licencia, originador de préstamos, planificador financiero, contador y/o abogado de bienes raíces, legal y/o asesoramiento financiero.</p>
+                
+                <p><strong>Divulgación de Relación Comercial:</strong><br>
+                INCITE LLC, DBA Prestamigo, tiene una relación comercial con Loan Factory, Inc. (NMLS 320841), una empresa de originación hipotecaria con licencia. Si usted solicita ser contactado o solicita más información, su información puede ser compartida con Loan Factory, Inc. o con otros profesionales hipotecarios con licencia para brindarle asistencia adicional. INCITE LLC, DBA Prestamigo, puede recibir compensación si usted elige trabajar con Loan Factory, Inc. u otros socios recomendados.</p>
+                
+                <p><strong>Transparencia:</strong><br>
+                El contenido educativo proporcionado en este sitio puede no ser completamente imparcial debido a la relación comercial entre INCITE LLC, DBA Prestamigo, y Loan Factory, Inc.</p>
+                
+                <p>INCITE LLC, DBA Prestamigo, no está afiliada a la VA, la FHA ni a ninguna otra agencia gubernamental. Este sitio no ha sido aprobado por ninguna agencia gubernamental.</p>
+                
+                <p>Para más información sobre cómo manejamos sus datos personales, consulte nuestra <a href="/politica-de-privacidad.html" style="color: #3498db; text-decoration: underline;">Política de Privacidad</a> y <a href="/terminos-de-servicio.html" style="color: #3498db; text-decoration: underline;">Términos de Servicio</a>.</p>
+                
+                <p>Datos proporcionados por Optimal Blue, LLC. No es una oferta de préstamo. La metodología OBMMI™ es sencilla, simplemente tomando la tasa promedio de todos los bloqueos apropiados bloqueados a través del motor de elegibilidad y precios del producto Optimal Blue en un día determinado.</p>
+                
+                <p>NMLS 1940106<br>
+                Loan Factory, Inc.<br>
+                NMLS 320841</p>
+                
+                <p>Igualdad de Vivienda Prestamista</p>
+                
+                <p><strong>Sin citas en persona</strong></p>
+            </div>
+            <p>&copy; 2024 Prestamigo. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Contact Button -->
+    <div style="position: fixed; bottom: 30px; right: 30px; z-index: 9999; animation: pulse 2s infinite;">
+        <button onclick="openBookingModal()" 
+           style="display: inline-block; background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 16px; box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4); transition: all 0.3s ease; border: 2px solid transparent; cursor: pointer;"
+           onmouseover="this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 10px 30px rgba(52, 152, 219, 0.6)'; this.style.background='linear-gradient(135deg, #2980b9, #3498db)'; this.style.border='2px solid #fff';"
+           onmouseout="this.style.transform=''; this.style.boxShadow='0 6px 20px rgba(52, 152, 219, 0.4)'; this.style.background='linear-gradient(135deg, #3498db, #2980b9)'; this.style.border='2px solid transparent';">
+            📅 Agendar Consulta
+        </button>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 10000; overflow-y: auto;">
+        <div style="position: relative; margin: 2% auto; padding: 0; width: 95%; max-width: 700px; background: white; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); min-height: 600px;">
+            <button onclick="closeBookingModal()" style="position: absolute; top: 15px; right: 20px; background: #ff4757; color: white; border: none; font-size: 18px; cursor: pointer; border-radius: 50%; width: 35px; height: 35px; z-index: 10001; display: flex; align-items: center; justify-content: center;">&times;</button>
+            <div id="bookingContent" style="padding: 50px 20px 20px 20px; height: 650px;">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hamburger Menu for Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link (for mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Preload the booking widget iframe for faster loading
+        let bookingIframe = null;
+        
+        function preloadBookingWidget() {
+            if (!bookingIframe) {
+                bookingIframe = document.createElement('iframe');
+                bookingIframe.src = 'https://api.leadconnectorhq.com/widget/booking/qBoIcTx0Mr1zIeWeWD9D';
+                bookingIframe.style.cssText = 'width: 100%; height: 100%; border: none; border-radius: 10px;';
+                bookingIframe.frameBorder = '0';
+                bookingIframe.scrolling = 'auto';
+                bookingIframe.allowFullscreen = true;
+                bookingIframe.style.display = 'none';
+                document.body.appendChild(bookingIframe);
+            }
+        }
+        
+        // Preload on page load
+        window.addEventListener('load', preloadBookingWidget);
+        
+        // Also preload on hover for even faster loading
+        document.querySelector('[onclick="openBookingModal()"]').addEventListener('mouseenter', preloadBookingWidget);
+
+        function openBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            const content = document.getElementById('bookingContent');
+            
+            modal.style.display = 'block';
+            
+            if (bookingIframe && bookingIframe.src) {
+                // Use the preloaded iframe
+                bookingIframe.style.display = 'block';
+                content.innerHTML = '';
+                content.appendChild(bookingIframe);
+            } else {
+                // Fallback: create iframe on demand with loading state
+                content.innerHTML = '<div style="text-align: center; padding: 100px 20px; color: #666;"><div style="font-size: 18px; margin-bottom: 15px;">Cargando calendario...</div><div style="width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid #3498db; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div></div>';
+                
+                setTimeout(() => {
+                    content.innerHTML = '<iframe src="https://api.leadconnectorhq.com/widget/booking/qBoIcTx0Mr1zIeWeWD9D" style="width: 100%; height: 100%; border: none; border-radius: 10px;" frameborder="0" scrolling="auto" allowfullscreen></iframe>';
+                }, 100);
+            }
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            const content = document.getElementById('bookingContent');
+            modal.style.display = 'none';
+            content.innerHTML = '<div style="text-align: center; padding: 50px;">Cargando...</div>';
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('bookingModal');
+            const modalContent = modal.querySelector('div');
+            
+            if (event.target === modal) {
+                closeBookingModal();
+            }
+        });
+        
+        // Prevent event bubbling inside modal
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('bookingModal');
+            if (modal) {
+                modal.querySelector('div').addEventListener('click', function(event) {
+                    event.stopPropagation();
+                });
+            }
+        });
+
+        // Add spinning animation for loading spinner
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+    <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+    <script src="js/tracking.js"></script>
+</body>
+</html>
