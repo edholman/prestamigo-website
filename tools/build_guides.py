@@ -182,3 +182,10 @@ build(slug='prestamo-itin-arizona', content='itin',
       desc=('S&iacute; puedes comprar casa en Arizona con ITIN. Enganche de 10% a 20%, cr&eacute;dito desde 580 o cr&eacute;dito alternativo, '
             'requisitos y documentos, en espa&ntilde;ol.'),
       form_name='guia_itin', published='2026-09-30')
+
+build(slug='prestamo-fha-arizona-requisitos', content='fha',
+      title='Pr&eacute;stamo FHA en Arizona: Requisitos 2026 | Prestamigo',
+      h1_title='Préstamo FHA en Arizona: requisitos 2026',
+      desc=('Requisitos del pr&eacute;stamo FHA en Arizona para 2026: cr&eacute;dito desde 580, 3.5% de enganche, l&iacute;mites por condado '
+            'y seguro hipotecario, en espa&ntilde;ol.'),
+      form_name='guia_fha', published='2026-09-30')
