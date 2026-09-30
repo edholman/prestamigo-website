@@ -189,3 +189,10 @@ build(slug='prestamo-fha-arizona-requisitos', content='fha',
       desc=('Requisitos del pr&eacute;stamo FHA en Arizona para 2026: cr&eacute;dito desde 580, 3.5% de enganche, l&iacute;mites por condado '
             'y seguro hipotecario, en espa&ntilde;ol.'),
       form_name='guia_fha', published='2026-09-30')
+
+build(slug='prestamo-trabajadores-independientes-arizona', content='independientes',
+      title='Pr&eacute;stamo para Trabajadores Independientes en Arizona | Prestamigo',
+      h1_title='Préstamo para trabajadores independientes en Arizona',
+      desc=('&iquest;Trabajas por tu cuenta o con 1099? Califica para comprar casa en Arizona con tus impuestos o con estados de cuenta '
+            'del banco. Requisitos y ejemplo.'),
+      form_name='guia_independientes', published='2026-09-30')
