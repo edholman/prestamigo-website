@@ -168,3 +168,10 @@ build(slug='contacto', content='contacto',
       h1_title='Contacto', form_name='contacto', published='2026-09-30', article=False,
       desc=('D&eacute;janos tus datos y un asesor que habla espa&ntilde;ol te escribe por mensaje de texto. Primera casa, ITIN, '
             'DACA, inversionistas y extranjeros en Arizona.'))
+
+build(slug='comprar-casa-con-daca-arizona', content='daca',
+      title='Comprar Casa con DACA en Arizona (2026): S&iacute; Se Puede | Prestamigo',
+      h1_title='Comprar casa con DACA en Arizona',
+      desc=('S&iacute; puedes comprar casa con DACA en Arizona. FHA ya no acepta DACA, pero el pr&eacute;stamo convencional s&iacute;, '
+            'desde 3% de enganche. Requisitos y documentos.'),
+      form_name='guia_daca', published='2026-09-30')
