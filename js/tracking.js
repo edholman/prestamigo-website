@@ -33,6 +33,7 @@
     function initGA() {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
+        if (typeof window.gtag !== 'function') window.gtag = gtag;
         gtag('js', new Date());
         gtag('config', GA_MEASUREMENT_ID);
         
@@ -69,10 +70,10 @@
 
     // Track page view on load
     window.addEventListener('load', function() {
-        // Initialize tracking services
-        initGTM();
-        initGA();
-        initFBPixel();
+        // Initialize tracking services, skipping any the page already loads inline (avoids double page views)
+        if (!document.querySelector('script[src*="gtm.js?id=' + GTM_ID + '"]')) initGTM();
+        if (!document.querySelector('script[src*="gtag/js?id=' + GA_MEASUREMENT_ID + '"]')) initGA();
+        if (typeof window.fbq !== 'function') initFBPixel();
     });
 
     // Public tracking functions
