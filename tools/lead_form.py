@@ -10,6 +10,15 @@ CONSENT = ('Al marcar esta casilla, acepto recibir llamadas y mensajes de texto 
 def options(items):
     return '\n'.join('                            <option>%s</option>' % o for o in items)
 
+# Where in Arizona (Arizona focus for now; "Fuera de Arizona" flags out-of-state leads for later routing)
+AREAS = ['Phoenix y alrededores (condado de Maricopa)', 'Tucson (condado de Pima)',
+         'Pinal (Casa Grande, San Tan Valley, Maricopa)', 'Otra parte de Arizona', 'Fuera de Arizona']
+AREA_SELECT = ('                        <label for="lf-area">¿En qué parte de Arizona quieres comprar?</label>\n'
+               '                        <select id="lf-area" name="area" data-to-message="Zona">\n'
+               '                            <option value="">Selecciona una opción</option>\n'
+               + '\n'.join('                            <option>%s</option>' % a for a in AREAS) + '\n'
+               '                        </select>')
+
 def form_html(form_name):
     return '''                <div class="lead-card">
                     <form class="lead-form" data-form-name="%(name)s" novalidate>
@@ -26,6 +35,7 @@ def form_html(form_name):
                             <option value="">Selecciona una opción</option>
 %(goals)s
                         </select>
+%(area)s
                         <label for="lf-sit">Tu situación <span class="opt">(opcional)</span></label>
                         <select id="lf-sit" name="situation" data-to-message="Situación">
                             <option value="">Selecciona una opción</option>
@@ -47,7 +57,7 @@ def form_html(form_name):
                     <p class="lead-note">No mandes documentos por aquí. Si los necesitamos, te enviamos un enlace seguro.</p>
                     <p class="lead-alt">¿Prefieres hablar? Llámanos al <a href="tel:+14806123718">(480) 612-3718</a></p>
                 </div>''' % dict(
-        name=form_name, consent=CONSENT,
+        name=form_name, consent=CONSENT, area=AREA_SELECT,
         goals=options(['Comprar mi primera casa', 'Comprar otra casa para vivir', 'Comprar para rentar o invertir',
                        'Comprar viviendo fuera de EE.UU.', 'Refinanciar mi casa']),
         sits=options(['Trabajo con W-2', 'Trabajo por mi cuenta o con 1099', 'Tengo ITIN', 'Tengo DACA o permiso de trabajo',
