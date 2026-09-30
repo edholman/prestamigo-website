@@ -1,0 +1,23 @@
+/* Prestamigo lead form (see /assets/lead-form.js) */
+.lead-card { max-width: 620px; margin: 1.5rem auto 0; background: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); padding: 1.6rem 1.5rem; text-align: left; }
+.lead-form .lead-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+@media (max-width: 560px) { .lead-form .lead-row { grid-template-columns: 1fr; } }
+.lead-form label { display: block; font-weight: 600; font-size: 0.9rem; color: #2c3e50; margin: 0.8rem 0 0.3rem; }
+.lead-form label .opt { font-weight: 400; color: #6c757d; }
+.lead-form input[type="text"], .lead-form input[type="tel"], .lead-form input[type="email"], .lead-form select, .lead-form textarea {
+  width: 100%; box-sizing: border-box; padding: 0.75rem 0.85rem; border: 1px solid #d1d5db; border-radius: 10px; font-size: 1rem; font-family: inherit; background: white; color: #2c3e50; }
+.lead-form textarea { min-height: 80px; resize: vertical; }
+.lead-form input:focus, .lead-form select:focus, .lead-form textarea:focus { outline: 3px solid rgba(52,152,219,0.35); border-color: #3498db; }
+.lead-form .lead-hp { position: absolute !important; left: -10000px !important; width: 1px; height: 1px; overflow: hidden; }
+.lead-form .lead-consent { display: flex; gap: 0.6rem; align-items: flex-start; margin: 1.1rem 0 0.4rem; font-size: 0.8rem; line-height: 1.45; color: #4b5563; font-weight: 400; }
+.lead-form .lead-consent input { margin-top: 0.2rem; width: 18px; height: 18px; flex: 0 0 18px; accent-color: #2980b9; }
+.lead-form .lead-consent a { color: #2980b9; text-decoration: underline; }
+.lead-form button[type="submit"] { display: block; width: 100%; margin-top: 1rem; padding: 0.95rem 1rem; border: none; border-radius: 50px; background: linear-gradient(135deg, #3498db, #2980b9); color: white; font-weight: 700; font-size: 1.05rem; font-family: inherit; cursor: pointer; box-shadow: 0 4px 15px rgba(52,152,219,0.4); }
+.lead-form button[type="submit"]:hover { filter: brightness(1.05); }
+.lead-form button[disabled] { opacity: 0.7; cursor: wait; }
+.lead-form .lead-error { margin-top: 0.8rem; padding: 0.7rem 0.9rem; border-radius: 8px; background: #fdecee; color: #8a1024; font-size: 0.92rem; }
+.lead-success { padding: 1.4rem; border-radius: 12px; background: #eef6ee; color: #1f4d25; text-align: center; }
+.lead-success strong { display: block; font-size: 1.2rem; margin-bottom: 0.4rem; }
+.lead-note { font-size: 0.85rem; color: #6c757d; margin-top: 0.9rem; text-align: center; }
+.lead-alt { text-align: center; font-size: 0.9rem; color: #6c757d; margin-top: 0.6rem; }
+.lead-alt a { color: #2980b9; font-weight: 600; }

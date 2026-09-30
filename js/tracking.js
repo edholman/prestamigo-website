@@ -94,6 +94,8 @@
         const forms = document.querySelectorAll('form');
         
         forms.forEach(function(form) {
+            // Native lead forms track their own Lead event after the server confirms (assets/lead-form.js)
+            if (form.classList.contains('lead-form')) return;
             form.addEventListener('submit', function(event) {
                 // Determine the form type based on the form ID or action
                 let formType = 'generic_form';
