@@ -175,3 +175,10 @@ build(slug='comprar-casa-con-daca-arizona', content='daca',
       desc=('S&iacute; puedes comprar casa con DACA en Arizona. FHA ya no acepta DACA, pero el pr&eacute;stamo convencional s&iacute;, '
             'desde 3% de enganche. Requisitos y documentos.'),
       form_name='guia_daca', published='2026-09-30')
+
+build(slug='prestamo-itin-arizona', content='itin',
+      title='Pr&eacute;stamo ITIN en Arizona: Comprar Casa sin Seguro Social | Prestamigo',
+      h1_title='Préstamo ITIN para comprar casa en Arizona',
+      desc=('S&iacute; puedes comprar casa en Arizona con ITIN. Enganche de 10% a 20%, cr&eacute;dito desde 580 o cr&eacute;dito alternativo, '
+            'requisitos y documentos, en espa&ntilde;ol.'),
+      form_name='guia_itin', published='2026-09-30')
