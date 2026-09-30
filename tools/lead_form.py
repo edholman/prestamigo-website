@@ -1,7 +1,7 @@
 """Prestamigo lead form markup (shared by build_guides.py and switch_to_form.py). Posts via /assets/lead-form.js."""
 
-CONSENT = ('Al marcar esta casilla, acepto recibir llamadas y mensajes de texto de Prestamigo (INCITE LLC) y de '
-           'Loan Factory, Inc. (NMLS 320841) al n&#250;mero proporcionado, incluidos mensajes enviados con tecnolog&#237;a '
+CONSENT = ('Al marcar esta casilla, acepto recibir llamadas y mensajes de texto de Prestamigo (INCITE LLC) '
+           'al n&#250;mero proporcionado, incluidos mensajes enviados con tecnolog&#237;a '
            'automatizada, sobre mis opciones de pr&#233;stamo hipotecario. El consentimiento no es una condici&#243;n de compra. '
            'Pueden aplicarse tarifas de mensajes y datos. La frecuencia de los mensajes var&#237;a. Responde STOP para cancelar '
            'o HELP para obtener ayuda. Consulta nuestra <a href="/politica-de-privacidad.html">Pol&#237;tica de Privacidad</a> '
