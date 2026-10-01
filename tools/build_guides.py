@@ -203,3 +203,24 @@ build(slug='prestamo-dscr-arizona', content='dscr',
       desc=('Pr&eacute;stamo DSCR para inversionistas en Arizona: califica con la renta de la propiedad, sin comprobar ingresos. '
             'Requisitos, ejemplo y LLC, en espa&ntilde;ol.'),
       form_name='guia_dscr', published='2026-09-30')
+
+build(slug='como-sacar-itin', content='sacar-itin',
+      title='C&oacute;mo Sacar un ITIN: Paso a Paso y Gratis (2026) | Prestamigo',
+      h1_title='Cómo sacar un ITIN: paso a paso',
+      desc=('C&oacute;mo sacar tu ITIN gratis: forma W-7, documentos, d&oacute;nde entregarla en Arizona y por qu&eacute; lo necesitas para '
+            'comprar casa o abrir un negocio.'),
+      form_name='guia_sacar_itin', published='2026-09-30')
+
+build(slug='como-abrir-llc-arizona', content='abrir-llc',
+      title='C&oacute;mo Abrir una LLC en Arizona: Paso a Paso (2026) | Prestamigo',
+      h1_title='Cómo abrir una LLC en Arizona: paso a paso',
+      desc=('C&oacute;mo registrar tu LLC en Arizona por $50, aunque tengas ITIN: nombre, agente estatutario, publicaci&oacute;n, '
+            'EIN y por qu&eacute; ayuda a financiar.'),
+      form_name='guia_abrir_llc', published='2026-09-30')
+
+build(slug='como-sacar-ein', content='sacar-ein',
+      title='C&oacute;mo Sacar un EIN Gratis para tu Negocio (2026) | Prestamigo',
+      h1_title='Cómo sacar un EIN para tu negocio: paso a paso',
+      desc=('C&oacute;mo sacar el EIN de tu negocio gratis en irs.gov, tambi&eacute;n con ITIN. Paso a paso y por qu&eacute; lo necesitas '
+            'para el banco y para financiar.'),
+      form_name='guia_sacar_ein', published='2026-09-30')
