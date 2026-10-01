@@ -83,7 +83,7 @@ if b'"@type": "Organization"' not in b:
     assert len(faqs) >= 5, len(faqs)
     ld = [
         {'@context': 'https://schema.org', '@type': 'Organization', 'name': 'Prestamigo', 'legalName': 'INCITE LLC',
-         'url': SITE + '/', 'logo': 'https://i.imgur.com/t3pRlvV.png', 'email': 'info@prestamigo.com', 'telephone': '+1-480-612-3718',
+         'url': SITE + '/', 'logo': 'https://i.imgur.com/t3pRlvV.png', 'email': 'info@prestamigo.com', 'telephone': '+1-602-610-8305',
          'description': 'Educación hipotecaria en español para compradores de casa en Arizona: primera casa, ITIN, DACA, inversionistas y extranjeros.',
          'areaServed': {'@type': 'State', 'name': 'Arizona'}, 'knowsLanguage': ['es', 'en'],
          'sameAs': ['https://www.youtube.com/@Mi_Prestamigo']},

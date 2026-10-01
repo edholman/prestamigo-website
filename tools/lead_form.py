@@ -55,7 +55,7 @@ def form_html(form_name):
                     </form>
                     <div class="lead-success" hidden><strong>¡Gracias! Recibimos tu información.</strong><p>Un asesor te va a escribir por mensaje de texto en unos minutos. Si es después de las 9 PM, te escribimos en la mañana.</p></div>
                     <p class="lead-note">No mandes documentos por aquí. Si los necesitamos, te enviamos un enlace seguro.</p>
-                    <p class="lead-alt">¿Prefieres hablar? Llámanos al <a href="tel:+14806123718">(480) 612-3718</a></p>
+                    <p class="lead-alt">¿Prefieres hablar? Llámanos al <a href="tel:+16026108305">(602) 610-8305</a></p>
                 </div>''' % dict(
         name=form_name, consent=CONSENT, area=AREA_SELECT,
         goals=options(['Comprar mi primera casa', 'Comprar otra casa para vivir', 'Comprar para rentar o invertir',
