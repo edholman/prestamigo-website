@@ -196,3 +196,10 @@ build(slug='prestamo-trabajadores-independientes-arizona', content='independient
       desc=('&iquest;Trabajas por tu cuenta o con 1099? Califica para comprar casa en Arizona con tus impuestos o con estados de cuenta '
             'del banco. Requisitos y ejemplo.'),
       form_name='guia_independientes', published='2026-09-30')
+
+build(slug='prestamo-dscr-arizona', content='dscr',
+      title='Pr&eacute;stamo DSCR en Arizona: Compra con la Renta | Prestamigo',
+      h1_title='Préstamo DSCR en Arizona: compra casas de renta con la renta',
+      desc=('Pr&eacute;stamo DSCR para inversionistas en Arizona: califica con la renta de la propiedad, sin comprobar ingresos. '
+            'Requisitos, ejemplo y LLC, en espa&ntilde;ol.'),
+      form_name='guia_dscr', published='2026-09-30')
