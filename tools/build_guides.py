@@ -98,8 +98,14 @@ def strip_tags(s):
 def build(slug, content, title, h1_title, desc, form_name, published, article=True):
     body = open('tools/content/%s.html' % content, encoding='utf-8').read().replace('\r\n', '\n')
     body = body.replace('%(FORM)s', form_html(form_name))
-    body = re.sub(r'(<a href="#[a-z]+" class="hero-cta">[^<]*</a>)(\s*<p class="updated">)',
-                  r'\1\n            <a class="wa-btn" data-wa="hero" href="https://wa.me/16026108305"><i class="fab fa-whatsapp"></i> WhatsApp</a>\2', body, count=1)
+    # WhatsApp is the main call to action: contact buttons become WhatsApp buttons
+    WA = '<a class="wa-btn" data-wa="%s" href="https://wa.me/16026108305"><i class="fab fa-whatsapp"></i> ¿Tienes preguntas? Escríbenos por WhatsApp</a>'
+    if re.search(r'<a href="#contacto" class="hero-cta">[^<]*</a>\s*<p class="updated">', body):
+        body = re.sub(r'<a href="#contacto" class="hero-cta">[^<]*</a>(\s*<p class="updated">)', lambda m: WA % 'hero' + m.group(1), body, count=1)
+    else:  # how-to guides keep their "Ver los pasos" button and get WhatsApp next to it
+        body = re.sub(r'(<a href="#[a-z]+" class="hero-cta">[^<]*</a>)(\s*<p class="updated">)', lambda m: m.group(1) + '\n            ' + WA % 'hero' + m.group(2), body, count=1)
+    body = body.replace('<a href="#contacto" class="hero-cta">Quiero que me contacten</a>', WA % 'mid_page')
+    body = re.sub(r'(<div class="cta-strip">\s*<p>.*?)te contesta por mensaje de texto', r'\1te contesta por WhatsApp', body, flags=re.S)
     url = '%s/%s' % (SITE, slug)
     faqs = [{'@type': 'Question', 'name': strip_tags(q), 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}}
             for q, a in re.findall(r'<summary>(.*?)</summary>\s*<p>(.*?)</p>', body, re.S)]
