@@ -53,9 +53,20 @@
 
   var attribution = readAttribution();
 
+  // Funnel step -> Google Analytics 4 event (+ dataLayer for GTM, + Clarity if installed).
+  // GA4 is initialized by js/tracking.js on window load, so events wait until after that.
+  function funnel(name, params) {
+    params = params || {};
+    try { (window.dataLayer = window.dataLayer || []).push(Object.assign({ event: 'pm_' + name }, params)); } catch (e) { /* ignore */ }
+    try { if (typeof window.clarity === 'function') window.clarity('event', name); } catch (e) { /* ignore */ }
+    var send = function () { try { if (typeof window.gtag === 'function') window.gtag('event', name, params); } catch (e) { /* ignore */ } };
+    if (document.readyState === 'complete') setTimeout(send, 400); else window.addEventListener('load', function () { setTimeout(send, 600); });
+  }
+
   function trackLead(formName) {
     try { if (typeof window.fbq === 'function') window.fbq('track', 'Lead', { content_name: formName }); } catch (e) { /* ignore */ }
     try { (window.dataLayer = window.dataLayer || []).push({ event: 'prestamigo_lead', form_name: formName }); } catch (e) { /* ignore */ }
+    funnel('generate_lead', { form_name: formName });
   }
 
   function showError(form, text) {
@@ -69,10 +80,23 @@
     var button = form.querySelector('button[type="submit"]');
     var buttonText = button ? button.textContent : '';
     var sending = false;
+    var formName = form.getAttribute('data-form-name') || 'website';
+    var seen = {};
+    function once(name, params) { if (!seen[name]) { seen[name] = true; funnel(name, Object.assign({ form_name: formName }, params || {})); } }
+
+    // Funnel: form seen -> started typing -> clicked submit -> (error) -> generate_lead
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { once('form_view'); io.disconnect(); } });
+      }, { threshold: 0.4 });
+      io.observe(form);
+    }
+    form.addEventListener('focusin', function () { once('form_start'); });
 
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
       if (sending) return;
+      funnel('form_submit_click', { form_name: formName });
       var errBox = form.querySelector('.lead-error');
       if (errBox) errBox.hidden = true;
 
@@ -80,8 +104,8 @@
       var consent = form.querySelector('[name="consent"]');
       var digits = phone ? phone.value.replace(/\D/g, '') : '';
       if (digits.length === 11 && digits.charAt(0) === '1') digits = digits.slice(1);
-      if (digits.length !== 10) { showError(form, MSG.phone); if (phone) phone.focus(); return; }
-      if (!consent || !consent.checked) { showError(form, MSG.consent); if (consent) consent.focus(); return; }
+      if (digits.length !== 10) { funnel('form_error', { form_name: formName, reason: 'phone' }); showError(form, MSG.phone); if (phone) phone.focus(); return; }
+      if (!consent || !consent.checked) { funnel('form_error', { form_name: formName, reason: 'consent' }); showError(form, MSG.consent); if (consent) consent.focus(); return; }
 
       var payload = {}, notes = [];
       Array.prototype.forEach.call(form.elements, function (el) {
@@ -115,9 +139,10 @@
             if (ok) { ok.hidden = false; ok.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
             return;
           }
+          funnel('form_error', { form_name: formName, reason: 'server_' + r.status });
           showError(form, (r.body && r.body.error) ? r.body.error : MSG.network);
         })
-        .catch(function () { showError(form, MSG.network); })
+        .catch(function () { funnel('form_error', { form_name: formName, reason: 'network' }); showError(form, MSG.network); })
         .then(function () { sending = false; if (button) { button.disabled = false; button.textContent = buttonText; } });
     });
   }
