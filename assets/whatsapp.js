@@ -5,6 +5,8 @@
 (function () {
   'use strict';
   var NUMBER = '16026108305';  // (602) 610-8305, Prestamigo
+  // OFF while the number moves to Twilio's WhatsApp platform: buttons go to the contact form instead.
+  var ENABLED = false;
   var TOPIC = {
     'comprar-casa-con-daca-arizona': 'Hola, vi la guía de DACA en Prestamigo y quiero información para comprar casa.',
     'prestamo-itin-arizona': 'Hola, vi la guía de préstamos ITIN en Prestamigo y quiero información para comprar casa.',
@@ -30,6 +32,16 @@
   }
 
   function init() {
+    if (!ENABLED) {
+      var formHere = document.getElementById('contacto');
+      Array.prototype.forEach.call(document.querySelectorAll('a[data-wa]'), function (a) {
+        a.setAttribute('href', formHere ? '#contacto' : '/contacto.html');
+        a.removeAttribute('target');
+        a.innerHTML = /¿Tienes preguntas/.test(a.textContent) ? '¿Tienes preguntas? Escríbenos aquí' : 'Escríbenos aquí';
+        a.addEventListener('click', function () { track('form_fallback_' + (a.getAttribute('data-wa') || 'link')); });
+      });
+      return;
+    }
     Array.prototype.forEach.call(document.querySelectorAll('a[data-wa]'), function (a) {
       a.setAttribute('href', href);
       a.setAttribute('target', '_blank');
