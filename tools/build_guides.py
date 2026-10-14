@@ -25,6 +25,7 @@ from lead_form import CONSENT, form_html
 
 PAGE_CSS = '''
         .container.narrow { max-width: 860px; }
+        .wa-btn { display: inline-flex; align-items: center; gap: 8px; background: #25D366 !important; color: #fff !important; padding: 14px 26px; border-radius: 50px; font-weight: 700; text-decoration: none; box-shadow: 0 6px 20px rgba(0,0,0,0.15); margin: 18px 0 0 10px; } .wa-btn i { font-size: 1.25rem; } .wa-inline { color: #128C7E !important; font-weight: 700; } @media (max-width: 560px) { .wa-btn { margin-left: 0; } }
         ul.guide-list { list-style: none; padding-left: 0; }
         .guide-hero .hero-cta, .cta-strip .hero-cta { display: inline-block; margin-top: 18px; background: #fff; color: #2980b9; padding: 14px 28px; border-radius: 50px; font-weight: 700; text-decoration: none; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
         .guide-hero .updated { font-size: 0.85rem; opacity: 0.85; margin-top: 14px; }
@@ -97,6 +98,8 @@ def strip_tags(s):
 def build(slug, content, title, h1_title, desc, form_name, published, article=True):
     body = open('tools/content/%s.html' % content, encoding='utf-8').read().replace('\r\n', '\n')
     body = body.replace('%(FORM)s', form_html(form_name))
+    body = re.sub(r'(<a href="#[a-z]+" class="hero-cta">[^<]*</a>)(\s*<p class="updated">)',
+                  r'\1\n            <a class="wa-btn" data-wa="hero" href="https://wa.me/16026108305"><i class="fab fa-whatsapp"></i> WhatsApp</a>\2', body, count=1)
     url = '%s/%s' % (SITE, slug)
     faqs = [{'@type': 'Question', 'name': strip_tags(q), 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}}
             for q, a in re.findall(r'<summary>(.*?)</summary>\s*<p>(.*?)</p>', body, re.S)]
@@ -144,6 +147,7 @@ def build(slug, content, title, h1_title, desc, form_name, published, article=Tr
         %(menu_js)s
 %(yt_js)s    </script>
     <script src="/assets/lead-form.js"></script>
+    <script src="/assets/whatsapp.js"></script>
     <script src="/js/tracking.js"></script>
 </body>
 </html>
