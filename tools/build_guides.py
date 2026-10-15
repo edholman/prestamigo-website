@@ -105,6 +105,11 @@ def build(slug, content, title, h1_title, desc, form_name, published, article=Tr
     else:  # how-to guides keep their "Ver los pasos" button and get WhatsApp next to it
         body = re.sub(r'(<a href="#[a-z]+" class="hero-cta">[^<]*</a>)(\s*<p class="updated">)', lambda m: m.group(1) + '\n            ' + WA % 'hero' + m.group(2), body, count=1)
     body = body.replace('<a href="#contacto" class="hero-cta">Quiero que me contacten</a>', WA % 'mid_page')
+    # Links inside the text that pointed to the form now open WhatsApp
+    WA_IN = '<a data-wa="inline" href="https://wa.me/16026108305">%s</a>'
+    body = body.replace('<a href="#contacto">Déjanos tus datos</a>', WA_IN % 'Escríbenos por WhatsApp')
+    body = body.replace('<a href="#contacto">déjanos tus datos</a>', WA_IN % 'escríbenos por WhatsApp')
+    body = body.replace('<a href="#contacto">Cuéntanos tu situación</a>', WA_IN % 'Cuéntanos tu situación por WhatsApp')
     body = re.sub(r'(<div class="cta-strip">\s*<p>.*?)te contesta por mensaje de texto', r'\1te contesta por WhatsApp', body, flags=re.S)
     url = '%s/%s' % (SITE, slug)
     faqs = [{'@type': 'Question', 'name': strip_tags(q), 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}}
@@ -153,7 +158,7 @@ def build(slug, content, title, h1_title, desc, form_name, published, article=Tr
         %(menu_js)s
 %(yt_js)s    </script>
     <script src="/assets/lead-form.js"></script>
-    <script src="/assets/whatsapp.js"></script>
+    <script src="/assets/whatsapp.js?v=2"></script>
     <script src="/js/tracking.js"></script>
 </body>
 </html>
