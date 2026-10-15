@@ -5,8 +5,8 @@
 (function () {
   'use strict';
   var NUMBER = '16026108305';  // (602) 610-8305, Prestamigo
-  // OFF while the number moves to Twilio's WhatsApp platform: buttons go to the contact form instead.
-  var ENABLED = false;
+  // Kill switch: false sends the buttons to the contact form instead (e.g. if WhatsApp goes down).
+  var ENABLED = true;
   var TOPIC = {
     'comprar-casa-con-daca-arizona': 'Hola, vi la guía de DACA en Prestamigo y quiero información para comprar casa.',
     'prestamo-itin-arizona': 'Hola, vi la guía de préstamos ITIN en Prestamigo y quiero información para comprar casa.',
